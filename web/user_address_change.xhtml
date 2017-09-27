@@ -1,12 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>住所変更</title>
     </h:head>
     <h:body>
-        <h1>住所編集</h1>
+        <h1>住所変更</h1>
+        郵便番号<h:inputText value="" /><h:inputText value="" />
+        都道府県<h:selectOneMenu><f:selectItems value="愛媛県"/></h:selectOneMenu>
+        住所<h:inputText value="" />
+        マンション<h:inputSecret value="" />
+        <h:commandButton value="変更"/>
     </h:body>
 </html>
 
