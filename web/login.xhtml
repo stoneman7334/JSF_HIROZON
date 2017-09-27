@@ -7,17 +7,30 @@
     </h:head>
     <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <h:body>
-        ログイン
-        <h:form>
-            id      <h:inputText value="#{myBean.id}"/><br/>
-            pass    <h:inputSecret value="#{myBean.id}"/><br/>
-            <h:commandButton value="PUSH" action="account_menu"/>
-        </h:form>
-        <h:form>
-            <h:commandButton value="新規会員登録" action="account"/><br/>
-            <h:commandButton value="パスワード忘れた方はこちら" action="forget"/><br/>
-        </h:form>
         <div class="form-wrap">
+            <h1 class="login-title">LOGIN</h1>
+            <h:form>
+                 <div class="form-item">
+                    <label for="userid"></label>
+                    <h:inputText value="#{myBean.id}"/><br/>
+                </div>
+                 <div class="form-item">
+                    <label for="userid"></label>
+                    <h:inputSecret  styleClass="form-item" value="#{myBean.id}"/><br/>
+                </div>
+                <div class="button-panel">
+                    <h:commandButton value="PUSH" styleClass="button" action="account_menu"/>
+                </div>
+            </h:form>
+            <h:form>
+                <div class="form-footer">
+                    <p><a href="account.xhtml" class="footer-link">新規会員登録はこちら</a></p>
+                    <p><a href="forget.xhtml" class="footer-link">パスワードを忘れた方はこちら</a></p>
+                </div>
+            </h:form>
+        </div>
+
+<!--        <div class="form-wrap">
             <h1 class="login-title">LOGIN</h1>
             <form>
                 <div class="form-item">
@@ -36,7 +49,7 @@
                 <p><a href="#" class="footer-link">新規会員登録はこちら</a></p>
                 <p><a href="#" class="footer-link">パスワードを忘れた方はこちら</a></p>
             </div>
-        </div>
+        </div>-->
     </h:body>
 </html>
 
