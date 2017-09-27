@@ -6,7 +6,17 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h1>アカウントメニュー</h1>
+        <h:form>
+            検索 <h:commandButton value="PUSH" action="search_result"/>
+        </h:form>
+        
+        <h:form>
+            <h:commandButton value="注文履歴" action="user_history"/>
+            <h:commandButton value="登録情報変更" action="mypage"/>
+            <h:commandButton value="退会する" action="user_unsubscribe"/>
+            <h:commandButton value="住所編集する" action="user_address_change"/>
+        </h:form>
     </h:body>
 </html>
 

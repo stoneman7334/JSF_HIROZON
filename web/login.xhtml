@@ -6,7 +6,16 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        ログイン
+        <h:form>
+            id      <h:inputText value="#{myBean.id}"/><br/>
+            pass    <h:inputSecret value="#{myBean.id}"/><br/>
+            <h:commandButton value="PUSH" action="account_menu"/>
+        </h:form>
+        <h:form>
+            <h:commandButton value="新規会員登録" action="account"/><br/>
+            <h:commandButton value="パスワード忘れた方はこちら" action="forget"/><br/>
+        </h:form>
     </h:body>
 </html>
 
