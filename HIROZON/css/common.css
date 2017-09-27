@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+/* header */
+.header {
+  position: static;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.headder-title {
+  display: inline-block;
+  line-height: 70px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #3366ff;
+  color: #fff;
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .header {
+    display: flex;
+  }
+}
+
+/* footer */
+.footer {
+  color: #fff;
+  background-color: #0000cc;
+}
+
+.footer .foot-contents {
+  padding: 40px 20px;
+}
+
+@media (min-width: 768px) {
+  .footer .foot-contents {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .footA {
+    flex: 0 0 40%;
+  }
+  .footB {
+    flex: 0 0 60%;
+  }
+  .footC {
+    flex: 0 0 100%;
+  }
+}
+
+.footA {
+  margin-bottom: 30px;
+}
+
+.footA .foot-title {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 30px;
+  letter-spacing: 0.2em;
+}
+
+.footA .foot-info {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 14px;
+}
+
+.footA .foot-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footB .foot-nav {
+  margin-bottom: 20px;
+}
+
+.footB .foot-heading {
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: solid 1px currentColor;
+  font-size: 14px;
+}
+
+.footB .list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footB a {
+  display: block;
+  padding: 5px;
+  color: inherit;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.footB a:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .footB {
+    display: flex;
+  }
+  .footB .foot-nav {
+    flex: 1;
+  }
+  .footB .foot-nav:not(:first-child) {
+    margin-left: 40px;
+  }
+}
+
+.footC {
+  margin: 10px;
+}
+
+.footC .copyright {
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Montserrat', sans-serif;
+}
