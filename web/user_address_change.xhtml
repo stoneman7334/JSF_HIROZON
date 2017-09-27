@@ -8,11 +8,13 @@
     </h:head>
     <h:body>
         <h1>住所変更</h1>
-        郵便番号<h:inputText value="#{myBean.id}" /><h:inputText value="#{myBean.id}" />
-        都道府県<h:selectOneMenu></h:selectOneMenu>
-        住所<h:inputText value="#{myBean.id}" />
-        マンション<h:inputSecret value="#{myBean.id}" />
-        <h:commandButton value="変更" action="mypage"/>
+        <h:form>
+            郵便番号<h:inputText value="#{myBean.id}" /><h:inputText value="#{myBean.id}" />
+            都道府県<h:selectOneMenu></h:selectOneMenu>
+            住所<h:inputText value="#{myBean.id}" />
+            マンション<h:inputSecret value="#{myBean.id}" />
+            <h:commandButton value="変更" action="mypage"/>
+        </h:form>
     </h:body>
 </html>
 
