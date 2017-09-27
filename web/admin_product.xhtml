@@ -6,7 +6,24 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h1>HIROZON 管理者</h1>
+        
+        <h2>商品登録</h2>
+        <h:form>
+            ID      <h:inputText value="#{myBean.id}"/>
+            商品名  <h:inputText value="#{myBean.id}"/>
+            個数    <h:inputText value="#{myBean.id}"/>
+            原価    <h:inputText value="#{myBean.id}"/>
+            画像    <h:graphicImage url="#"/>
+            画像    <h:graphicImage url="#"/>
+            画像    <h:graphicImage url="#"/>
+            
+            <h:commandButton value="登録" action="#"/>
+        </h:form>
+        
+        <h:form>
+            <h:commandButton value="戻る" action="admin_menu"/>
+        </h:form>
     </h:body>
 </html>
 
