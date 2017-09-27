@@ -16,6 +16,9 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class UserBean{
 
+	private String id;
+	private String pass;
+	
     /**
      * Creates a new instance of UserBean
      */
