@@ -7,9 +7,12 @@
     </h:head>
     <h:body>
         <h1>名前変更</h1>
-        現在の名前<h:inputText value="" />
-        新しい名前<h:inputText value="" />
-        <h:commandButton value="変更"/>
+        <h:form>
+            現在の名前<h:inputText value="#{myBean.id}" />
+            新しい名前<h:inputText value="#{myBean.id}" />
+            <h:commandButton value="戻る" action="mypage"/>
+            <h:commandButton value="変更" action="mypage"/>
+        </h:form>
     </h:body>
 </html>
 

@@ -7,6 +7,13 @@
     </h:head>
     <h:body>
         <h1>アカウント管理</h1>
+        <h:form>
+            名前<h:commandButton value="編集" action="user_name_change" /><br/>
+            メールアドレス<h:commandButton value="編集" action="user_mail_change" /><br/>
+            電話番号変更<h:commandButton value="編集"  /><br/>
+            パスワード<h:commandButton value="編集" action="user_pass_change" /><br/>
+            <h:commandButton value="戻る" action="account_menu" />
+        </h:form>
     </h:body>
 </html>
 

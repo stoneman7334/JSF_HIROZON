@@ -7,10 +7,13 @@
     </h:head>
     <h:body>
         <h1>メールアドレス</h1>
-        現在のメールアドレス<h:inputText value="" />
-        新しいメールアドレス<h:inputText value="" />
-        パスワード<h:inputSecret value="" />
-        <h:commandButton value="変更"/>
+        <h:form>
+            現在のメールアドレス<h:inputText value="#{myBean.id}" />
+            新しいメールアドレス<h:inputText value="#{myBean.id}" />
+            パスワード<h:inputSecret value="#{myBean.id}" />
+            <h:commandButton value="戻る" action="mypage"/>
+            <h:commandButton value="変更" action="mypage"/>
+        </h:form>
     </h:body>
 </html>
 
