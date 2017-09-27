@@ -5,6 +5,7 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
+    <link rel="stylesheet" type="text/css" href="css/login.css"/>
     <h:body>
         ログイン
         <h:form>
@@ -16,6 +17,26 @@
             <h:commandButton value="新規会員登録" action="account"/><br/>
             <h:commandButton value="パスワード忘れた方はこちら" action="forget"/><br/>
         </h:form>
+        <div class="form-wrap">
+            <h1 class="login-title">LOGIN</h1>
+            <form>
+                <div class="form-item">
+                    <label for="userid"></label>
+                    <input type="text" name="userid" required="required" placeholder="ID"></input>
+                </div>
+                <div class="form-item">
+                    <label for="password"></label>
+                    <input type="password" name="password" required="required" placeholder="Password"></input>
+                </div>
+                <div class="button-panel">
+                    <input type="submit" class="button" value="LOGIN"></input>
+                </div>
+            </form>
+            <div class="form-footer">
+                <p><a href="#" class="footer-link">新規会員登録はこちら</a></p>
+                <p><a href="#" class="footer-link">パスワードを忘れた方はこちら</a></p>
+            </div>
+        </div>
     </h:body>
 </html>
 
