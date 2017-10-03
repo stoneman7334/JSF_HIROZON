@@ -11,22 +11,30 @@
         <div class="form-wrap">
             <h1 class="login-title">LOGIN</h1>
             <h:form>
-                 <div class="form-item">
+				<div class="form-item">
                     <label for="userid"></label>
-                    <h:inputText p:placeholder="id" value="#{myBean.id}"/><br/>
+                    <h:inputText p:placeholder="id" value="#{uBean.id}"/><br/>
                 </div>
-                 <div class="form-item">
+				<div class="form-item">
                     <label for="userid"></label>
-                    <h:inputSecret  p:placeholder="password" styleClass="form-item" value="#{myBean.id}"/><br/>
+                    <h:inputSecret  p:placeholder="password" styleClass="form-item" value="#{uBean.pass}"/><br/>
                 </div>
                 <div class="button-panel">
-                    <h:commandButton value="PUSH" styleClass="button" action="account_menu"/>
+                    <h:commandButton value="PUSH" styleClass="button" action="#{uBean.loginCheck()}"/>
                 </div>
             </h:form>
             <h:form>
                 <div class="form-footer">
-                    <p><a href="account.xhtml" class="footer-link">新規会員登録はこちら</a></p>
-                    <p><a href="forget.xhtml" class="footer-link">パスワードを忘れた方はこちら</a></p>
+					<h:commandLink action="account">
+						<h:outputText value="新規会員登録はこちら"/>
+					</h:commandLink>
+					<br/>
+					<h:commandLink action="forget">
+						<h:outputText value="パスワードを忘れた方はこちら"/>
+					</h:commandLink>
+					
+                    <!--<p><a href="account" class="footer-link">新規会員登録はこちら</a></p>-->
+                    <!--<p><a href="forget.xhtml" class="footer-link">パスワードを忘れた方はこちら</a></p>-->
                 </div>
             </h:form>
         </div>
