@@ -8,5 +8,14 @@
     <h:body>
         <h1>パスワード忘れ</h1>
     </h:body>
+
+    <!-- 忘れたら、自動で、パスワードをDBに付与して、パスワードを変えさせるロジック -->
+    <h:form>
+        ID <h:inputText value="#{uBean.id}"/>
+        
+        <h:commandButton value="ユーザ確認" action="#{uBean.passForget()}"/>
+    </h:form>
+    
+    
 </html>
 

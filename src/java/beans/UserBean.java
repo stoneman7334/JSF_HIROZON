@@ -73,5 +73,29 @@ public class UserBean {
         return "account_menu"; //*** 暫定 ***//
     }
     
+    //*** 新規会員登録を行うメソッド ***//
+    public String addUser(){
+        System.out.println("call UserBean->addUser()");
+        //*** 入力した値たちを取得する ***//
+        
+        //*** DBに新規登録をかける ***//
+        
+        //*** その結果に応じた画面遷移先を設定する ***//
+        
+        return "";  //*** 暫定 ***//
+    }
+    
+    //*** 指定IDのユーザのパスワードをリセットして、仮パスワードを指定するメソッド ***//
+    public String passForget(){
+        System.out.println("call UserBean->passForget()");
+        //*** 入力してきたIDのユーザが存在するか確認 確認できたら、処理続行 ***//
+        
+        //*** ランダムな文字列生成（8文字くらい） ***//
+        
+        //*** 生成した文字列を、DBに格納する ***//
+        
+        return "";  //*** ページ遷移はなしで、画面に、仮パスワードを出力する ***//
+    }
+    
 
 }
