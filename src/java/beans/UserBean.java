@@ -34,23 +34,18 @@ public class UserBean {
     public UserDb getUserDb() {
         return userDb;
     }
-
     public void setUserDb(UserDb userDb) {
         this.userDb = userDb;
     }
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getPass() {
         return pass;
     }
-
     public void setPass(String pass) {
         this.pass = pass;
     }

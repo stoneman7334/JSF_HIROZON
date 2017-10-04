@@ -51,7 +51,7 @@ public class Hint {
      * 
      * 
      *  mypage                  しゃま
-     *  user_address_change     以下
+     *  user_address_change     しゃま
      *  user_mail_change
      *  user_tel_change
      *  user_name_change
