@@ -25,6 +25,10 @@ public class User implements Serializable {
     @Id
     private String u_Id;
     private String u_pass;
+    
+     public User() {
+    }
+    
     //*** GetterSetter ***//
     public String getU_id() {
         return u_Id;
@@ -38,9 +42,8 @@ public class User implements Serializable {
     public void setU_pass(String u_pass) {
         this.u_pass = u_pass;
     }
-
-    public User() {
-    }
+    
+    
     
     @Override
     public String toString() {

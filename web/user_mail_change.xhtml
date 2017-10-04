@@ -8,10 +8,10 @@
     <h:body>
         <h1>メールアドレス</h1>
         <h:form>
-            現在のメールアドレス<h:inputText value="#{myBean.id}" />
-            新しいメールアドレス<h:inputText value="#{myBean.id}" />
-            パスワード<h:inputSecret value="#{myBean.id}" />
-            <h:commandButton value="変更" action="mypage"/>
+            現在のメールアドレス<h:inputText value="#{uBean.beMail}" />
+            新しいメールアドレス<h:inputText value="#{uBean.newMail}" />
+            パスワード<h:inputSecret value="#{uBean.pass}" />
+            <h:commandButton value="変更" action="#{uBean.changeMail()}"/>
         </h:form>
         <h:form>
             <h:commandButton value="戻る" action="mypage"/>
