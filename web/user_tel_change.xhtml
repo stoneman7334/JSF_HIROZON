@@ -3,19 +3,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>メールアドレス変更</title>
+        <title>電話番号変更</title>
     </h:head>
     <h:body>
-        <h1>メールアドレス</h1>
+        <h1>電話番号変更</h1>
         <h:form>
-            現在のメールアドレス<h:inputText value="#{uBean.beMail}" />
-            新しいメールアドレス<h:inputText value="#{uBean.newMail}" />
-            パスワード<h:inputSecret value="#{uBean.pass}" />
-            <h:commandButton value="変更" action="#{uBean.changeMail()}"/>
+            現在の電話番号<h:inputText value="#{myBean.id}" />
+            新しい電話番号<h:inputText value="#{myBean.id}" />
+            <h:commandButton value="変更" action="mypage"/>
         </h:form>
         <h:form>
             <h:commandButton value="戻る" action="mypage"/>
-        </h:form>            
+        </h:form>        
     </h:body>
 </html>
 

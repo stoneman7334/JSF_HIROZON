@@ -27,9 +27,35 @@ public class UserBean {
 
     private String id;
     private String pass;
+    
+   //*** 変更前アドレスと変更予定のアドレス ***//
+    private String beMail;
+    private String newMail;
+    
+    User user;
+    
+    
 
     public UserBean() {
     }
+
+    public String getBeMail() {
+        return beMail;
+    }
+
+    public void setBeMail(String beMail) {
+        this.beMail = beMail;
+    }
+
+    public String getNewMail() {
+        return newMail;
+    }
+
+    public void setNewMail(String newMail) {
+        this.newMail = newMail;
+    }
+    
+    
 
     public UserDb getUserDb() {
         return userDb;
@@ -64,9 +90,9 @@ public class UserBean {
             sb.append(String.format("%02x", b));
         }
         System.out.println(sb.toString());	//*** 入力したpassをSHA256ハッシュ化した結果の文字列 ***//
-
-        User u = userDb.find(id, sb.toString());
-        if (u == null) {
+        
+        user = userDb.find(id,sb.toString());
+        if (user == null){
             return "";
         }
         //*** ここで、DB検索してユーザのチェックを行う ***//
@@ -97,5 +123,19 @@ public class UserBean {
         return "";  //*** ページ遷移はなしで、画面に、仮パスワードを出力する ***//
     }
     
+    public String changeMail() throws NoSuchAlgorithmException{
+        String res = null;
+        //*** アドレス変更の際のパスワードのハッシュ処理 ***//
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] result = md.digest(this.pass.getBytes());
+        StringBuilder sb = new StringBuilder();
+        for (byte b : result) {
+            sb.append(String.format("%02x", b));
+        }
+        
+        
+        
+        return res;
+    }
 
 }
