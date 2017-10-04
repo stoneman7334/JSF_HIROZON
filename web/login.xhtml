@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -10,46 +11,33 @@
         <div class="form-wrap">
             <h1 class="login-title">LOGIN</h1>
             <h:form>
-                 <div class="form-item">
+				<div class="form-item">
                     <label for="userid"></label>
-                    <h:inputText value="#{myBean.id}"/><br/>
+                    <h:inputText p:placeholder="id" value="#{uBean.id}"/><br/>
                 </div>
-                 <div class="form-item">
+				<div class="form-item">
                     <label for="userid"></label>
-                    <h:inputSecret  styleClass="form-item" value="#{myBean.id}"/><br/>
+                    <h:inputSecret  p:placeholder="password" styleClass="form-item" value="#{uBean.pass}"/><br/>
                 </div>
                 <div class="button-panel">
-                    <h:commandButton value="PUSH" styleClass="button" action="account_menu"/>
+                    <h:commandButton value="PUSH" styleClass="button" action="#{uBean.loginCheck()}"/>
                 </div>
             </h:form>
             <h:form>
                 <div class="form-footer">
-                    <p><a href="account.xhtml" class="footer-link">新規会員登録はこちら</a></p>
-                    <p><a href="forget.xhtml" class="footer-link">パスワードを忘れた方はこちら</a></p>
+					<h:commandLink action="account">
+						<h:outputText value="新規会員登録はこちら"/>
+					</h:commandLink>
+					<br/>
+					<h:commandLink action="forget">
+						<h:outputText value="パスワードを忘れた方はこちら"/>
+					</h:commandLink>
+					
+                    <!--<p><a href="account" class="footer-link">新規会員登録はこちら</a></p>-->
+                    <!--<p><a href="forget.xhtml" class="footer-link">パスワードを忘れた方はこちら</a></p>-->
                 </div>
             </h:form>
         </div>
-
-<!--        <div class="form-wrap">
-            <h1 class="login-title">LOGIN</h1>
-            <form>
-                <div class="form-item">
-                    <label for="userid"></label>
-                    <input type="text" name="userid" required="required" placeholder="ID"></input>
-                </div>
-                <div class="form-item">
-                    <label for="password"></label>
-                    <input type="password" name="password" required="required" placeholder="Password"></input>
-                </div>
-                <div class="button-panel">
-                    <input type="submit" class="button" value="LOGIN"></input>
-                </div>
-            </form>
-            <div class="form-footer">
-                <p><a href="#" class="footer-link">新規会員登録はこちら</a></p>
-                <p><a href="#" class="footer-link">パスワードを忘れた方はこちら</a></p>
-            </div>
-        </div>-->
     </h:body>
 </html>
 

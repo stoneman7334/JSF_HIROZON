@@ -18,15 +18,15 @@ import javax.persistence.Id;
 @Entity
 public class User implements Serializable {
 
+	//*** Field ***//
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
-
+	private String pass;
+	//*** GetterSetter ***//
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
