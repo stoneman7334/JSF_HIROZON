@@ -46,6 +46,7 @@ public class UserDb {
 				"select u from User u where u.u_Id = ?1", User.class);
 		query.setParameter(1, id);			//***  ***//
 		User u = query.getSingleResult();	//***  ***//
+		// TODO IDの重複チェックはどうする？？
 		if (u == null) {
 			return true;		//***  ***//
 		} else {
