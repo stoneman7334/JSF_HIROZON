@@ -5,20 +5,144 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
+    <link rel="stylesheet" type="text/css" href="css/mypage.css"/>
+    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
     <h:body>
-        <h1>アカウントメニュー</h1>
+        <!--        <h1>アカウントメニュー</h1>
+                <h:form>
+                    検索 <h:commandButton value="PUSH" action="search_result"/>
+                </h:form>
+        
+                <h:form>
+                    <h:commandLink styleClass="" value="注文履歴" action="user_history"/><br/>
+                    <h:commandLink value="登録情報変更" action="mypage"/><br/>
+                    <h:commandLink value="退会する" action="user_unsubscribe"/><br/>
+                    <h:commandLink value="住所編集する" action="user_address_change"/><br/>
+                </h:form>-->
+
+        <!-- ヘッダー -->
         <h:form>
-            検索 <h:commandButton value="PUSH" action="search_result"/>
+
+            <header class="header">
+                <div class="header-title">
+                    <a class="top" href="top.html">HIROZON</a>
+                </div>
+                <div class="header-search">
+                    <div class="header-search__list">
+                        <div class="header-search__list__pull">
+                            <select class="header-search__list__pull__box" name="category">
+                                <option class="pull-active" value="1">すべて</option>
+                                <option value="2">食品</option>
+                                <option value="3">衣料</option>
+                                <option value="4">ゲーム</option>
+                                <option value="5">本</option>
+                                <option value="6">アウトドア</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <input type="text" name=""/>
+                        </div>
+                        <div class="">
+                            <input type="button" name="" value="検索"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-account">
+                    <ul class="header-account__menu">
+                        <li class="header-account__menu__box"><a href="#">アカウント</a>
+                            <ul class="header-account__menu__block">
+                                <!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
+                                <li><h:commandLink styleClass="" value="注文履歴" action="user_history"/><br/></li>
+
+                                <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <h1 class="page-title">アカウントメニュー</h1>
+            <div class="main">
+                <div class="main-box">
+                    <div class="main-box__head">
+                        <span></span>
+                        <h2 class="main-box__head__title">注文履歴</h2>
+                    </div>
+                    <div class="main-box__text">
+                        <ul class="main-box__text__list">
+                            <li><h:commandLink styleClass="" value="履歴を確認する" action="user_history"/></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-box">
+                    <div class="main-box__head">
+                        <span></span>
+                        <h2 class="main-box__head__title">アカウント管理</h2>
+                    </div>
+                    <div class="main-box__text">
+                        <ul class="main-box__text__list">
+                            <!--<li><a class="main-box__text__list__link" href="#">登録情報変更</a></li>-->
+                            <li><h:commandLink value="登録情報変更" action="mypage"/></li>
+                            <li><h:commandLink value="退会する" action="user_unsubscribe"/></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="main-box">
+                    <div class="main-box__head">
+                        <span></span>
+                        <h2 class="main-box__head__title">住所管理</h2>
+                    </div>
+                    <div class="main-box__text">
+                        <ul class="main-box__text__list">
+                            <li><h:commandLink value="住所編集する" action="user_address_change"/></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- フッター -->
+            <footer class="footer">
+                <div class="foot-contents">
+                    <div class="footA">
+                        <h2 class="foot-title">HIROZON</h2>
+                        <p class="foot-info">
+                            〒733-0013 広島市西区横川新町7-12<br/> TEL：082-291-5050
+                            <br/>
+                            <a href="http://www.hsc.ac.jp/" class="foot-link">http://www.hsc.ac.jp/</a>
+                        </p>
+                    </div>
+                    <nav class="footB">
+                        <div class="foot-nav">
+                            <h3 class="foot-heading">ABOUT</h3>
+                            <ul class="list">
+                                <li><a href="#">HIROZONについて</a></li>
+                                <li><a href="#">地図</a></li>
+                            </ul>
+                        </div>
+                        <div class="foot-nav">
+                            <h3 class="foot-heading">SUPPORT</h3>
+                            <ul class="list">
+                                <li><a href="#">お問い合わせ</a></li>
+                                <li><a href="#">よくある質問</a></li>
+                            </ul>
+                        </div>
+                        <div class="foot-nav">
+                            <h3 class="foot-heading">CONTENTS</h3>
+                            <ul class="list">
+                                <li><a href="#">メンバー</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="footC">
+                        <p class="copyright">© HIROZON 広島コンピュータ専門学校 2017</p>
+                    </div>
+                </div>
+            </footer>
         </h:form>
-        
-        <h:form>
-            <h:commandLink styleClass="" value="注文履歴" action="user_history"/><br/>
-            <h:commandLink value="登録情報変更" action="mypage"/><br/>
-            <h:commandLink value="退会する" action="user_unsubscribe"/><br/>
-            <h:commandLink value="住所編集する" action="user_address_change"/><br/>
-        </h:form>
-        
-        
+
+
+
     </h:body>
 </html>
 

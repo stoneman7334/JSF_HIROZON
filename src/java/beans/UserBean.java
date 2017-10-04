@@ -72,5 +72,6 @@ public class UserBean {
         //*** ここで、DB検索してユーザのチェックを行う ***//
         return "account_menu"; //*** 暫定 ***//
     }
+    
 
 }
