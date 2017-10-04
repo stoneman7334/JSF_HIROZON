@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -11,11 +11,11 @@
         <div class="form-wrap">
             <h1 class="login-title">LOGIN</h1>
             <h:form>
-				<div class="form-item">
+                <div class="form-item">
                     <label for="userid"></label>
                     <h:inputText p:placeholder="id" value="#{uBean.id}"/><br/>
                 </div>
-				<div class="form-item">
+                <div class="form-item">
                     <label for="userid"></label>
                     <h:inputSecret  p:placeholder="password" styleClass="form-item" value="#{uBean.pass}"/><br/>
                 </div>
@@ -25,14 +25,14 @@
             </h:form>
             <h:form>
                 <div class="form-footer">
-					<h:commandLink action="account">
-						<h:outputText value="新規会員登録はこちら"/>
-					</h:commandLink>
-					<br/>
-					<h:commandLink action="forget">
-						<h:outputText value="パスワードを忘れた方はこちら"/>
-					</h:commandLink>
-					
+                    <h:commandLink action="account">
+                        <h:outputText value="新規会員登録はこちら"/>
+                    </h:commandLink>
+                    <br/>
+                    <h:commandLink action="forget">
+                        <h:outputText value="パスワードを忘れた方はこちら"/>
+                    </h:commandLink>
+
                     <!--<p><a href="account" class="footer-link">新規会員登録はこちら</a></p>-->
                     <!--<p><a href="forget.xhtml" class="footer-link">パスワードを忘れた方はこちら</a></p>-->
                 </div>

@@ -12,6 +12,7 @@ import java.util.Arrays;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import model.User;
 
 /**
  *
@@ -19,56 +20,63 @@ import javax.enterprise.context.RequestScoped;
  */
 @Named(value = "uBean")
 @RequestScoped
-public class UserBean{
+public class UserBean {
 
-	@EJB
-	private UserDb userDb;
+    @EJB
+    private UserDb userDb;
 
-	private String id;
-	private String pass;
-	
+    private String id;
+    private String pass;
+
     public UserBean() {
     }
 
-	public UserDb getUserDb() {
-		return userDb;
-	}
-	public void setUserDb(UserDb userDb) {
-		this.userDb = userDb;
-	}
-	public String getId() {
-		return id;
-	}
-	public void setId(String id) {
-		this.id = id;
-	}
-	public String getPass() {
-		return pass;
-	}
-	public void setPass(String pass) {
-		this.pass = pass;
-	}
-	
-	//*** ログインチェックを行うメソッド ***//
-	public String loginCheck() throws NoSuchAlgorithmException{
-		System.out.println("call loginCheck()");
-		//*** this.pass を、SHA256でハッシュ化する ***//
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		byte[] result = md.digest(this.pass.getBytes());	//*** 256ハッシュ化した結果をバイト配列に代入する ***//
-		
-		StringBuilder sb = new StringBuilder();
-		for (byte b : result){
-			sb.append(String.format("%02x", b));
-		}
-		System.out.println(sb.toString());	//*** 入力したpassをSHA256ハッシュ化した結果の文字列 ***//
-		
-		//*** ここで、DB検索してユーザのチェックを行う ***//
-		
-		return "account_menu"; //*** 暫定 ***//
-	}
-	
-	
-	
-	
-    
+    public UserDb getUserDb() {
+        return userDb;
+    }
+
+    public void setUserDb(UserDb userDb) {
+        this.userDb = userDb;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    //*** ログインチェックを行うメソッド ***//
+    public String loginCheck() throws NoSuchAlgorithmException {
+        System.out.println("call loginCheck()");
+        
+        System.out.println(String.format("id=%s : pass=%s", id, pass));
+        //*** this.pass を、SHA256でハッシュ化する ***//
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] result = md.digest(this.pass.getBytes());	//*** 256ハッシュ化した結果をバイト配列に代入する ***//
+
+        StringBuilder sb = new StringBuilder();
+        for (byte b : result) {
+            sb.append(String.format("%02x", b));
+        }
+        System.out.println(sb.toString());	//*** 入力したpassをSHA256ハッシュ化した結果の文字列 ***//
+        
+        User u = userDb.find(id,sb.toString());
+        if (u == null){
+            return "";
+        }
+
+        //*** ここで、DB検索してユーザのチェックを行う ***//
+        return "account_menu"; //*** 暫定 ***//
+    }
+
 }

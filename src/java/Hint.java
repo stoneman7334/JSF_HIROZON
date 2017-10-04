@@ -13,6 +13,7 @@ import javax.persistence.TypedQuery;
  * @author 5151021
  */
 public class Hint {
+    //*** Where句を使ったSQLの書き方
 //    public  OcUser loginCheck(String wId,String wPass){
 //        boolean flg=false;
 //        OcUser wUser =null;

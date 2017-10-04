@@ -10,50 +10,41 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author 5151021
  */
 @Entity
+@Table(name = "m_user")
 public class User implements Serializable {
 
-	//*** Field ***//
+    //*** Field ***//
     private static final long serialVersionUID = 1L;
     @Id
-    private String id;
-	private String pass;
-	//*** GetterSetter ***//
-    public String getId() {
-        return id;
+    private String u_Id;
+    private String u_pass;
+    //*** GetterSetter ***//
+    public String getU_id() {
+        return u_Id;
     }
-    public void setId(String id) {
-        this.id = id;
+    public void setU_id(String u_id) {
+        this.u_Id = u_id;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public String getU_pass() {
+        return u_pass;
     }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+    public void setU_pass(String u_pass) {
+        this.u_pass = u_pass;
     }
 
-    @Override
-    public String toString() {
-        return "model.User[ id=" + id + " ]";
+    public User() {
     }
     
+    @Override
+    public String toString() {
+        return "model.User[ id=" + u_Id + " ]";
+    }
+
 }
