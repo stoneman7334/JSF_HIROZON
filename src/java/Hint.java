@@ -31,4 +31,32 @@ public class Hint {
 //            System.out.println("loginCheck return is null !!!");
 //        return wUser;        
 //    }
+    
+    /***
+     *  product_detail      
+     *  search_result       
+     *  top                 
+     *  user_cart
+     *  user_history
+     * 
+     *  account               大馬  
+     *  account_menu           大馬
+//     *  admin_add
+//     *  admin_del
+//     *  admin_edit  
+//     *  admin_menu
+//     *  admin_product
+     *  forget                  大馬
+     *  login                   大馬
+     * 
+     * 
+     *  mypage                  しゃま
+     *  user_address_change     以下
+     *  user_mail_change
+     *  user_tel_change
+     *  user_name_change
+     *  user_pass_change
+     *  user_unscribe
+     * 
+     */
 }

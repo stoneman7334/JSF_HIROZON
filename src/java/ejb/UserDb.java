@@ -33,9 +33,6 @@ public class UserDb {
         TypedQuery<User> query = em.createQuery("select u from User u where u.u_Id = ?1 and u.u_pass = ?2", User.class); //***  ***//
         query.setParameter(1, id);      //***  ***//
         query.setParameter(2, pass);    //***  ***//
-        System.out.println(em.getProperties());
-        System.out.println(em.getMetamodel());
-        System.out.println(em.getEntityManagerFactory());
 
         u = query.getSingleResult();    //***  ***//
 

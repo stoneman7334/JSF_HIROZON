@@ -58,7 +58,7 @@ public class UserBean {
     //*** ログインチェックを行うメソッド ***//
     public String loginCheck() throws NoSuchAlgorithmException {
         System.out.println("call loginCheck()");
-        
+
         System.out.println(String.format("id=%s : pass=%s", id, pass));
         //*** this.pass を、SHA256でハッシュ化する ***//
         MessageDigest md = MessageDigest.getInstance("SHA-256");
@@ -69,12 +69,11 @@ public class UserBean {
             sb.append(String.format("%02x", b));
         }
         System.out.println(sb.toString());	//*** 入力したpassをSHA256ハッシュ化した結果の文字列 ***//
-        
-        User u = userDb.find(id,sb.toString());
-        if (u == null){
+
+        User u = userDb.find(id, sb.toString());
+        if (u == null) {
             return "";
         }
-
         //*** ここで、DB検索してユーザのチェックを行う ***//
         return "account_menu"; //*** 暫定 ***//
     }
