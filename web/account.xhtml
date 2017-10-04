@@ -11,15 +11,16 @@
         <h2>会員登録</h2>
 
         <h:form>
-            ID              <h:inputText value="#{myBean.id}"/><br/>
-            名前            <h:inputText value="#{myBean.id}"/><br/>
-            アドレス        <h:inputText value="#{myBean.id}"/><br/>
-            パスワード      <h:inputSecret value="#{myBean.id}"/><br/>
-            パスワード（再）<h:inputSecret value="#{myBean.id}"/><br/>
-            住所            <h:inputText value="#{myBean.id}"/><br/>
-            生年月日        <h:inputText value="#{myBean.id}"/><br/>
-            郵便番号        <h:inputText value="#{myBean.id}"/><br/>
-            性別            <h:inputText value="#{myBean.id}"/><br/>
+            ID              <h:inputText value="#{uBean.id}"/><br/>
+            名前            <h:inputText value="#{uBean.u_name}"/><br/>
+            アドレス        <h:inputText value="#{uBean.u_mailaddr}"/><br/>
+            パスワード      <h:inputSecret value="#{uBean.pass}"/><br/>
+            パスワード（再）<h:inputSecret value="#{uBean.id}"/><br/>
+            住所            <h:inputText value="#{uBean.u_address}"/><br/>
+            生年月日        <h:inputText value="#{uBean.u_birth_day}"/><br/>
+            郵便番号        <h:inputText value="#{uBean.u_post}"/><br/>
+			電話番号		<h:inputText value="#{uBean.u_tel}"/>
+            性別            <h:inputText value="#{uBean.u_sex}"/><br/>
             <h:commandButton value="登録" action="#{uBean.addUser()}"/>
         </h:form> 
     </h:body>
