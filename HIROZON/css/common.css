@@ -1,7 +1,8 @@
 @charset "UTF-8";
-
 /* header */
+
 .header {
+  display: flex;
   position: static;
   top: 0;
   left: 0;
@@ -10,9 +11,9 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.header-title {
+.header-title-text {
   display: inline-block;
-  line-height: 70px;
+  line-height: 50px;
   padding-left: 20px;
   padding-right: 20px;
   background-color: #3366ff;
@@ -22,9 +23,84 @@
   text-decoration: none;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  height: 40px;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  padding: 0 40px 0 10px;
+  border: 1px solid #ccc;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+.header-search {
+  line-height: 50px;
+}
+
+.header-search__list {
+  display: flex;
+}
+
+.header-search__list__pull {
+  margin-left: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+.header-search__list__pull__box {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.header-search__list__pull::before {
+  content: '';
+  position: absolute;
+  top: 5px;
+  right: 0;
+  background: #ccc;
+  height: 40px;
+  width: 30px;
+}
+
+.header-search__list__pull::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 6px 0 6px;
+  border-color: #fff transparent transparent;
+}
+
+.header-search__list__text > input {
+  border: solid 1px #ccc;
+  height: 38px;
+  padding: 0 0 0 5px;;
+}
+
+.header-search__list__btn > input {
+  font-family: FontAwesome;
+  height: 40px;
+  width: 50px;
+  border-left: none;
+}
+
 .header-account {
   display: inline-block;
-  line-height: 70px;
+  line-height: 50px;
 }
 
 .header-account__menu {
@@ -33,7 +109,7 @@
 }
 
 .header-account__menu li {
-  width: 150px;
+  width: 120px;
   display: inline-block;
   list-style-type: none;
   position: relative;
@@ -42,7 +118,7 @@
 .header-account__menu a {
   background-color: #3366ff;
   color: #fff;
-  line-height: 70px;
+  line-height: 50px;
   text-align: center;
   text-decoration: none;
   font-weight: bold;
@@ -66,7 +142,7 @@
 }
 
 .header-account__menu ul li {
-  width: 150px;
+  width: 120px;
   border-top: solid 1px;
 }
 
@@ -77,17 +153,8 @@
   font-weight: normal;
 }
 
-@media (min-width: 768px) {
-  .header {
-    display: flex;
-  }
-
-  .header-search__list {
-    display: flex;
-  }
-}
-
 /* footer */
+
 .footer {
   color: #fff;
   background-color: #0000cc;
