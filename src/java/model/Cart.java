@@ -10,12 +10,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author 5151021
  */
 @Entity
+@Table(name = "t_cart")
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 1L;

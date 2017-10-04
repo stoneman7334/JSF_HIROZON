@@ -41,5 +41,9 @@ public class UserDb {
 
         return u;      //***  ***//
     }
-
+    
+    public User merge(User user){
+        em.merge(user);
+        return user;
+    }
 }
