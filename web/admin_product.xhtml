@@ -7,20 +7,45 @@
     </h:head>
     <h:body>
         <h1>HIROZON 管理者</h1>
-        
+
         <h2>商品登録</h2>
-        <h:form>
-            ID      <h:inputText value="#{myBean.id}"/>
-            商品名  <h:inputText value="#{myBean.id}"/>
-            個数    <h:inputText value="#{myBean.id}"/>
-            原価    <h:inputText value="#{myBean.id}"/>
-            画像    <h:graphicImage url="#"/>
-            画像    <h:graphicImage url="#"/>
-            画像    <h:graphicImage url="#"/>
-            
+        <h:form enctype="multipart/form-data">
+            <h:panelGrid columns="3">
+                ID      
+                <h:inputText value="#{myBean.id}"/>
+                <h:message for="" id="pro_id" style=""/>
+                    
+                商品名  
+                <h:inputText value="#{myBean.id}"/>
+                <h:message for="" id="pro_name" style=""/>
+                
+                個数    
+                <h:inputText value="#{myBean.id}"/>
+                <h:message for="" id="pro_cnt" style=""/>
+
+                原価    
+                <h:inputText value="#{myBean.id}"/>
+                <h:message for="" id="pro_price" style=""/>
+
+                画像    
+                <h:inputFile value="#{pBean.picture}" />
+                <h:message for="" id="pro_img1" style=""/>
+                <!--<h:graphicImage url="#"/>-->
+
+                画像    
+                <h:inputFile value="#{pBean.picture}" />
+                <h:message for="" id="pro_img2" style=""/>
+                <!--<h:graphicImage url="#"/>-->
+
+                画像    
+                <h:inputFile value="#{pBean.picture}" />
+                <h:message for="" id="pro_img3" style=""/>
+                <!--<h:graphicImage url="#"/>-->
+            </h:panelGrid>
+
             <h:commandButton value="登録" action="#"/>
         </h:form>
-        
+
         <h:form>
             <h:commandButton value="戻る" action="admin_menu"/>
         </h:form>

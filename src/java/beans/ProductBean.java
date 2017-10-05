@@ -7,6 +7,7 @@ package beans;
 
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -16,10 +17,21 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class ProductBean {
 
+    private Part picture;
     /**
      * Creates a new instance of ProductBean
      */
     public ProductBean() {
     }
+    
+    //***  ***//
+
+    public Part getPicture() {
+        return picture;
+    }
+    public void setPicture(Part picture) {
+        this.picture = picture;
+    }
+    
     
 }
