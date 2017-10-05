@@ -1,6 +1,5 @@
 @charset "UTF-8";
 /* header */
-
 .header {
   display: flex;
   position: static;
@@ -86,6 +85,7 @@ select::-ms-expand {
 }
 
 .header-search__list__text > input {
+  font-size: 20px;
   border: solid 1px #ccc;
   height: 38px;
   padding: 0 0 0 5px;;
