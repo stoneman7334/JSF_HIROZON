@@ -196,7 +196,7 @@ public class UserBean {
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
         System.out.println("call adminLoginCheck()");
-        //*** ログインチェックをもらって、空文字でなければ、成功 ***//
+        //*** ログインチェックの結果をもらって、空文字でなければ、成功 ***//
         String result = loginCheck();
         //*** 管理者は、ID９９９９を持つユーザに固定 ***//
         if (id.contains("9999") && !result.contains("")){

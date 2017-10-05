@@ -28,15 +28,15 @@
                 パスワード（再）
                 <h:inputSecret id="u_repass" value="#{uBean.id}" p:placeholder="再度入力してください"/>
                 <h:message for="u_repass" id="repasserror" style=""/>
+                郵便番号        
+                <h:inputText id="u_post" value="#{uBean.u_post}" p:placeholder="XXX-XXXX"/>
+                <h:message for="u_post" id="posterror" style=""/>
                 住所            
                 <h:inputText id="u_addr" value="#{uBean.u_address}" p:placeholder=""/>
                 <h:message for="u_addr" id="addrerror" style=""/>
                 生年月日        
                 <h:inputText id="u_birth" value="#{uBean.u_birth_day}" p:placeholder="XXXX-XX-XX"/>
                 <h:message for="u_birth" id="birtherror" style=""/>
-                郵便番号        
-                <h:inputText id="u_post" value="#{uBean.u_post}" p:placeholder="XXX-XXXX"/>
-                <h:message for="u_post" id="posterror" style=""/>
                 電話番号        
                 <h:inputText id="u_tel" value="#{uBean.u_tel}" p:placeholder="0823-74-1234"/>
                 <h:message for="u_tel" id="telerror" style=""/>

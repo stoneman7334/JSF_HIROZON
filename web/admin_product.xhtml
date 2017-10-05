@@ -12,19 +12,19 @@
         <h:form enctype="multipart/form-data">
             <h:panelGrid columns="3">
                 ID      
-                <h:inputText value="#{myBean.id}"/>
+                <h:inputText value="#{pBean.id}"/>
                 <h:message for="" id="pro_id" style=""/>
                     
                 商品名  
-                <h:inputText value="#{myBean.id}"/>
+                <h:inputText value="#{pBean.name}"/>
                 <h:message for="" id="pro_name" style=""/>
                 
                 個数    
-                <h:inputText value="#{myBean.id}"/>
+                <h:inputText value="#{pBean.count}"/>
                 <h:message for="" id="pro_cnt" style=""/>
 
                 原価    
-                <h:inputText value="#{myBean.id}"/>
+                <h:inputText value="#{pBean.price}"/>
                 <h:message for="" id="pro_price" style=""/>
 
                 画像    
@@ -32,14 +32,15 @@
                 <h:message for="" id="pro_img1" style=""/>
                 <!--<h:graphicImage url="#"/>-->
 
-                画像    
+                <!-- 暫定ひとつで対応する -->
+<!--                画像    
                 <h:inputFile value="#{pBean.picture}" />
                 <h:message for="" id="pro_img2" style=""/>
-                <!--<h:graphicImage url="#"/>-->
+                <h:graphicImage url="#"/>
 
                 画像    
                 <h:inputFile value="#{pBean.picture}" />
-                <h:message for="" id="pro_img3" style=""/>
+                <h:message for="" id="pro_img3" style=""/>-->
                 <!--<h:graphicImage url="#"/>-->
             </h:panelGrid>
 
