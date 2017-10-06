@@ -8,6 +8,7 @@ package ejb;
 //import java.util.Arrays;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 //import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -45,13 +46,13 @@ public class UserDb {
 		TypedQuery<User> query = em.createQuery(
 				"select u from User u where u.u_Id = ?1", User.class);
 		query.setParameter(1, id);			//***  ***//
-		User u = query.getSingleResult();	//***  ***//
-		// TODO IDの重複チェックはどうする？？
-		if (u == null) {
-			return true;		//***  ***//
-		} else {
-			return false;		//***  ***//
-		}
+		User u;
+		try {
+			u = query.getSingleResult();	//***  ***//
+		} catch (NoResultException e) {
+			return true;
+		}// TODO IDの重複チェックはどうする？？
+		return false;
 	}
 
 	public User merge(User user) {

@@ -5,6 +5,13 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
+	<script language="javascript">
+		function test(){
+			console.log("call test()");
+//			var mailaddr = document.getElementById("mailaddr").value;
+//			console.log(mailaddr);
+		}
+	</script>
     <h:body>
         <h1>HIROZON</h1>
 
@@ -12,8 +19,8 @@
 
         <h:form>
             ID              <h:inputText value="#{uBean.id}"/><br/>
-            名前            <h:inputText value="#{uBean.u_name}"/><br/>
-            アドレス        <h:inputText value="#{uBean.u_mailaddr}"/><br/>
+            名前            <h:inputText id="name" value="#{uBean.u_name}"/><br/>
+            アドレス        <h:inputText id="mailaddr" onblur="test()" value="#{uBean.u_mailaddr}"/><br/>
             パスワード      <h:inputSecret value="#{uBean.pass}"/><br/>
             パスワード（再）<h:inputSecret value="#{uBean.id}"/><br/>
             住所            <h:inputText value="#{uBean.u_address}"/><br/>

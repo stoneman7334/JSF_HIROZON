@@ -150,7 +150,7 @@ public class UserBean {
 		System.out.println("call UserBean->addUser()");
 		//*** ユーザIDの重複をチェックする ***//
 		if (!userDb.checkDuplicateUserId(id)) {
-			return "";	//*** 処理を抜ける ***//
+			return "";	//*** 重複発生のため、処理を抜ける ***//
 		}
 		//*** 入力した値たちを取得する ***//
 		User u = new User(
@@ -165,9 +165,12 @@ public class UserBean {
 				u_tel
 		);
 		//*** DBに新規登録をかける ***//
+		userDb.persist(u);
+		// TODO インサートOK! だが、passをハッシュ化するのがまだ
+		
 
 		//*** その結果に応じた画面遷移先を設定する ***//
-		return "";  //*** 暫定 ***//
+		return "login";  //*** 暫定 ***//
 	}
 
 	//*** 指定IDのユーザのパスワードをリセットして、仮パスワードを指定するメソッド ***//
