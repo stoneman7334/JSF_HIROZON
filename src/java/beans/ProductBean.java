@@ -105,19 +105,17 @@ public class ProductBean implements Serializable {
 	}
 	
 	//*** --- SELF MADE METHOD --- AJAX 指定した商品IDの在庫数取得のためのメソッド ***//
-	public String ajaxFindProduct(){
+	public void ajaxFindProduct(){
 		System.out.println("call ProductBean->findProduct()");
 		System.out.println(String.format("商品ID : %s", id));
 		
 		//*** 商品IDに、何も入力がない または、検索結果がnull ***//
-		if (id.isEmpty() || db.find(id) == null)	return "";		//*** 処理を抜ける ***//
+		if (id.isEmpty() || db.find(id) == null)	return ;		//*** 処理を抜ける ***//
 		
 		//*** 商品IDで、検索してインスタンスを取得 ***//
 		Product p = db.find(id);
 		System.out.println(String.format("商品インスタンス : %s", p.toString()));
 		this.count = p.getP_count();
-		
-		return "";
 	}
 
 }
