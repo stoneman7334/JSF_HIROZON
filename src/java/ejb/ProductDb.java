@@ -27,10 +27,19 @@ public class ProductDb extends SubDb{
     @PersistenceContext(unitName = "HirozonPU")
 	private EntityManager em;
     
+	//***  ***//
     public void persist(Product p){
         //*** 引数のインスタンスをインサートする ***//
         em.persist(p);
     }
+	//***  ***//
+	public Product find(String id){
+		Product p = em.find(Product.class, id);
+		
+		return p;
+	}
+	
+	
     
     
 }
