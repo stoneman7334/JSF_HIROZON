@@ -9,6 +9,7 @@ import ejb.UserDb;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.Random;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -143,17 +144,17 @@ public class UserBean {
 		if (!userDb.checkDuplicateUserId(id)) {
 			return "";	//*** 重複発生のため、処理を抜ける ***//
 		}
-		//*** 入力した値たちを取得する ***//
+		//*** Userクラスのインスタンスを生成する ***//
 		User u = new User(
-				id,							//***  ***//
-				u_name,						//***  ***//
-				Util.returnSHA256(pass),	//***  ***//
-				u_mailaddr,					//***  ***//
-				u_address,					//***  ***//
-				u_birth_day,				//***  ***//
-				u_post,						//***  ***//
-				u_sex,						//***  ***//
-				u_tel						//***  ***//
+				id,							//*** ユーザID ***//
+				u_name,						//*** 氏名 ***//
+				Util.returnSHA256(pass),	//*** ハッシュ化したパスワード ***//
+				u_mailaddr,					//*** メールアドレス ***//
+				u_address,					//*** 住所 ***//
+				u_birth_day,				//*** 生年月日 ***//
+				u_post,						//*** 郵便番号 ***//
+				u_sex,						//*** 性別 ***//
+				u_tel						//*** 電話番号 ***//
 		);
 		//*** DBに新規登録をかける ***//
 		userDb.persist(u);
@@ -163,12 +164,21 @@ public class UserBean {
 	}
 
 	//*** 指定IDのユーザのパスワードをリセットして、仮パスワードを指定するメソッド ***//
-	public String passForget() {
+	public String passForget() throws NoSuchAlgorithmException {
 		System.out.println("call UserBean->passForget()");
-		//*** 入力してきたIDのユーザが存在するか確認 確認できたら、処理続行 ***//
-
+		//*** 入力してきたIDのユーザが存在するか確認 ***//
+		User u = userDb.find(id);
+		if (u == null){
+			return "";
+		}
 		//*** ランダムな文字列生成（8文字くらい） ***//
-		//*** 生成した文字列を、DBに格納する ***//
+		String ramdomPass = Util.getRandomString(5);
+		System.out.println(String.format("生成した仮パスワード : %s", ramdomPass));
+		
+		u.setU_pass(Util.returnSHA256(ramdomPass));	//*** 生成した仮パスワードをセット ***//
+		System.out.println(String.format("ハッシュ結果 : %s", u.getU_pass()));
+		userDb.merge(u);			//*** 更新をかける ***//
+		
 		return "";  //*** ページ遷移はなしで、画面に、仮パスワードを出力する ***//
 	}
 

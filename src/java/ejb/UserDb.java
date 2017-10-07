@@ -40,6 +40,10 @@ public class UserDb {
 
 		return u;      //*** Userクラスのインスタンスを返す ***//
 	}
+	//***  ***//
+	public User find(String id){
+		return em.find(User.class, id);
+	}
 
 	//*** 指定されたユーザIDに重複がないかチェックするメソッド ***//
 	public boolean checkDuplicateUserId(String id) {
