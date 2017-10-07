@@ -13,6 +13,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import model.User;
+import util.Util;
 
 /**
  *
@@ -125,19 +126,9 @@ public class UserBean {
 	//*** ログインチェックを行うメソッド ***//
 	public String loginCheck() throws NoSuchAlgorithmException {
 		System.out.println("call loginCheck()");
-
 		System.out.println(String.format("id=%s : pass=%s", id, pass));
-		//*** this.pass を、SHA256でハッシュ化する ***//
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		byte[] result = md.digest(this.pass.getBytes());	//*** 256ハッシュ化した結果をバイト配列に代入する ***//
 
-		StringBuilder sb = new StringBuilder();
-		for (byte b : result) {
-			sb.append(String.format("%02x", b));
-		}
-		System.out.println(sb.toString());	//*** 入力したpassをSHA256ハッシュ化した結果の文字列 ***//
-
-		user = userDb.find(id, sb.toString());
+		user = userDb.find(id, Util.returnSHA256(pass));
 		if (user == null) {
 			return "";
 		}
@@ -146,7 +137,7 @@ public class UserBean {
 	}
 
 	//*** 新規会員登録を行うメソッド ***//
-	public String addUser() {
+	public String addUser() throws NoSuchAlgorithmException {
 		System.out.println("call UserBean->addUser()");
 		//*** ユーザIDの重複をチェックする ***//
 		if (!userDb.checkDuplicateUserId(id)) {
@@ -154,20 +145,18 @@ public class UserBean {
 		}
 		//*** 入力した値たちを取得する ***//
 		User u = new User(
-				id,
-				u_name,
-				pass,
-				u_mailaddr,
-				u_address,
-				u_birth_day,
-				u_post,
-				u_sex,
-				u_tel
+				id,							//***  ***//
+				u_name,						//***  ***//
+				Util.returnSHA256(pass),	//***  ***//
+				u_mailaddr,					//***  ***//
+				u_address,					//***  ***//
+				u_birth_day,				//***  ***//
+				u_post,						//***  ***//
+				u_sex,						//***  ***//
+				u_tel						//***  ***//
 		);
 		//*** DBに新規登録をかける ***//
 		userDb.persist(u);
-		// TODO インサートOK! だが、passをハッシュ化するのがまだ
-		
 
 		//*** その結果に応じた画面遷移先を設定する ***//
 		return "login";  //*** 暫定 ***//
