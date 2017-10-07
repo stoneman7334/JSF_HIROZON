@@ -35,7 +35,7 @@ public class UserBean {
 	private String u_birth_day;		//*** 生年月日 ***//
 	private String u_sex;			//*** 性別 ***//
 	//*** 変更前アドレスと変更予定のアドレス ***//
-	private String beMail;
+	private String beMail;	
 	private String newMail;
 
 	User user;

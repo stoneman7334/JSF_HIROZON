@@ -6,6 +6,8 @@
 package beans;
 
 import ejb.ProductDb;
+import java.io.IOException;
+import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -19,15 +21,15 @@ import model.Product;
  */
 @Named(value = "pBean")
 @RequestScoped
-public class ProductBean {
+public class ProductBean implements Serializable{
     
     //*** Field ***//
     private String id;      //*** 商品ID ***//
     private String name;    //*** 商品名 ***//
     private int count;      //*** 個数 ***//
     private int price;      //*** 価格 ***//
-//    private Part picture;   //*** 画像（暫定ひとつ） ***//
-      private byte [] picture;   //*** 画像（暫定ひとつ） ***//
+    private Part picture;   //*** 画像（暫定ひとつ） ***//
+//      private byte [] picture;   //*** 画像（暫定ひとつ） ***//
     
    @EJB
    ProductDb db;
@@ -61,15 +63,24 @@ public class ProductBean {
     public void setPrice(int price) {    
         this.price = price;
     }
-    public byte[] getPicture() {
-        return picture;
-    }
-    public void setPicture(byte[] picture) {
-        this.picture = picture;
-    }
+//    public byte[] getPicture() {
+//        return picture;
+//    }
+//    public void setPicture(byte[] picture) {
+//        this.picture = picture;
+//    }
+
+	public Part getPicture() {
+		return picture;
+	}
+
+	public void setPicture(Part picture) {
+		this.picture = picture;
+	}
+	
     
     //***  ***//
-    public String newRegist(){
+    public String newRegist() throws IOException{
         System.out.println("call ProductBean->newRegist()");
         
         //***  ***//

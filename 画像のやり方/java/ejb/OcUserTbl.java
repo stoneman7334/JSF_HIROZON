@@ -27,6 +27,7 @@ public class OcUserTbl {
     @PersistenceContext
     private EntityManager em;
 
+    //*** ***//
     public void create(OcUser wUser){
         try{
             if(find(wUser.getUser_id())==null)

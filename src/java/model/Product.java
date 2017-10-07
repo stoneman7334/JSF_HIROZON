@@ -5,11 +5,16 @@
  */
 package model;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
+import javax.persistence.Basic;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.servlet.http.Part;
 
@@ -29,16 +34,23 @@ public class Product implements Serializable {
     private String p_name;  //*** 商品名 ***//
     private int p_count;    //*** 個数 ***//
     private int p_price;    //*** 価格 ***//
+	@Lob
+    @Basic(fetch = FetchType.LAZY)
     private byte [] p_img;  //*** 画像（暫定一つ） ***//
-
-    public Product(String id, String name, int count, int price, byte[] picture) {
+	
+	public Product(String id, String name, int count, int price, Part picture) throws IOException {
         this.p_id = id;
         this.p_name = name;
         this.p_count = count;
         this.p_price = price;
-        this.p_img = picture;
+		//*** 受け取ったPart型のインスタンスを、バイト配列に変換する ***//
+        byte[] data		= new byte[(int) picture.getSize()];
+		InputStream is	= picture.getInputStream();
+		is.read(data);
+		
+		this.p_img = data;	//*** 変換したバイト配列をセットする ***//
     }
-    
+//    
     public Product(){};
 
     //*** GetterSetter ***//
@@ -72,5 +84,12 @@ public class Product implements Serializable {
     public void setP_img(byte[] p_img) {
         this.p_img = p_img;
     }
+//	public Part getP_img() {
+//		return p_img;
+//	}
+//	public void setP_img(Part p_img) {
+//		this.p_img = p_img;
+//	}
+////	
    
 }

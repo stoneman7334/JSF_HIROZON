@@ -30,12 +30,12 @@ import org.primefaces.model.StreamedContent;
 @RequestScoped
 public class OcUserRequestBean {
     @Inject
-    private OcUserBean sessionOcUser;    
-    private String user_id;
-    private String user_name,user_sub_name,user_pass;
-    private boolean card_flg,admin_flg;
-    private byte[] user_photo;    
-    private Part photoFile;
+    private OcUserBean sessionOcUser;                   //*** ***//
+    private String user_id;                             //*** ***//
+    private String user_name,user_sub_name,user_pass;   //*** ***//
+    private boolean card_flg,admin_flg;                 //*** ***//
+    private byte[] user_photo;                          //*** ***//
+    private Part photoFile;                             //*** ***//
     
     @EJB
     private OcUserTbl db;
