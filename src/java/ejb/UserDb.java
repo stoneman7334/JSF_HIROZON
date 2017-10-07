@@ -23,11 +23,11 @@ public class UserDb {
 
 	@PersistenceContext(unitName = "HirozonPU")
 	private EntityManager em;
-
+	
+	//*** 引数のインスタンスを新規登録するメソッド ***//
 	public void persist(User u) {
 		em.persist(u);
 	}
-
 	//*** 指定したID passのユーザのインスタンスを返すメソッド ***//
 	public User find(String id, String pass) {
 		User u = null;
@@ -40,7 +40,10 @@ public class UserDb {
 
 		return u;      //*** Userクラスのインスタンスを返す ***//
 	}
-
+	//*** 指定したIDのユーザのインスタンスを返すメソッド ***//
+	public User find(String id){
+		return em.find(User.class, id);
+	}
 	//*** 指定されたユーザIDに重複がないかチェックするメソッド ***//
 	public boolean checkDuplicateUserId(String id) {
 		TypedQuery<User> query = em.createQuery(
@@ -54,7 +57,7 @@ public class UserDb {
 		}// TODO IDの重複チェックはどうする？？
 		return false;
 	}
-
+	//*** 指定したインスタンスでDB updateを行うメソッド ***//
 	public User merge(User user) {
 		em.merge(user);
 		return user;

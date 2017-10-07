@@ -7,15 +7,16 @@ package util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Random;
 
 /**
  *
  * @author Yuichi-Oba
  */
 public class Util {
-	
+
 	//*** 引数の文字列を、SHA256にハッシュ化した結果の文字列を返すメソッド ***//
-	public static String returnSHA256(String args) throws NoSuchAlgorithmException{
+	public static String returnSHA256(String args) throws NoSuchAlgorithmException {
 		MessageDigest md = MessageDigest.getInstance("SHA-256");
 		byte[] result = md.digest(args.getBytes());	//*** 256ハッシュ化した結果をバイト配列に代入する ***//
 
@@ -26,5 +27,16 @@ public class Util {
 
 		//*** 入力したpassをSHA256ハッシュ化した結果の文字列 ***//
 		return sb.toString();
+	}
+	//*** 指定文字数で、ランダムな文字列を返すメソッド ***//
+	public static String getRandomString(int cnt) {
+		final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+		Random rnd = new Random();
+		StringBuilder buf = new StringBuilder();
+		for (int i = 0; i < cnt; i++) {
+			int val = rnd.nextInt(chars.length());
+			buf.append(chars.charAt(val));
+		}
+		return buf.toString();
 	}
 }
