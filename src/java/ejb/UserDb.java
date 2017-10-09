@@ -20,7 +20,7 @@ import model.User;
 @Stateless
 public class UserDb {
 
-    @PersistenceContext(unitName = "HirozonPU")
+    @PersistenceContext(unitName = "HirozonHOME")
     private EntityManager em;
 
     public void persist(User u) {
