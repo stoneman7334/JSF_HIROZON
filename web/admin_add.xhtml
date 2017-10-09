@@ -1,17 +1,30 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>在庫追加</title>
     </h:head>
     <h:body>
         <h1>管理者 HIROZON</h1>
         <h:form>
+            商品ID
+			<h:inputText id="id" value="#{pBean.id}">
+				<f:ajax execute="id" event="blur" listener="#{pBean.ajaxFindProduct()}"/>
+			</h:inputText>
             <h2>在庫追加</h2>
-            商品ID<h:inputText value="#{myBean.id}"/>
-            在庫数<h:outputText value="#{myBean.id}" />
-            追加数<h:selectOneMenu></h:selectOneMenu>
+			在庫数
+			<h:outputText value="#{pBean.count}" /><br/>
+
+			追加数
+			<select name="" size="1">
+				<option value="">10</option>
+				<option value="">20</option>
+				<option value="">30</option>
+			</select><br/>
+			追加数
+			<h:selectOneMenu></h:selectOneMenu><br/>
             <h:commandButton value="追加" action="admin_menu" />
         </h:form>
         <h:form>
