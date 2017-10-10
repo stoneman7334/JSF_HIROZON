@@ -36,21 +36,16 @@ public class UserBean {
 	private String u_tel;			//*** 電話番号 ***//
 	private String u_birth_day;		//*** 生年月日 ***//
 	private String u_sex;			//*** 性別 ***//
-	//*** 変更前アドレスと変更予定のアドレス ***//
-	private String beMail;	
+	//*** 変更予定のアドレス ***//
 	private String newMail;
 
 	User user;
-
+        //*** ログイン時にfindしたuserを保持しておく ***//
+        public static User loginUser;
+        
 	public UserBean() {
 	}
-
-	public String getBeMail() {
-		return beMail;
-	}
-	public void setBeMail(String beMail) {
-		this.beMail = beMail;
-	}
+        
 	public String getNewMail() {
 		return newMail;
 	}
@@ -133,6 +128,7 @@ public class UserBean {
 		if (user == null) {
 			return "";
 		}
+                loginUser = user;
 		//*** ここで、DB検索してユーザのチェックを行う ***//
 		return "account_menu"; //*** 暫定 ***//
 	}
@@ -179,17 +175,19 @@ public class UserBean {
 		
 		return "";  //*** ページ遷移はなしで、画面に、仮パスワードを出力する ***//
 	}
-	//***  ***//
+	//*** メールアドレス変更メソッド ***//
 	public String changeMail() throws NoSuchAlgorithmException {
-		String res = null;
-		//*** アドレス変更の際のパスワードのハッシュ処理 ***//
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		byte[] result = md.digest(this.pass.getBytes());
-		StringBuilder sb = new StringBuilder();
-		for (byte b : result) {
-			sb.append(String.format("%02x", b));
-		}
-
+                String res = null;
+                //*** パスを確認して正しければ変更をかける ***//
+                //*** 正規表現で入力値がメールアドレスかどうかも同時に見る ***//
+                if(loginUser.getU_pass().equals(Util.returnSHA256(pass)) && newMail.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
+                    //*** ユーザーインスタンスに新たなメールをセットし、それでマージをかける ***//
+                    loginUser.setU_mailaddr(newMail);
+                    userDb.merge(loginUser);
+                    //*** マイページへ ***//
+                    res = "mypage";
+                }
+                
 		return res;
 	}
     //*** 管理者ユーザのログインを行うメソッド ***//
