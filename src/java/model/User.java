@@ -108,7 +108,7 @@ public class User implements Serializable {
 
 	@Override
 	public String toString() {
-		return "model.User[ id=" + u_Id + " ]";
+		return String.format("ユーザID : %s ユーザ氏名 : %s", u_Id, u_name);
 	}
 
 }

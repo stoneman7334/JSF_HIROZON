@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -11,11 +12,38 @@
 
     <!-- 忘れたら、自動で、パスワードをDBに付与して、パスワードを変えさせるロジック -->
     <h:form>
-        ID <h:inputText value="#{uBean.id}"/>
-        
-        <h:commandButton value="ユーザ確認" action="#{uBean.passForget()}"/>
+		<h:panelGrid columns="2">
+
+			<f:facet name="ユーザ">
+				<h:outputText value="it's header"/>
+			</f:facet>
+			ID 
+			<h:inputText value="#{uBean.id}"/>
+			メールアドレス
+			<h:inputText value="#{uBean.u_mailaddr}"/>
+
+		</h:panelGrid>
+		<h:commandButton value="ユーザ確認" action="#{uBean.userConfirm()}"/>
+
+		<h:panelGrid columns="2">
+
+			<f:facet name="ユーザ">
+				<h:outputText value="it's header"/>
+			</f:facet>
+			氏名 ：
+			<h:outputText value="#{uBean.u_name}"/>
+
+		</h:panelGrid>
+		<p>
+			<h:commandButton value="パスワード再発行" action="#{uBean.passForget()}"/>
+		</p>
+		<p>
+			生成した仮パスワード -><h:outputText value="#{uBean.pass}"/>
+		</p>
+		<h:commandLink action="login" value="戻る"/>
+		
     </h:form>
-    
-    
+
+
 </html>
 

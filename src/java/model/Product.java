@@ -122,7 +122,6 @@ public class Product implements Serializable {
 
 		return data;	//*** 変換したバイト配列を返す ***//
 	}
-
 	@Override
 	public String toString() {
 		return String.format("商品ID : %s 個数 : %s", p_id, p_count);
