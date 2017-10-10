@@ -190,6 +190,10 @@ public class UserBean {
                 
 		return res;
 	}
+        //*** 現在のアドレス取得 ***//
+        public String beMail() {
+            return loginUser.getU_mailaddr();
+        }
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
         System.out.println("call adminLoginCheck()");
