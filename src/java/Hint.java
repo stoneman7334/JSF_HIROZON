@@ -39,23 +39,23 @@ public class Hint {
      *  user_cart
      *  user_history
      * 
-     *  account               大馬  
-     *  account_menu           大馬
-//     *  admin_add
+     *  account                 大馬        
+     *  account_menu            大馬        
+//     *  admin_add                         OK
 //     *  admin_del
-//     *  admin_edit  
+//     *  admin_edit                        
 //     *  admin_menu
 //     *  admin_product
-     *  forget                  大馬
+     *  forget                  大馬        OK
      *  login                   大馬
      * 
      * 
      *  mypage                  しゃま
-     *  user_address_change     しゃま
-     *  user_mail_change
-     *  user_tel_change
-     *  user_name_change
-     *  user_pass_change
+     *  user_address_change     しゃま  
+     *  user_mail_change                    OK
+     *  user_tel_change                     OK
+     *  user_name_change                    OK
+     *  user_pass_change                    OK
      *  user_unscribe
      * 
      */
