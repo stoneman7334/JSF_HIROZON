@@ -252,16 +252,11 @@ public class UserBean {
             return userDb.find(loginId).getU_tel();
         }
         
-        
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
-        System.out.println("call adminLoginCheck()");
-        //*** ログインチェックの結果をもらって、空文字でなければ、成功 ***//
-        String result = loginCheck();
-        //*** 管理者は、ID９９９９を持つユーザに固定 ***//
-        if (id.contains("9999") && !result.contains("")){
-            return "admin_menu";    //*** ログイン成功－＞ 管理者トップページに遷移する ***//
-        }   
+        if (id.contains("9999")){
+            return "admin_menu";    //***  ***//
+        }
         return "";                  //*** ログイン失敗 ***//
     }
 
