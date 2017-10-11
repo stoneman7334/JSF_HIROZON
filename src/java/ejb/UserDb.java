@@ -35,8 +35,11 @@ public class UserDb {
 		TypedQuery<User> query = em.createQuery("select u from User u where u.u_Id = ?1 and u.u_pass = ?2", User.class); //***  ***//
 		query.setParameter(1, id);      //*** IDをセット ***//
 		query.setParameter(2, pass);    //*** pass（ハッシュ済み）をセット ***//
-
-		u = query.getSingleResult();    //*** 結果の取得 ***//
+                try {
+                    u = query.getSingleResult();    //*** 結果の取得 ***//
+                } catch (NoResultException e) {
+                    
+                }
 
 		return u;      //*** Userクラスのインスタンスを返す ***//
 	}
@@ -62,4 +65,8 @@ public class UserDb {
 		em.merge(user);
 		return user;
 	}
+        //*** 指定したインスタンスでDB deleteを行うメソッド ***//
+        public void remove(User user) {
+            em.remove(user);
+        }
 }

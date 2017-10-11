@@ -214,13 +214,13 @@ public class UserBean {
 	//*** メールアドレス変更メソッド ***//
 	public String changeMail() throws NoSuchAlgorithmException {
                 String res = null;
-                User changeUser = userDb.find(loginId);
+                user = userDb.find(loginId);
                 //*** パスを確認して正しければ変更をかける ***//
                 //*** 正規表現で入力値がメールアドレスかどうかも同時に見る ***//
-                if(changeUser.getU_pass().equals(Util.returnSHA256(pass)) && u_mailaddr.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
+                if(user.getU_pass().equals(Util.returnSHA256(pass)) && u_mailaddr.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
                     //*** ユーザーインスタンスに新たなメールをセットし、それでマージをかける ***//
-                    changeUser.setU_mailaddr(u_mailaddr);
-                    userDb.merge(changeUser);
+                    user.setU_mailaddr(u_mailaddr);
+                    userDb.merge(user);
                     //*** マイページへ ***//
                     res = "mypage";
                 }
@@ -234,11 +234,11 @@ public class UserBean {
         //*** ユーザー名を変更するメソッド ***//
         public String changeName() {
             //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
-            User changeUser = userDb.find(loginId);
+            user = userDb.find(loginId);
             //*** 取得したインスタンスに変更予定のユーザー名をセット ***//
-            changeUser.setU_name(u_name);
+            user.setU_name(u_name);
             //*** マージをかける ***//
-            userDb.merge(changeUser);
+            userDb.merge(user);
             return "mypage";
         }
         //*** 現在のユーザー名を取得 ***//
@@ -251,11 +251,11 @@ public class UserBean {
             //*** 入力値が電話番号であるか正規表現でチェック ***//
             if(u_tel.matches("^(070|080|090)\\d{4}\\d{4}$|^0\\\\d{3}\\\\d{2}\\\\d{4}$")){
                 //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
-                User changeUser = userDb.find(loginId);
+                user = userDb.find(loginId);
                 //*** 取得したインスタンスに変更予定の電話番号をセット ***//
-                changeUser.setU_tel(u_tel);
+                user.setU_tel(u_tel);
                 //*** マージをかける ***//
-                userDb.merge(changeUser);
+                userDb.merge(user);
                 res = "mypage";
             }
             return res;
@@ -268,18 +268,24 @@ public class UserBean {
         public String changePass() throws NoSuchAlgorithmException {
             String res = null;
             //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***///
-            User changeUser = userDb.find(loginId);
+            user = userDb.find(loginId);
             //*** 入力された現パスワードが正しいか かつ 新パスワードと再入力パスワードが同じか ***//
-            if(changeUser.getU_pass().equals(Util.returnSHA256(pass)) && newPass.equals(rePass)) {
+            if(user.getU_pass().equals(Util.returnSHA256(pass)) && newPass.equals(rePass)) {
                 //*** 新パスワードをハッシュ化してインスタンスにセット ***//
-                changeUser.setU_pass(Util.returnSHA256(newPass));
+                user.setU_pass(Util.returnSHA256(newPass));
                 //*** マージをかける ***//
-                userDb.merge(changeUser);
+                userDb.merge(user);
                 res = "mypage";
             }
             return res;
         }
-        
+        //*** 退会処理を行うメソッド ***//
+        public String unsubscribe() throws NoSuchAlgorithmException {
+            String res = null;
+            user = userDb.find(id, Util.returnSHA256(pass));
+            
+            return res;
+        }
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
         System.out.println("call adminLoginCheck()");
