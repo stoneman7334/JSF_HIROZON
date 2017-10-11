@@ -29,7 +29,7 @@ public class UserBean {
 	@EJB
 	private UserDb userDb;
 
-	private String id;				//*** ユーザID ***//
+	private String id;			//*** ユーザID ***//
 	private String pass;			//*** パスワード ***//
 	private String u_name;			//*** 氏名 ***//
 	private String u_mailaddr;		//*** メールアドレス ***//
@@ -38,9 +38,12 @@ public class UserBean {
 	private String u_tel;			//*** 電話番号 ***//
 	private String u_birth_day;		//*** 生年月日 ***//
 	private String u_sex;			//*** 性別 ***//
-	//*** 変更予定のアドレス ***//
-	private String newMail;
-
+        
+        //*** 変更予定のパスワード ***//
+        private String newPass;
+        //*** 再入力パスワード ***//
+        private String rePass;
+                
 	User user;
         
         //*** ログイン時に扱ったidを静的保持 ***//
@@ -48,13 +51,23 @@ public class UserBean {
         
 	public UserBean() {
 	}
+
+        public String getNewPass() {
+            return newPass;
+        }
+
+        public void setNewPass(String newPass) {
+            this.newPass = newPass;
+        }
+
+        public String getRePass() {
+            return rePass;
+        }
+
+        public void setRePass(String rePass) {
+            this.rePass = rePass;
+        }
         
-	public String getNewMail() {
-		return newMail;
-	}
-	public void setNewMail(String newMail) {
-		this.newMail = newMail;
-	}
 	public UserDb getUserDb() {
 		return userDb;
 	}
@@ -201,13 +214,13 @@ public class UserBean {
 	//*** メールアドレス変更メソッド ***//
 	public String changeMail() throws NoSuchAlgorithmException {
                 String res = null;
-                User changeUser = userDb.find(loginId);
+                user = userDb.find(loginId);
                 //*** パスを確認して正しければ変更をかける ***//
                 //*** 正規表現で入力値がメールアドレスかどうかも同時に見る ***//
-                if(changeUser.getU_pass().equals(Util.returnSHA256(pass)) && newMail.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
+                if(user.getU_pass().equals(Util.returnSHA256(pass)) && u_mailaddr.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
                     //*** ユーザーインスタンスに新たなメールをセットし、それでマージをかける ***//
-                    changeUser.setU_mailaddr(newMail);
-                    userDb.merge(changeUser);
+                    user.setU_mailaddr(u_mailaddr);
+                    userDb.merge(user);
                     //*** マイページへ ***//
                     res = "mypage";
                 }
@@ -221,11 +234,11 @@ public class UserBean {
         //*** ユーザー名を変更するメソッド ***//
         public String changeName() {
             //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
-            User changeUser = userDb.find(loginId);
+            user = userDb.find(loginId);
             //*** 取得したインスタンスに変更予定のユーザー名をセット ***//
-            changeUser.setU_name(u_name);
+            user.setU_name(u_name);
             //*** マージをかける ***//
-            userDb.merge(changeUser);
+            userDb.merge(user);
             return "mypage";
         }
         //*** 現在のユーザー名を取得 ***//
@@ -238,11 +251,11 @@ public class UserBean {
             //*** 入力値が電話番号であるか正規表現でチェック ***//
             if(u_tel.matches("^(070|080|090)\\d{4}\\d{4}$|^0\\\\d{3}\\\\d{2}\\\\d{4}$")){
                 //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
-                User changeUser = userDb.find(loginId);
+                user = userDb.find(loginId);
                 //*** 取得したインスタンスに変更予定の電話番号をセット ***//
-                changeUser.setU_tel(u_tel);
+                user.setU_tel(u_tel);
                 //*** マージをかける ***//
-                userDb.merge(changeUser);
+                userDb.merge(user);
                 res = "mypage";
             }
             return res;
@@ -251,12 +264,37 @@ public class UserBean {
         public String beTel() {
             return userDb.find(loginId).getU_tel();
         }
-        
+        //*** パスワードを変更するメソッド ***//
+        public String changePass() throws NoSuchAlgorithmException {
+            String res = null;
+            //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***///
+            user = userDb.find(loginId);
+            //*** 入力された現パスワードが正しいか かつ 新パスワードと再入力パスワードが同じか ***//
+            if(user.getU_pass().equals(Util.returnSHA256(pass)) && newPass.equals(rePass)) {
+                //*** 新パスワードをハッシュ化してインスタンスにセット ***//
+                user.setU_pass(Util.returnSHA256(newPass));
+                //*** マージをかける ***//
+                userDb.merge(user);
+                res = "mypage";
+            }
+            return res;
+        }
+        //*** 退会処理を行うメソッド ***//
+        public String unsubscribe() throws NoSuchAlgorithmException {
+            String res = null;
+            user = userDb.find(id, Util.returnSHA256(pass));
+            
+            return res;
+        }
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
-        if (id.contains("9999")){
-            return "admin_menu";    //***  ***//
-        }
+        System.out.println("call adminLoginCheck()");
+        //*** ログインチェックの結果をもらって、空文字でなければ、成功 ***//
+        String result = loginCheck();
+        //*** 管理者は、ID９９９９を持つユーザに固定 ***//
+        if (id.contains("9999") && !result.contains("")){
+            return "admin_menu";    //*** ログイン成功－＞ 管理者トップページに遷移する ***//
+        }   
         return "";                  //*** ログイン失敗 ***//
     }
 

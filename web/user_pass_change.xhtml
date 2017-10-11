@@ -8,10 +8,10 @@
     <h:body>
         <h1>パスワード変更</h1>
         <h:form>
-            現在のパスワード<h:inputText value="#{myBean.id}"/>
-            新しいパスワード<h:inputText value="#{myBean.id}" />
-            新しいパスワード再入力<h:inputText value="#{myBean.id}" />
-            <h:commandButton value="変更" action="mypage"/>
+            現在のパスワード<h:inputSecret value="#{uBean.pass}"/>
+            新しいパスワード<h:inputSecret value="#{uBean.newPass}" />
+            新しいパスワード再入力<h:inputSecret value="#{uBean.rePass}" />
+            <h:commandButton value="変更" action="#{uBean.changePass()}"/>
         </h:form>
         <h:form>
             <h:commandButton value="戻る" action="mypage"/>

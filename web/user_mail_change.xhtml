@@ -9,7 +9,7 @@
         <h1>メールアドレス</h1>
         <h:form>
             現在のメールアドレス<h:outputText value="#{uBean.beMail()}" />
-            新しいメールアドレス<h:inputText value="#{uBean.newMail}" />
+            新しいメールアドレス<h:inputText value="#{uBean.u_mailaddr}" />
             パスワード<h:inputSecret value="#{uBean.pass}" />
             <h:commandButton value="変更" action="#{uBean.changeMail()}"/>
         </h:form>

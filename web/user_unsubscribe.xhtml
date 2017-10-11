@@ -7,9 +7,11 @@
     </h:head>
     <h:body>
         <h1>会員退会</h1>
-        ID<h:inputText value="#{myBean.id}" />
-        パスワード<h:inputSecret value="#{myBean.id}" />
-        <h:commandButton value="退会"/>
+        <h:form>
+            ID<h:inputText value="#{uBean.id}" />
+            パスワード<h:inputSecret value="#{uBean.pass}" />
+            <h:commandButton value="退会" action="#{uBean.unsubscribe()}"/>
+        </h:form>
     </h:body>
 </html>
 
