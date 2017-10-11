@@ -59,4 +59,9 @@ public class Hint {
      *  user_unscribe
      * 
      */
+	
+//	NetBeansショートカットのキーバインドを変更するAdd Star
+//Ruby, NetBeans, Rails
+//
+//ツール→オプション→キーマップ→ツールにあります
 }

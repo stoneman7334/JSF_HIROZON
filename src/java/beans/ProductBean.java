@@ -6,14 +6,25 @@
 package beans;
 
 import ejb.ProductDb;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.servlet.http.Part;
 import model.Product;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.faces.event.PhaseId;
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 /**
  *
@@ -104,7 +115,7 @@ public class ProductBean implements Serializable {
 		return "";  //***  ***//
 	}
 	
-	//*** --- SELF MADE METHOD --- AJAX 指定した商品IDの在庫数取得のためのメソッド ***//
+	//*** --- SELF MADE METHOD --- AJAX 指定した商品IDのインスタンスを取得するメソッド ***//
 	public void ajaxFindProduct(){
 		System.out.println("call ProductBean->findProduct()");
 		System.out.println(String.format("商品ID : %s", id));
@@ -114,8 +125,38 @@ public class ProductBean implements Serializable {
 		
 		//*** 商品IDで、検索してインスタンスを取得 ***//
 		Product p = db.find(id);
-		System.out.println(String.format("商品インスタンス : %s", p.toString()));
+		//*** Beanに検索結果を代入する ***//
+		this.id = p.getP_id();
+		this.name = p.getP_name();
 		this.count = p.getP_count();
+		this.price = p.getP_price();
+		
+		System.out.println(String.format("商品インスタンス : %s", p.toString()));
 	}
-
+	//*** --- SELF MADE METHOD --- 指定した写真IDの画像情報を返すメソッド ***//
+	public StreamedContent returnPic(String pictureId){
+        FacesContext context = FacesContext.getCurrentInstance();
+        if(context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE){
+            return new DefaultStreamedContent();
+        }else{
+            ExternalContext sv = context.getExternalContext();
+            Map<String,String> map = sv.getRequestParameterMap();            
+            String key = map.get(pictureId);	//*** ここの、指定方法を調べること ***//
+            DefaultStreamedContent ds=null;
+			
+            if(key !=null){
+//                OcUser e = db.find(key);
+//                ByteArrayInputStream out = new ByteArrayInputStream(e.getUser_photo());
+//                ds = new DefaultStreamedContent(out);
+            }
+            return ds;
+        }
+    }    
+	//*** 編集した商品情報でUPDATEするメソッド ***//
+	public String productMerge(){
+		System.out.println("call ProductBean->productMerge()");
+		
+		return "";
+	}
+	
 }

@@ -10,6 +10,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -157,6 +159,23 @@ public class UserBean {
 		//*** その結果に応じた画面遷移先を設定する ***//
 		return "login";  //*** 暫定 ***//
 	}
+	//***  ***//
+	public String userConfirm(){
+		System.out.println("call UserBean->userConfirm()");
+		User u = userDb.find(id);
+		if (u == null){
+			System.out.println("ユーザ確認失敗");
+			return "";
+		}
+		System.out.println(u.toString());
+		//*** Beanに、検索結果を代入する ***//
+		this.id = u.getU_id();
+		this.u_name = u.getU_name();
+		this.u_mailaddr = u.getU_mailaddr();
+		
+		
+		return "";
+	}
 	//*** 指定IDのユーザのパスワードをリセットして、仮パスワードを指定するメソッド ***//
 	public String passForget() throws NoSuchAlgorithmException {
 		System.out.println("call UserBean->passForget()");
@@ -166,13 +185,15 @@ public class UserBean {
 			return "";
 		}
 		//*** ランダムな文字列生成（8文字くらい） ***//
-		String ramdomPass = Util.getRandomString(5);
+		String ramdomPass = Util.getRandomString(5);	//*** 現状5文字で、生成中 ***//
 		System.out.println(String.format("生成した仮パスワード : %s", ramdomPass));
+		this.pass = ramdomPass;
 		
 		u.setU_pass(Util.returnSHA256(ramdomPass));	//*** 生成した仮パスワードをセット ***//
 		System.out.println(String.format("ハッシュ結果 : %s", u.getU_pass()));
 		userDb.merge(u);			//*** 更新をかける ***//
 		
+		//*** 何秒間かまって、ログインページに遷移させる ***//
 		return "";  //*** ページ遷移はなしで、画面に、仮パスワードを出力する ***//
 	}
 	//*** メールアドレス変更メソッド ***//

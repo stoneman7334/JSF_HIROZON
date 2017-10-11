@@ -1,26 +1,32 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
         <h1>HIROZON 管理者</h1>
-        
+
         <h2>商品編集</h2>
         <h:form>
-            ID      <h:inputText value="#{myBean.id}"/>
-            商品名  <h:inputText value="#{myBean.id}"/>
-            個数    <h:inputText value="#{myBean.id}"/>
-            原価    <h:inputText value="#{myBean.id}"/>
-            画像    <h:graphicImage url="#"/>
-            画像    <h:graphicImage url="#"/>
-            画像    <h:graphicImage url="#"/>
-            
-            <h:commandButton value="登録" action="#"/>
+			ID    <h:inputText value="#{pBean.id}"/>
+			<p>
+				<h:commandButton value="PUSH" action="#{pBean.ajaxFindProduct()}"/>
+			</p>
+			<h:panelGrid columns="2">
+				商品名  <h:inputText value="#{pBean.name}"/>
+				個数    <h:inputText value="#{pBean.count}"/>
+				原価    <h:inputText value="#{pBean.price}"/>
+				画像    <h:graphicImage url="#"/>
+				画像    <h:graphicImage url="#"/>
+				画像    <h:graphicImage url="#"/>
+			</h:panelGrid>
+
+            <h:commandButton value="登録" action="#{pBean.productMerge()}"/>
         </h:form>
-        
+
         <h:form>
             <h:commandButton value="戻る" action="admin_menu"/>
         </h:form>
