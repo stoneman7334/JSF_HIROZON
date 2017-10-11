@@ -29,7 +29,7 @@ public class UserBean {
 	@EJB
 	private UserDb userDb;
 
-	private String id;				//*** ユーザID ***//
+	private String id;			//*** ユーザID ***//
 	private String pass;			//*** パスワード ***//
 	private String u_name;			//*** 氏名 ***//
 	private String u_mailaddr;		//*** メールアドレス ***//
@@ -38,9 +38,12 @@ public class UserBean {
 	private String u_tel;			//*** 電話番号 ***//
 	private String u_birth_day;		//*** 生年月日 ***//
 	private String u_sex;			//*** 性別 ***//
-	//*** 変更予定のアドレス ***//
-	private String newMail;
-
+        
+        //*** 変更予定のパスワード ***//
+        private String newPass;
+        //*** 再入力パスワード ***//
+        private String rePass;
+                
 	User user;
         
         //*** ログイン時に扱ったidを静的保持 ***//
@@ -48,13 +51,23 @@ public class UserBean {
         
 	public UserBean() {
 	}
+
+        public String getNewPass() {
+            return newPass;
+        }
+
+        public void setNewPass(String newPass) {
+            this.newPass = newPass;
+        }
+
+        public String getRePass() {
+            return rePass;
+        }
+
+        public void setRePass(String rePass) {
+            this.rePass = rePass;
+        }
         
-	public String getNewMail() {
-		return newMail;
-	}
-	public void setNewMail(String newMail) {
-		this.newMail = newMail;
-	}
 	public UserDb getUserDb() {
 		return userDb;
 	}
@@ -204,9 +217,9 @@ public class UserBean {
                 User changeUser = userDb.find(loginId);
                 //*** パスを確認して正しければ変更をかける ***//
                 //*** 正規表現で入力値がメールアドレスかどうかも同時に見る ***//
-                if(changeUser.getU_pass().equals(Util.returnSHA256(pass)) && newMail.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
+                if(changeUser.getU_pass().equals(Util.returnSHA256(pass)) && u_mailaddr.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
                     //*** ユーザーインスタンスに新たなメールをセットし、それでマージをかける ***//
-                    changeUser.setU_mailaddr(newMail);
+                    changeUser.setU_mailaddr(u_mailaddr);
                     userDb.merge(changeUser);
                     //*** マイページへ ***//
                     res = "mypage";
@@ -251,7 +264,21 @@ public class UserBean {
         public String beTel() {
             return userDb.find(loginId).getU_tel();
         }
-        
+        //*** パスワードを変更するメソッド ***//
+        public String changePass() throws NoSuchAlgorithmException {
+            String res = null;
+            //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***///
+            User changeUser = userDb.find(loginId);
+            //*** 入力された現パスワードが正しいか かつ 新パスワードと再入力パスワードが同じか ***//
+            if(changeUser.getU_pass().equals(Util.returnSHA256(pass)) && newPass.equals(rePass)) {
+                //*** 新パスワードをハッシュ化してインスタンスにセット ***//
+                changeUser.setU_pass(Util.returnSHA256(newPass));
+                //*** マージをかける ***//
+                userDb.merge(changeUser);
+                res = "mypage";
+            }
+            return res;
+        }
         
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
