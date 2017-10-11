@@ -8,9 +8,9 @@
     <h:body>
         <h1>電話番号変更</h1>
         <h:form>
-            現在の電話番号<h:inputText value="#{myBean.id}" />
-            新しい電話番号<h:inputText value="#{myBean.id}" />
-            <h:commandButton value="変更" action="mypage"/>
+            現在の電話番号<h:outputText value="#{uBean.beTel()}" />
+            新しい電話番号<h:inputText value="#{uBean.u_tel}" />
+            <h:commandButton value="変更" action="#{uBean.changeTel()}"/>
         </h:form>
         <h:form>
             <h:commandButton value="戻る" action="mypage"/>

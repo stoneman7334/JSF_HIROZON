@@ -42,9 +42,9 @@ public class UserBean {
 	private String newMail;
 
 	User user;
-        //*** ログイン時にfindにを保持しておく ***//
-        public static User loginUser;
         
+        //*** ログイン時に扱ったidを静的保持 ***//
+        public static String loginId;
         
 	public UserBean() {
 	}
@@ -131,7 +131,7 @@ public class UserBean {
 		if (user == null) {
 			return "";
 		}
-                loginUser = user;
+                loginId = id;
 		//*** ここで、DB検索してユーザのチェックを行う ***//
 		return "account_menu"; //*** 暫定 ***//
 	}
@@ -201,12 +201,13 @@ public class UserBean {
 	//*** メールアドレス変更メソッド ***//
 	public String changeMail() throws NoSuchAlgorithmException {
                 String res = null;
+                User changeUser = userDb.find(loginId);
                 //*** パスを確認して正しければ変更をかける ***//
                 //*** 正規表現で入力値がメールアドレスかどうかも同時に見る ***//
-                if(loginUser.getU_pass().equals(Util.returnSHA256(pass)) && newMail.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
+                if(changeUser.getU_pass().equals(Util.returnSHA256(pass)) && newMail.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")){
                     //*** ユーザーインスタンスに新たなメールをセットし、それでマージをかける ***//
-                    loginUser.setU_mailaddr(newMail);
-                    userDb.merge(loginUser);
+                    changeUser.setU_mailaddr(newMail);
+                    userDb.merge(changeUser);
                     //*** マイページへ ***//
                     res = "mypage";
                 }
@@ -215,14 +216,42 @@ public class UserBean {
 	}
         //*** 現在のアドレス取得 ***//
         public String beMail() {
-            return loginUser.getU_mailaddr();
+            return userDb.find(loginId).getU_mailaddr();
         }
-        
+        //*** ユーザー名を変更するメソッド ***//
         public String changeName() {
+            //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
+            User changeUser = userDb.find(loginId);
+            //*** 取得したインスタンスに変更予定のユーザー名をセット ***//
+            changeUser.setU_name(u_name);
+            //*** マージをかける ***//
+            userDb.merge(changeUser);
+            return "mypage";
+        }
+        //*** 現在のユーザー名を取得 ***//
+        public String beName() {
+            return userDb.find(loginId).getU_name();
+        }
+        //*** 電話番号を変更するメソッド ***//
+        public String changeTel() {
             String res = null;
-            
+            //*** 入力値が電話番号であるか正規表現でチェック ***//
+            if(u_tel.matches("^(070|080|090)\\d{4}\\d{4}$|^0\\\\d{3}\\\\d{2}\\\\d{4}$")){
+                //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
+                User changeUser = userDb.find(loginId);
+                //*** 取得したインスタンスに変更予定の電話番号をセット ***//
+                changeUser.setU_tel(u_tel);
+                //*** マージをかける ***//
+                userDb.merge(changeUser);
+                res = "mypage";
+            }
             return res;
         }
+        //*** 現在の電話番号を取得 ***//
+        public String beTel() {
+            return userDb.find(loginId).getU_tel();
+        }
+        
         
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
