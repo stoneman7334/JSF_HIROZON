@@ -1,15 +1,43 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>HIROZON</title>
     </h:head>
     <h:body>
-        <h:outputText value="本"/>
-        <h:commandLink action="forget" value="本"/>
-        <h:outputText value="ゲーム"/>
-        <h:outputText value="ランキング"/>
+        <h:form>
+            <h:outputText value="本"/>
+            <h:commandLink action="forget" value="本"/>
+            <h:outputText value="ゲーム"/>
+            <h:outputText value="ランキング"/>
+        </h:form>
+
+        <h:dataTable value="#{pBean.all}" var="p">
+            <h:column>
+                <h:panelGrid columns="2">
+                    商品名
+                    <h:outputText value="#{p.p_name}"/>
+                    価格
+                    <h:outputText value="#{p.p_price}"/>
+                </h:panelGrid>
+            </h:column>
+            <h:column>
+                <h:panelGrid columns="3">
+                    <p:graphicImage value="#{pBean.pic}">
+                        <f:param name="pic1" value="#{p.p_id}"/>
+                    </p:graphicImage>
+                    <p:graphicImage value="#{pBean.pic2}">
+                        <f:param name="pic2" value="#{p.p_id}"/>
+                    </p:graphicImage>
+                    <p:graphicImage value="#{pBean.pic3}">
+                        <f:param name="pic3" value="#{p.p_id}"/>
+                    </p:graphicImage>
+                </h:panelGrid>
+            </h:column>
+        </h:dataTable>
     </h:body>
 </html>
 

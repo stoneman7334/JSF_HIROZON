@@ -14,9 +14,13 @@ import javax.inject.Inject;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.UserTransaction;
 import model.Product;
+import model.User;
 
 /**
  *
@@ -40,9 +44,24 @@ public class ProductDb extends SubDb {
 
         return p;
     }
-    
-    public List<Product> getAll(){
+
+    public List<Product> getAll() {
         return em.createQuery("select p from Product p").getResultList();
+    }
+
+    public List<Product> getProOfSpecifiedCate(String category) {
+        Product p = new Product();
+
+        Query query = em.createNativeQuery("SELECT p from ProCate x Product p, Category c WHERE ");//***  ***//
+        query.setParameter(1, id);      //*** IDをセット ***//
+        query.setParameter(2, pass);    //*** pass（ハッシュ済み）をセット ***//
+        try {
+            u = query.getSingleResult();    //*** 結果の取得 ***//
+        } catch (NoResultException e) {
+
+        }
+        
+        return p;
     }
 
 }

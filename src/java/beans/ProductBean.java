@@ -218,8 +218,13 @@ public class ProductBean implements Serializable {
         return "";
     }
 
+    //*** 商品マスタの全データを検索して返すメソッド ***//
     public List<Product> getAll() {
         return db.getAll();
+    }
+    //***  ***//
+    public List<Product> getProOfSpecifiedCate(String category){
+        
     }
 
 }
