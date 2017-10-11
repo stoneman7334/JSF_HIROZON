@@ -42,8 +42,9 @@ public class UserBean {
 	private String newMail;
 
 	User user;
-        //*** ログイン時にfindしたuserを保持しておく ***//
+        //*** ログイン時にfindにを保持しておく ***//
         public static User loginUser;
+        
         
 	public UserBean() {
 	}
@@ -196,6 +197,7 @@ public class UserBean {
 		//*** 何秒間かまって、ログインページに遷移させる ***//
 		return "";  //*** ページ遷移はなしで、画面に、仮パスワードを出力する ***//
 	}
+        
 	//*** メールアドレス変更メソッド ***//
 	public String changeMail() throws NoSuchAlgorithmException {
                 String res = null;
@@ -215,6 +217,13 @@ public class UserBean {
         public String beMail() {
             return loginUser.getU_mailaddr();
         }
+        
+        public String changeName() {
+            String res = null;
+            
+            return res;
+        }
+        
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
         System.out.println("call adminLoginCheck()");
