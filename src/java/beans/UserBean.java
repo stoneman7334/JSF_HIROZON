@@ -282,8 +282,13 @@ public class UserBean {
         //*** 退会処理を行うメソッド ***//
         public String unsubscribe() throws NoSuchAlgorithmException {
             String res = null;
+            //*** 入力されたIDとパスワードでユーザーインスタンスを取得 ***//
             user = userDb.find(id, Util.returnSHA256(pass));
-            
+            //*** ユーザーが存在すれば削除をかけに行く **///
+            if (user != null) {
+                userDb.remove(user);
+                res = "login";
+            }
             return res;
         }
     //*** 管理者ユーザのログインを行うメソッド ***//

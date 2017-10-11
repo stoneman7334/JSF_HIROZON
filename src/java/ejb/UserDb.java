@@ -67,6 +67,6 @@ public class UserDb {
 	}
         //*** 指定したインスタンスでDB deleteを行うメソッド ***//
         public void remove(User user) {
-            em.remove(user);
+            em.remove(em.merge(user));
         }
 }
