@@ -21,6 +21,7 @@ import javax.persistence.TypedQuery;
 import javax.transaction.UserTransaction;
 import model.Product;
 import model.User;
+import util.V_ProCate;
 
 /**
  *
@@ -52,14 +53,9 @@ public class ProductDb extends SubDb {
     public List<Product> getProOfSpecifiedCate(String category) {
         Product p = new Product();
 
-        Query query = em.createNativeQuery("SELECT p from ProCate x Product p, Category c WHERE ");//***  ***//
-        query.setParameter(1, id);      //*** IDをセット ***//
-        query.setParameter(2, pass);    //*** pass（ハッシュ済み）をセット ***//
-        try {
-            u = query.getSingleResult();    //*** 結果の取得 ***//
-        } catch (NoResultException e) {
-
-        }
+        List<V_ProCate> list = em.createQuery("select new util.V_ProCate() from ProCate x "
+                + " INNER JOIN Product p on x.p_id = p.p_id "
+                + " INNER JOIN Category c on x.c_id = c.c_id", V_ProCate.class).getResultList();
         
         return p;
     }
