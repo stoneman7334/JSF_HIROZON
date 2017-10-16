@@ -222,10 +222,17 @@ public class ProductBean implements Serializable {
     public List<Product> getAll() {
         return db.getAll();
     }
-    //***  ***//
+    //*** ”本”の一覧を取得するメソッド ***//
     public List<Product> getProOfBook(){
         System.out.println("call pBean->getProOfBook()");
-        return db.getProOfBook();
+        return db.getProOfBook("0009");	//*** 本 ***//
     }
+	//*** ”家電”の一覧を取得するメソッド ***//
+	public List<Product> getProOfElectric(){
+		System.out.println("call pBean->getProOfElectric");
+		return db.getProOfBook("0002");	//*** 家電 ***//
+	}
+	
+	
 
 }

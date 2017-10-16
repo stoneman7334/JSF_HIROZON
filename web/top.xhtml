@@ -9,18 +9,31 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:outputText value="本"/>
             <h:commandLink action="forget" value="本"/>
-            <h:outputText value="ゲーム"/>
             <h:outputText value="ランキング"/>
         </h:form>
 
+		<h:outputText value="----- 本 -----"/>
         <h:dataTable value="#{pBean.proOfBook}" var="p">
             <h:column>
                 <h:panelGrid columns="2">
-                    商品名
                     <h:outputText value="#{p.p_name}"/>
-                    価格
+                    <h:outputText value="#{p.p_price}"/>
+                </h:panelGrid>
+            </h:column>
+            <h:column>
+                <h:panelGrid columns="1">
+                    <p:graphicImage value="#{pBean.pic}">
+                        <f:param name="pic1" value="#{p.p_id}"/>
+                    </p:graphicImage>
+                </h:panelGrid>
+            </h:column>
+        </h:dataTable>
+		<h:outputText value="----- 家電 -----"/>
+		<h:dataTable value="#{pBean.proOfElectric}" var="p">
+            <h:column>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{p.p_name}"/>
                     <h:outputText value="#{p.p_price}"/>
                 </h:panelGrid>
             </h:column>

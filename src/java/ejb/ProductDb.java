@@ -50,11 +50,14 @@ public class ProductDb extends SubDb {
         return em.createQuery("select p from Product p").getResultList();
     }
 
-    //***  ***//
-    public List<Product> getProOfBook() {
-        List<Product> list = em.createQuery("select p from Product p where p.c_id = '0009'", Product.class).getResultList();
+    //*** 引数の商品カテゴリの、商品をDB検索するメソッド ***//
+    public List<Product> getProOfBook(String category) {
+        TypedQuery<Product> query = em.createQuery(
+				"select p from Product p where p.c_id = ?1", Product.class);
+		query.setParameter(1, category);
+		query.setMaxResults(3);
         
-        return list;
+        return query.getResultList();
     }
 
 }
