@@ -45,6 +45,8 @@ public class Product implements Serializable {
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	private byte[] p_img3;  //*** 画像3 ***//
+        
+        private String c_id;    
 	//*** Constractor ***//
 
 	public Product() {
@@ -104,6 +106,12 @@ public class Product implements Serializable {
 	public void setP_img3(byte[] p_img3) {
 		this.p_img3 = p_img3;
 	}
+        public String getC_id() {
+            return c_id;
+        }
+        public void setC_id(String c_id) {
+            this.c_id = c_id;
+        }
 	
 	//*** --- SELF MADE METHOD --- 引数のPart型のインスタンスを、バイト配列に変換して返すメソッド ***//
 	private static byte[] convertByteArray(Part p) {

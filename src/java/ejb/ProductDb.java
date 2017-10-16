@@ -50,14 +50,11 @@ public class ProductDb extends SubDb {
         return em.createQuery("select p from Product p").getResultList();
     }
 
-    public List<Product> getProOfSpecifiedCate(String category) {
-        Product p = new Product();
-
-        List<V_ProCate> list = em.createQuery("select new util.V_ProCate() from ProCate x "
-                + " INNER JOIN Product p on x.p_id = p.p_id "
-                + " INNER JOIN Category c on x.c_id = c.c_id", V_ProCate.class).getResultList();
+    //***  ***//
+    public List<Product> getProOfBook() {
+        List<Product> list = em.createQuery("select p from Product p where p.c_id = '0009'", Product.class).getResultList();
         
-        return p;
+        return list;
     }
 
 }

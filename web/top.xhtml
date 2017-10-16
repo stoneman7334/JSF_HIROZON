@@ -15,7 +15,7 @@
             <h:outputText value="ランキング"/>
         </h:form>
 
-        <h:dataTable value="#{pBean.all}" var="p">
+        <h:dataTable value="#{pBean.proOfBook}" var="p">
             <h:column>
                 <h:panelGrid columns="2">
                     商品名
@@ -25,15 +25,9 @@
                 </h:panelGrid>
             </h:column>
             <h:column>
-                <h:panelGrid columns="3">
+                <h:panelGrid columns="1">
                     <p:graphicImage value="#{pBean.pic}">
                         <f:param name="pic1" value="#{p.p_id}"/>
-                    </p:graphicImage>
-                    <p:graphicImage value="#{pBean.pic2}">
-                        <f:param name="pic2" value="#{p.p_id}"/>
-                    </p:graphicImage>
-                    <p:graphicImage value="#{pBean.pic3}">
-                        <f:param name="pic3" value="#{p.p_id}"/>
                     </p:graphicImage>
                 </h:panelGrid>
             </h:column>

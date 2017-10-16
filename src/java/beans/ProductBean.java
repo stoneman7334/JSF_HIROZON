@@ -223,8 +223,9 @@ public class ProductBean implements Serializable {
         return db.getAll();
     }
     //***  ***//
-    public List<Product> getProOfSpecifiedCate(String category){
-        
+    public List<Product> getProOfBook(){
+        System.out.println("call pBean->getProOfBook()");
+        return db.getProOfBook();
     }
 
 }
