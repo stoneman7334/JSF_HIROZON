@@ -14,9 +14,14 @@ import javax.inject.Inject;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.transaction.UserTransaction;
 import model.Product;
+import model.User;
+import util.V_ProCate;
 
 /**
  *
@@ -40,9 +45,16 @@ public class ProductDb extends SubDb {
 
         return p;
     }
-    
-    public List<Product> getAll(){
+
+    public List<Product> getAll() {
         return em.createQuery("select p from Product p").getResultList();
+    }
+
+    //***  ***//
+    public List<Product> getProOfBook() {
+        List<Product> list = em.createQuery("select p from Product p where p.c_id = '0009'", Product.class).getResultList();
+        
+        return list;
     }
 
 }

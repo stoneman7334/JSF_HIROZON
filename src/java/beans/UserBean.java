@@ -146,7 +146,7 @@ public class UserBean {
 		}
                 loginId = id;
 		//*** ここで、DB検索してユーザのチェックを行う ***//
-		return "account_menu"; //*** 暫定 ***//
+		return "top"; //*** 暫定 ***//
 	}
 	//*** 新規会員登録を行うメソッド ***//
 	public String addUser() throws NoSuchAlgorithmException {
@@ -157,12 +157,12 @@ public class UserBean {
 		}
 		//*** Userクラスのインスタンスを生成する ***//
 		User u = new User(
-				id,							//*** ユーザID ***//
+				id,						//*** ユーザID ***//
 				u_name,						//*** 氏名 ***//
-				Util.returnSHA256(pass),	//*** ハッシュ化したパスワード ***//
+				Util.returnSHA256(pass),                        //*** ハッシュ化したパスワード ***//
 				u_mailaddr,					//*** メールアドレス ***//
 				u_address,					//*** 住所 ***//
-				u_birth_day,				//*** 生年月日 ***//
+				u_birth_day,                                    //*** 生年月日 ***//
 				u_post,						//*** 郵便番号 ***//
 				u_sex,						//*** 性別 ***//
 				u_tel						//*** 電話番号 ***//

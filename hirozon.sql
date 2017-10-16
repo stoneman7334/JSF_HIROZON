@@ -235,3 +235,26 @@ CREATE TABLE `user` (
 # Data for table "user"
 #
 
+#
+#	カテゴリマスタと、商品マスタの結合したビュー
+#
+create view v_pro_cate as
+
+select 
+y.c_id,
+y.c_name,
+z.p_id,
+z.p_name,
+z.p_count,
+z.p_price,
+z.p_img,
+z.p_img2,
+z.p_img3
+
+ from        
+
+
+t_pro_cate x inner join m_category y on x.c_id = y.c_id
+
+inner join m_product z on x.p_id = z.p_id
+

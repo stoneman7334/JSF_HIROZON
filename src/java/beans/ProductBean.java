@@ -218,8 +218,14 @@ public class ProductBean implements Serializable {
         return "";
     }
 
+    //*** 商品マスタの全データを検索して返すメソッド ***//
     public List<Product> getAll() {
         return db.getAll();
+    }
+    //***  ***//
+    public List<Product> getProOfBook(){
+        System.out.println("call pBean->getProOfBook()");
+        return db.getProOfBook();
     }
 
 }
