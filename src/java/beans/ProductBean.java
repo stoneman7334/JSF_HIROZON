@@ -44,6 +44,8 @@ public class ProductBean implements Serializable {
     private Part picture;   //*** 画像 ***//
     private Part picture2;   //*** 画像 ***//
     private Part picture3;   //*** 画像 ***//
+	
+	private String c_id;	//***  ***//
 
 //      private byte [] picture;   //*** 画像（暫定ひとつ） ***//
     @EJB
@@ -109,6 +111,15 @@ public class ProductBean implements Serializable {
     public void setPicture3(Part picture3) {
         this.picture3 = picture3;
     }
+
+	public String getC_id() {
+		return c_id;
+	}
+
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
+	}
+	
 
     //*** --- SELF MADE METHOD --- 商品の新規登録メソッド ***//
     public String newRegist() throws IOException {
