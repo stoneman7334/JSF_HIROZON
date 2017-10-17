@@ -277,6 +277,16 @@ public class ProductBean implements Serializable {
 		return "admin_edit_detail";
 	}
 	
-	
+	//***  ***//
+	public String addToCart(Product p){
+		System.out.println("call uBean->addToCart()");
+		this.id = p.getP_id();
+		this.name = p.getP_name();
+		this.count = p.getP_count();
+		this.price = p.getP_price();
+		
+		return "product_detail";
+	}
+
 
 }

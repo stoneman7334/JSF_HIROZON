@@ -6,11 +6,22 @@
 package beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import model.Cart;
 
 /**
  *
  * @author 5151021
  */
 public class SuperBb implements Serializable{
+	
+	public List<Cart> cart;
+	
+	public void init(){
+		cart = new ArrayList<>();
+	}
+	
+	
     
 }

@@ -55,31 +55,24 @@ public class UserBean {
 	public String getNewPass() {
 		return newPass;
 	}
-
 	public void setNewPass(String newPass) {
 		this.newPass = newPass;
 	}
-
 	public String getRePass() {
 		return rePass;
 	}
-
 	public void setRePass(String rePass) {
 		this.rePass = rePass;
 	}
-
 	public UserDb getUserDb() {
 		return userDb;
 	}
-
 	public void setUserDb(UserDb userDb) {
 		this.userDb = userDb;
 	}
-
 	public String getId() {
 		return id;
 	}
-
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -333,5 +326,6 @@ public class UserBean {
 		}
 		return "";                  //*** ログイン失敗 ***//
 	}
-
+	
+	
 }
