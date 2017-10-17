@@ -6,6 +6,7 @@
 package beans;
 
 import ejb.UserDb;
+import java.io.Serializable;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
@@ -15,6 +16,7 @@ import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import model.User;
 import util.Util;
 
@@ -23,8 +25,8 @@ import util.Util;
  * @author 5151021
  */
 @Named(value = "uBean")
-@RequestScoped
-public class UserBean {
+@SessionScoped
+public class UserBean implements Serializable{
 
 	@EJB
 	private UserDb userDb;

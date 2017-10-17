@@ -49,10 +49,14 @@ public class ProductBean implements Serializable {
 	private String c_id;	//***  ***//
 	
 	private boolean editable;
+	
+	@Inject
+	
 
 //      private byte [] picture;   //*** 画像（暫定ひとつ） ***//
     @EJB
     ProductDb db;			//*** 商品テーブル用 ***//
+	
 
     //*** Constractor ***//
     public ProductBean() {

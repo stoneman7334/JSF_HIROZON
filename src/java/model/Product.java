@@ -48,10 +48,8 @@ public class Product implements Serializable {
 
 	private String c_id;
 	//*** Constractor ***//
-
 	public Product() {
 	}
-
 	public Product(String id, String name, int count, int price, Part p, Part p2, Part p3, String c_id) throws IOException {
 		this.p_id = id;						//*** 商品ID ***//
 		this.p_name = name;					//*** 商品名 ***//
@@ -70,63 +68,48 @@ public class Product implements Serializable {
 	public String getP_id() {
 		return p_id;
 	}
-
 	public void setP_id(String p_id) {
 		this.p_id = p_id;
 	}
-
 	public String getP_name() {
 		return p_name;
 	}
-
 	public void setP_name(String p_name) {
 		this.p_name = p_name;
 	}
-
 	public int getP_count() {
 		return p_count;
 	}
-
 	public void setP_count(int p_count) {
 		this.p_count = p_count;
 	}
-
 	public int getP_price() {
 		return p_price;
 	}
-
 	public void setP_price(int p_price) {
 		this.p_price = p_price;
 	}
-
 	public byte[] getP_img() {
 		return p_img;
 	}
-
 	public void setP_img(byte[] p_img) {
 		this.p_img = p_img;
 	}
-
 	public byte[] getP_img2() {
 		return p_img2;
 	}
-
 	public void setP_img2(byte[] p_img2) {
 		this.p_img2 = p_img2;
 	}
-
 	public byte[] getP_img3() {
 		return p_img3;
 	}
-
 	public void setP_img3(byte[] p_img3) {
 		this.p_img3 = p_img3;
 	}
-
 	public String getC_id() {
 		return c_id;
 	}
-
 	public void setC_id(String c_id) {
 		this.c_id = c_id;
 	}

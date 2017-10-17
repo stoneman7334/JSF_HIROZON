@@ -39,7 +39,6 @@ public class ProductDb extends SubDb {
         em.persist(p);
     }
     //***  ***//
-
     public Product find(String id) {
         Product p = em.find(Product.class, id);
 
