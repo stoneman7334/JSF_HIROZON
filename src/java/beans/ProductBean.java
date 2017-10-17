@@ -250,7 +250,7 @@ public class ProductBean implements Serializable {
         );
 		db.update(p);
 
-        return "";
+        return "admin_edit";
     }
 
     //*** 商品マスタの全データを検索して返すメソッド ***//
