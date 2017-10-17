@@ -60,4 +60,8 @@ public class ProductDb extends SubDb {
         return query.getResultList();
     }
 
+	public void update(Product p) {
+		em.merge(p);
+	}
+
 }

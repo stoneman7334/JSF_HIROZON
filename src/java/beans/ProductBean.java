@@ -27,13 +27,14 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author 5151021
  */
 @Named(value = "pBean")
-@RequestScoped
+@SessionScoped
 public class ProductBean implements Serializable {
 
     //*** Field ***//
@@ -46,6 +47,8 @@ public class ProductBean implements Serializable {
     private Part picture3;   //*** 画像 ***//
 	
 	private String c_id;	//***  ***//
+	
+	private boolean editable;
 
 //      private byte [] picture;   //*** 画像（暫定ひとつ） ***//
     @EJB
@@ -119,6 +122,14 @@ public class ProductBean implements Serializable {
 	public void setC_id(String c_id) {
 		this.c_id = c_id;
 	}
+
+	public boolean isEditable() {
+		return editable;
+	}
+
+	public void setEditable(boolean editable) {
+		this.editable = editable;
+	}
 	
 
     //*** --- SELF MADE METHOD --- 商品の新規登録メソッド ***//
@@ -133,7 +144,8 @@ public class ProductBean implements Serializable {
                 price,
                 picture,
                 picture2,
-                picture3
+                picture3,
+				c_id
         );
         //***  ***//
         db.persist(p);
@@ -143,7 +155,7 @@ public class ProductBean implements Serializable {
 
     //*** --- SELF MADE METHOD --- AJAX 指定した商品IDのインスタンスを取得するメソッド ***//
     public void ajaxFindProduct() {
-        System.out.println("call ProductBean->findProduct()");
+        System.out.println("call ProductBean->ajxFindProduct()");
         System.out.println(String.format("商品ID : %s", id));
 
         //*** 商品IDに、何も入力がない または、検索結果がnull ***//
@@ -170,7 +182,7 @@ public class ProductBean implements Serializable {
             ExternalContext sv = context.getExternalContext();
             Map<String, String> map = sv.getRequestParameterMap();
             String key = map.get("pic1");	//*** ここの、指定方法を調べること ***//
-            System.out.println(key);
+            System.out.println(String.format("key : %s", key));
             DefaultStreamedContent ds = null;
 
             if (key != null) {
@@ -223,14 +235,27 @@ public class ProductBean implements Serializable {
     }
     //*** 編集した商品情報でUPDATEするメソッド ***//
 
-    public String productMerge() {
+    public String productMerge() throws IOException {
         System.out.println("call ProductBean->productMerge()");
+		//***  ***//
+        Product p = new Product(
+                id,
+                name,
+                count,
+                price,
+                picture,
+                picture2,
+                picture3,
+				c_id
+        );
+		db.update(p);
 
         return "";
     }
 
     //*** 商品マスタの全データを検索して返すメソッド ***//
     public List<Product> getAll() {
+//		this.editable = false;
         return db.getAll();
     }
     //*** ”本”の一覧を取得するメソッド ***//
@@ -242,6 +267,14 @@ public class ProductBean implements Serializable {
 	public List<Product> getProOfElectric(){
 		System.out.println("call pBean->getProOfElectric");
 		return db.getProOfBook("0002");	//*** 家電 ***//
+	}
+	
+	public String edit(Product p){
+		this.id = p.getP_id();
+		this.name = p.getP_name();
+		this.count = p.getP_count();
+		this.price = p.getP_price();
+		return "admin_edit_detail";
 	}
 	
 	
