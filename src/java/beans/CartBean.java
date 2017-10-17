@@ -100,6 +100,7 @@ public class CartBean implements Serializable {
 				product.getId(),	//*** 商品ID ***//
 				product.getPrice()	//*** 単価 ***//
 		);
+		// todo 主キーが複合キーになっていない
 		//*** new regist ***//
 		db.persist(c);
 	}
