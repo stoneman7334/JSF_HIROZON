@@ -5,10 +5,23 @@
  */
 package ejb;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import model.Cart;
+
 /**
  *
  * @author 5151021
  */
+@Stateless
 public class CartDb extends SubDb{
     
+	@PersistenceContext(unitName = "HirozonPU")
+    private EntityManager em;
+	
+	//*** new regist ***//
+	public void persist(Cart c){
+		em.persist(c);
+	}
 }
