@@ -43,6 +43,10 @@ public class UserBean {
         private String newPass;
         //*** 再入力パスワード ***//
         private String rePass;
+        //*** 選択した県 ***//
+        private String u_pre;
+        //*** マンション等の追加住所 ***//
+        private String u_mansion;
                 
 	User user;
         
@@ -51,6 +55,24 @@ public class UserBean {
         
 	public UserBean() {
 	}
+
+        public String getU_mansion() {
+            return u_mansion;
+        }
+
+        public void setU_mansion(String u_mansion) {
+            this.u_mansion = u_mansion;
+        }
+
+        public String getU_pre() {
+            return u_pre;
+        }
+
+        public void setU_pre(String u_pre) {
+            this.u_pre = u_pre;
+        }
+        
+        
 
         public String getNewPass() {
             return newPass;
@@ -291,6 +313,24 @@ public class UserBean {
             }
             return res;
         }
+        //*** 住所変更を行うメソッド ***//
+        public String changeAddress() {
+            String res = null;
+            //*** 郵便番号が正しい形式かチェック（ハイフンは不要） ***//
+            if (u_post.matches("\\d{7}")) {
+                //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***///
+                user = userDb.find(loginId);
+                //*** 取得したインスタンスに変更予定の郵便番号をセット ***//
+                user.setU_post(u_post);
+                //*** 取得したインスタンスに変更予定の郵便番号をセット ***//
+                user.setU_address(u_pre + u_address + u_mansion);
+                //*** マージをかける ***//
+                userDb.merge(user);
+                res = "account_menu";
+            }
+            return res;
+        }
+        
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException{
         System.out.println("call adminLoginCheck()");
