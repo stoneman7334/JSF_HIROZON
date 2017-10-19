@@ -9,17 +9,20 @@
   max-width: 1000px;
   border-bottom: solid 1px #ccc;
   margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 .main-contents__wrap-item {
   background-color: #3366ff;
   padding: 10px;
   margin: 10px;
-  width: 100px;
-  height: 150px;
+  width: 120px;
+  height: 170px;
 }
 
 .main-contents__title {
+  border-left: solid 3px #aaaaff;
   margin-top: 20px;
+  margin-left: 10px;;
   font-size: 24px;
 }
