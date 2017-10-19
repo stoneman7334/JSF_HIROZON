@@ -9,11 +9,11 @@
     <h:body>
         <h1>住所変更</h1>
         <h:form>
-            郵便番号<h:inputText value="#{myBean.id}" /><h:inputText value="#{myBean.id}" />
-            都道府県<h:selectOneMenu></h:selectOneMenu>
-            住所<h:inputText value="#{myBean.id}" />
-            マンション<h:inputSecret value="#{myBean.id}" />
-            <h:commandButton value="変更" action="mypage"/>
+            郵便番号<h:inputText value="#{uBean.u_post}" />
+            都道府県<h:selectOneMenu value="#{uBean.u_pre}"><f:selectItems value="#{prefList.items}" /></h:selectOneMenu>
+            住所<h:inputText value="#{uBean.u_address}" />
+            マンション<h:inputText value="#{uBean.u_mansion}" />
+            <h:commandButton value="変更" action="#{uBean.changeAddress()}"/>
         </h:form>
     </h:body>
 </html>
