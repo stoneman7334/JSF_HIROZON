@@ -48,16 +48,11 @@ public class UserBean implements Serializable{
 
 	User user;
         
-        //*** 変更予定のパスワード ***//
-        private String newPass;
-        //*** 再入力パスワード ***//
-        private String rePass;
         //*** 選択した県 ***//
         private String u_pre;
         //*** マンション等の追加住所 ***//
         private String u_mansion;
                 
-	User user;
         
         //*** ログイン時に扱ったidを静的保持 ***//
         public static String loginId;
@@ -87,15 +82,6 @@ public class UserBean implements Serializable{
             return newPass;
         }
 
-	//*** ログイン時に扱ったidを静的保持 ***//
-	public static String loginId;
-
-	public UserBean() {
-	}
-
-	public String getNewPass() {
-		return newPass;
-	}
 	public void setNewPass(String newPass) {
 		this.newPass = newPass;
 	}
@@ -344,57 +330,6 @@ public class UserBean implements Serializable{
 	}
 	//*** 退会処理を行うメソッド ***//
         //*** 現在のアドレス取得 ***//
-        public String beMail() {
-            return userDb.find(loginId).getU_mailaddr();
-        }
-        //*** ユーザー名を変更するメソッド ***//
-        public String changeName() {
-            //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
-            user = userDb.find(loginId);
-            //*** 取得したインスタンスに変更予定のユーザー名をセット ***//
-            user.setU_name(u_name);
-            //*** マージをかける ***//
-            userDb.merge(user);
-            return "mypage";
-        }
-        //*** 現在のユーザー名を取得 ***//
-        public String beName() {
-            return userDb.find(loginId).getU_name();
-        }
-        //*** 電話番号を変更するメソッド ***//
-        public String changeTel() {
-            String res = null;
-            //*** 入力値が電話番号であるか正規表現でチェック ***//
-            if(u_tel.matches("^(070|080|090)\\d{4}\\d{4}$|^0\\\\d{3}\\\\d{2}\\\\d{4}$")){
-                //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
-                user = userDb.find(loginId);
-                //*** 取得したインスタンスに変更予定の電話番号をセット ***//
-                user.setU_tel(u_tel);
-                //*** マージをかける ***//
-                userDb.merge(user);
-                res = "mypage";
-            }
-            return res;
-        }
-        //*** 現在の電話番号を取得 ***//
-        public String beTel() {
-            return userDb.find(loginId).getU_tel();
-        }
-        //*** パスワードを変更するメソッド ***//
-        public String changePass() throws NoSuchAlgorithmException {
-            String res = null;
-            //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***///
-            user = userDb.find(loginId);
-            //*** 入力された現パスワードが正しいか かつ 新パスワードと再入力パスワードが同じか ***//
-            if(user.getU_pass().equals(Util.returnSHA256(pass)) && newPass.equals(rePass)) {
-                //*** 新パスワードをハッシュ化してインスタンスにセット ***//
-                user.setU_pass(Util.returnSHA256(newPass));
-                //*** マージをかける ***//
-                userDb.merge(user);
-                res = "mypage";
-            }
-            return res;
-        }
         //*** 退会処理を行うメソッド ***//
         public String unsubscribe() throws NoSuchAlgorithmException {
             String res = null;
@@ -437,29 +372,4 @@ public class UserBean implements Serializable{
         return "";                  //*** ログイン失敗 ***//
     }
 
-	public String unsubscribe() throws NoSuchAlgorithmException {
-		String res = null;
-		//*** 入力されたIDとパスワードでユーザーインスタンスを取得 ***//
-		user = userDb.find(id, Util.returnSHA256(pass));
-		//*** ユーザーが存在すれば削除をかけに行く **///
-		if (user != null) {
-			userDb.remove(user);
-			res = "login";
-		}
-		return res;
-	}
-	//*** 管理者ユーザのログインを行うメソッド ***//
-
-	public String addminLoginCheck() throws NoSuchAlgorithmException {
-		System.out.println("call adminLoginCheck()");
-		//*** ログインチェックの結果をもらって、空文字でなければ、成功 ***//
-		String result = loginCheck();
-		//*** 管理者は、ID９９９９を持つユーザに固定 ***//
-		if (id.contains("9999") && !result.contains("")) {
-			return "admin_menu";    //*** ログイン成功－＞ 管理者トップページに遷移する ***//
-		}
-		return "";                  //*** ログイン失敗 ***//
-	}
-	
-	
 }
