@@ -24,6 +24,22 @@ public class BuyHistory implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+    private String u_id;
+    private String datetime;
+    private int count;
+    private int price;
+    private String p_id;
+
+    public BuyHistory() { }
+
+    public BuyHistory(String id, String u_id, String datetime, int count, int price, String p_id) {
+        this.id = id;
+        this.u_id = u_id;
+        this.datetime = datetime;
+        this.count = count;
+        this.price = price;
+        this.p_id = p_id;
+    }
 
     public String getId() {
         return id;
@@ -32,6 +48,47 @@ public class BuyHistory implements Serializable {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getU_id() {
+        return u_id;
+    }
+
+    public void setU_id(String u_id) {
+        this.u_id = u_id;
+    }
+
+    public String getDatetime() {
+        return datetime;
+    }
+
+    public void setDatetime(String datetime) {
+        this.datetime = datetime;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public String getP_id() {
+        return p_id;
+    }
+
+    public void setP_id(String p_id) {
+        this.p_id = p_id;
+    }
+    
 
     @Override
     public int hashCode() {
