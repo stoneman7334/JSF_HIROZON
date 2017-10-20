@@ -34,6 +34,8 @@ public class CartBean implements Serializable {
 	private int price;
 	private String dateTime;
 	private String expiration;
+        
+        private static int cnt = 20;
 	
 	
 	@Inject
@@ -85,23 +87,26 @@ public class CartBean implements Serializable {
 	}
 	
 	//*** new regist ***//
-	public void persist(){
-		System.out.println("call CartBean->persist()");
-		//*** カートに入れる押下時の日付を取得(パターン文字列化済み yyyy/MM/dd) ***//
-		String wkDateTime = Util.parseCalToStr(Calendar.getInstance());
-		
-		System.out.println(String.format("uId : %s pId :%s", user.getId(), product.getId()));
-		//*** modelカートのインスタンスを生成 ***//
-		Cart c = new Cart(
-				user.getId(),		//*** ユーザID ***//
-				this.count,			//*** 個数 ***//
-				new Date(),			//*** カートに入れた日付 ***//
-				new Date(),			//*** カートの有効期限（暫定） ***//
-				product.getId(),	//*** 商品ID ***//
-				product.getPrice()	//*** 単価 ***//
-		);
-		// todo 主キーが複合キーになっていない
-		//*** new regist ***//
-		db.persist(c);
+	public String persist(){
+            System.out.println("call CartBean->persist()");
+            //*** カートに入れる押下時の日付を取得(パターン文字列化済み yyyy/MM/dd) ***//
+            String wkDateTime = Util.parseCalToStr(Calendar.getInstance());
+
+            System.out.println(String.format("uId : %s pId :%s", user.getId(), product.getId()));
+            //*** modelカートのインスタンスを生成 ***//
+            Cart c = new Cart(
+                            cnt++,                        //*** カートのidの最大値を取得 ***//
+                            user.getId(),		//*** ユーザID ***//
+                            this.count,			//*** 個数 ***//
+                            new Date(),			//*** カートに入れた日付 ***//
+                            new Date(),			//*** カートの有効期限（暫定） ***//
+                            product.getId(),	//*** 商品ID ***//
+                            product.getPrice()	//*** 単価 ***//
+            );
+            // todo 主キーが複合キーになっていない
+            //*** new regist ***//
+            db.persist(c);
+
+            return "user_cart";
 	}
 }
