@@ -79,7 +79,6 @@ public class UserBean implements Serializable {
 		return newPass;
 	}
 
-	//*** ログイン時に扱ったidを静的保持 ***//
 	public void setNewPass(String newPass) {
 		this.newPass = newPass;
 	}
@@ -200,14 +199,18 @@ public class UserBean implements Serializable {
 		//*** ユーザIDの重複をチェックする ***//
 		if (!userDb.checkDuplicateUserId(id)) {
 			return "";	//*** 重複発生のため、処理を抜ける ***//
-		}
+		} else if (!(u_post.matches("\\d{7}")) || !(u_tel.matches("^(070|080|090)\\d{4}\\d{4}$|^0\\\\d{3}\\\\d{2}\\\\d{4}$"))
+                             || !(u_mailaddr.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")) || 
+                           !(pass.equals(rePass))) {
+                        return "";      //*** 入力パターンが正しくないか、再入力パスが異なれば処理を終える ***//
+                }
 		//*** Userクラスのインスタンスを生成する ***//
 		User u = new User(
 				id, //*** ユーザID ***//
 				u_name, //*** 氏名 ***//
 				Util.returnSHA256(pass), //*** ハッシュ化したパスワード ***//
 				u_mailaddr, //*** メールアドレス ***//
-				u_address, //*** 住所 ***//
+				u_pre + u_address + u_mansion, //*** 住所 ***//
 				u_birth_day, //*** 生年月日 ***//
 				u_post, //*** 郵便番号 ***//
 				u_sex, //*** 性別 ***//
@@ -332,7 +335,6 @@ public class UserBean implements Serializable {
 		}
 		return res;
 	}
-	//*** 退会処理を行うメソッド ***//
 
 	//*** 退会処理を行うメソッド ***//
 	public String unsubscribe() throws NoSuchAlgorithmException {
