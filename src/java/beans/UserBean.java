@@ -26,7 +26,7 @@ import util.Util;
  */
 @Named(value = "uBean")
 @SessionScoped
-public class UserBean implements Serializable{
+public class UserBean implements Serializable {
 
 	@EJB
 	private UserDb userDb;
@@ -47,6 +47,7 @@ public class UserBean implements Serializable{
 	private String rePass;
 
 	User user;
+<<<<<<< HEAD
         
         //*** 選択した県 ***//
         private String u_pre;
@@ -59,47 +60,68 @@ public class UserBean implements Serializable{
         
 	public UserBean() {
 	}
+=======
+>>>>>>> 72351a338328a8333e83beb078ee25f03bc7e1a2
 
-        public String getU_mansion() {
-            return u_mansion;
-        }
+	//*** 選択した県 ***//
+	private String u_pre;
+	//*** マンション等の追加住所 ***//
+	private String u_mansion;
 
-        public void setU_mansion(String u_mansion) {
-            this.u_mansion = u_mansion;
-        }
+	//*** ログイン時に扱ったidを静的保持 ***//
+	public static String loginId;
 
-        public String getU_pre() {
-            return u_pre;
-        }
+	public UserBean() {
+	}
 
-        public void setU_pre(String u_pre) {
-            this.u_pre = u_pre;
-        }
-        
-        
+	public String getU_mansion() {
+		return u_mansion;
+	}
 
-        public String getNewPass() {
-            return newPass;
-        }
+	public void setU_mansion(String u_mansion) {
+		this.u_mansion = u_mansion;
+	}
 
+<<<<<<< HEAD
+=======
+	public String getU_pre() {
+		return u_pre;
+	}
+
+	public void setU_pre(String u_pre) {
+		this.u_pre = u_pre;
+	}
+
+	public String getNewPass() {
+		return newPass;
+	}
+
+	//*** ログイン時に扱ったidを静的保持 ***//
+>>>>>>> 72351a338328a8333e83beb078ee25f03bc7e1a2
 	public void setNewPass(String newPass) {
 		this.newPass = newPass;
 	}
+
 	public String getRePass() {
 		return rePass;
 	}
+
 	public void setRePass(String rePass) {
 		this.rePass = rePass;
 	}
+
 	public UserDb getUserDb() {
 		return userDb;
 	}
+
 	public void setUserDb(UserDb userDb) {
 		this.userDb = userDb;
 	}
+
 	public String getId() {
 		return id;
 	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -312,8 +334,8 @@ public class UserBean implements Serializable{
 	public String beTel() {
 		return userDb.find(loginId).getU_tel();
 	}
-	//*** パスワードを変更するメソッド ***//
 
+	//*** パスワードを変更するメソッド ***//
 	public String changePass() throws NoSuchAlgorithmException {
 		String res = null;
 		//*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***///
@@ -329,6 +351,7 @@ public class UserBean implements Serializable{
 		return res;
 	}
 	//*** 退会処理を行うメソッド ***//
+<<<<<<< HEAD
         //*** 現在のアドレス取得 ***//
         //*** 退会処理を行うメソッド ***//
         public String unsubscribe() throws NoSuchAlgorithmException {
@@ -372,4 +395,50 @@ public class UserBean implements Serializable{
         return "";                  //*** ログイン失敗 ***//
     }
 
+=======
+
+	//*** 退会処理を行うメソッド ***//
+	public String unsubscribe() throws NoSuchAlgorithmException {
+		String res = null;
+		//*** 入力されたIDとパスワードでユーザーインスタンスを取得 ***//
+		user = userDb.find(id, Util.returnSHA256(pass));
+		//*** ユーザーが存在すれば削除をかけに行く **///
+		if (user != null) {
+			userDb.remove(user);
+			res = "login";
+		}
+		return res;
+	}
+	//*** 住所変更を行うメソッド ***//
+
+	public String changeAddress() {
+		String res = null;
+		//*** 郵便番号が正しい形式かチェック（ハイフンは不要） ***//
+		if (u_post.matches("\\d{7}")) {
+			//*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***///
+			user = userDb.find(loginId);
+			//*** 取得したインスタンスに変更予定の郵便番号をセット ***//
+			user.setU_post(u_post);
+			//*** 取得したインスタンスに変更予定の郵便番号をセット ***//
+			user.setU_address(u_pre + u_address + u_mansion);
+			//*** マージをかける ***//
+			userDb.merge(user);
+			res = "account_menu";
+		}
+		return res;
+	}
+
+	//*** 管理者ユーザのログインを行うメソッド ***//
+	public String addminLoginCheck() throws NoSuchAlgorithmException {
+		System.out.println("call adminLoginCheck()");
+		//*** ログインチェックの結果をもらって、空文字でなければ、成功 ***//
+		String result = loginCheck();
+		//*** 管理者は、ID９９９９を持つユーザに固定 ***//
+		if (id.contains("9999") && !result.contains("")) {
+			return "admin_menu";    //*** ログイン成功－＞ 管理者トップページに遷移する ***//
+		}
+		return "";                  //*** ログイン失敗 ***//
+	}
+
+>>>>>>> 72351a338328a8333e83beb078ee25f03bc7e1a2
 }
