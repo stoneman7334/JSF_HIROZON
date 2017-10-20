@@ -191,7 +191,7 @@ public class UserBean implements Serializable {
         }
         loginId = id;
         //*** ここで、DB検索してユーザのチェックを行う ***//
-        return "top"; //*** 暫定 ***//
+        return "top.xhtml?faces-redirect=true\""; //*** 暫定 ***//
     }
 
     //*** 新規会員登録を行うメソッド ***//

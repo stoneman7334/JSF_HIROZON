@@ -53,7 +53,10 @@
                 </div>
                 <div class="header-cart">
                     <a class="header-cart__link" href="#">
-                        <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                        <h:form>
+                            <h:commandLink action="user_cart" >a</h:commandLink>
+                            <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                        </h:form>
                     </a>
                 </div>
             </div>
@@ -71,12 +74,12 @@
                                         <f:param name="pic1" value="#{p.p_id}"/>
                                     </p:graphicImage>
                                 </div>
-                                    <div class="">
-                                        <h:form>
-                                            <h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
-                                        </h:form>
-                                        <h:outputText value="#{p.p_price}"/>
-                                    </div>
+                                <div class="">
+                                    <h:form>
+                                        <h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
+                                    </h:form>
+                                    <h:outputText value="#{p.p_price}"/>
+                                </div>
                             </h:column>
                             <!--                            <h:column>
                                                         </h:column>-->

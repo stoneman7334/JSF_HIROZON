@@ -35,7 +35,7 @@ public class CartBean implements Serializable {
 	private String dateTime;
 	private String expiration;
         
-        private static int cnt = 20;
+        private static int cnt = 30;
 	
 	
 	@Inject
@@ -107,6 +107,6 @@ public class CartBean implements Serializable {
             //*** new regist ***//
             db.persist(c);
 
-            return "user_cart";
+            return "user_cart.xhtml?faces-redirect=true";
 	}
 }
