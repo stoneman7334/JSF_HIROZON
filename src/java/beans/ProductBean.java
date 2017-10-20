@@ -45,18 +45,16 @@ public class ProductBean implements Serializable {
     private Part picture;   //*** 画像 ***//
     private Part picture2;   //*** 画像 ***//
     private Part picture3;   //*** 画像 ***//
-	
-	private String c_id;	//***  ***//
-	
-	private boolean editable;
-	
-	@Inject
-	
+
+    private String c_id;	//***  ***//
+
+    private boolean editable;
+
+    @Inject
 
 //      private byte [] picture;   //*** 画像（暫定ひとつ） ***//
     @EJB
     ProductDb db;			//*** 商品テーブル用 ***//
-	
 
     //*** Constractor ***//
     public ProductBean() {
@@ -119,22 +117,21 @@ public class ProductBean implements Serializable {
         this.picture3 = picture3;
     }
 
-	public String getC_id() {
-		return c_id;
-	}
+    public String getC_id() {
+        return c_id;
+    }
 
-	public void setC_id(String c_id) {
-		this.c_id = c_id;
-	}
+    public void setC_id(String c_id) {
+        this.c_id = c_id;
+    }
 
-	public boolean isEditable() {
-		return editable;
-	}
+    public boolean isEditable() {
+        return editable;
+    }
 
-	public void setEditable(boolean editable) {
-		this.editable = editable;
-	}
-	
+    public void setEditable(boolean editable) {
+        this.editable = editable;
+    }
 
     //*** --- SELF MADE METHOD --- 商品の新規登録メソッド ***//
     public String newRegist() throws IOException {
@@ -149,7 +146,7 @@ public class ProductBean implements Serializable {
                 picture,
                 picture2,
                 picture3,
-				c_id
+                c_id
         );
         //***  ***//
         db.persist(p);
@@ -241,7 +238,7 @@ public class ProductBean implements Serializable {
 
     public String productMerge() throws IOException {
         System.out.println("call ProductBean->productMerge()");
-		//***  ***//
+        //***  ***//
         Product p = new Product(
                 id,
                 name,
@@ -250,9 +247,9 @@ public class ProductBean implements Serializable {
                 picture,
                 picture2,
                 picture3,
-				c_id
+                c_id
         );
-		db.update(p);
+        db.update(p);
 
         return "admin_edit";
     }
@@ -262,35 +259,41 @@ public class ProductBean implements Serializable {
 //		this.editable = false;
         return db.getAll();
     }
+
     //*** ”本”の一覧を取得するメソッド ***//
-    public List<Product> getProOfBook(){
+    public List<Product> getProOfBook() {
         System.out.println("call pBean->getProOfBook()");
         return db.getProOfBook("0009");	//*** 本 ***//
     }
-	//*** ”家電”の一覧を取得するメソッド ***//
-	public List<Product> getProOfElectric(){
-		System.out.println("call pBean->getProOfElectric");
-		return db.getProOfBook("0002");	//*** 家電 ***//
-	}
-	
-	public String edit(Product p){
-		this.id = p.getP_id();
-		this.name = p.getP_name();
-		this.count = p.getP_count();
-		this.price = p.getP_price();
-		return "admin_edit_detail";
-	}
-	
-	//***  ***//
-	public String addToCart(Product p){
-		System.out.println("call uBean->addToCart()");
-		this.id = p.getP_id();
-		this.name = p.getP_name();
-		this.count = p.getP_count();
-		this.price = p.getP_price();
-		
-		return "product_detail";
-	}
+    //*** ”家電”の一覧を取得するメソッド ***//
 
+    public List<Product> getProOfElectric() {
+        System.out.println("call pBean->getProOfElectric");
+        return db.getProOfBook("0002");	//*** 家電 ***//
+    }
+    //***  ***//
+     public List<Product> getProOfLiquor() {
+        System.out.println("call pBean->getProOfElectric");
+        return db.getProOfBook("0003");	//*** 家電 ***//
+    }
+
+    public String edit(Product p) {
+        this.id = p.getP_id();
+        this.name = p.getP_name();
+        this.count = p.getP_count();
+        this.price = p.getP_price();
+        return "admin_edit_detail";
+    }
+
+    //***  ***//
+    public String addToCart(Product p) {
+        System.out.println("call uBean->addToCart()");
+        this.id = p.getP_id();
+        this.name = p.getP_name();
+        this.count = p.getP_count();
+        this.price = p.getP_price();
+
+        return "product_detail";
+    }
 
 }

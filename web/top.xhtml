@@ -6,19 +6,20 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>HIROZON</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+        <link rel="stylesheet" href="css\common.css"/>
+        <link rel="stylesheet" href="css\top.css"/>
+        <link rel="stylesheet" href="css\reset.css"/>
+        <link rel="stylesheet" href="css\font-awesome.min.css"/>
+        <script src="https://use.fontawesome.com/469d90b81f.js"></script>
+        <script src="HIROZON\js\jquery-3.2.1.min.js"></script>
     </h:head>
-	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/mypage.css"/>
-    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
-    <script src="https://use.fontawesome.com/469d90b81f.js"></script>
-    <h:body>
-		<h:form>
 
-			<header class="header">
+    <h:body>
+        <header class="header">
+            <div class="header-contents">
                 <div class="header-title">
-                    <!--<a class="top" href="top.html">HIROZON</a>-->
-                    <h:commandLink styleClass="" value="HIROZON" action="top"/>
+                    <a class="header-title-text" href="top.html">HIROZON</a>
                 </div>
                 <div class="header-search">
                     <div class="header-search__list">
@@ -42,90 +43,115 @@
                 </div>
                 <div class="header-account">
                     <ul class="header-account__menu">
-                        <li class="header-account__menu__box"><a href="#">アカウント</a>
+                        <li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
                             <ul class="header-account__menu__block">
-                                <!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
-                                <li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
-
+                                <li><a class="header-account__menu__link" href="#">注文履歴</a></li>
                                 <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
-            </header>
-			<h:outputText value="----- 本 -----"/>
-				<h:dataTable value="#{pBean.proOfBook}" var="p">
-					<h:column>
-						<h:panelGrid columns="2">
-							<h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
-							<h:outputText value="#{p.p_price}"/>
-						</h:panelGrid>
-					</h:column>
-					<h:column>
-						<h:panelGrid columns="1">
-							<p:graphicImage value="#{pBean.pic}">
-								<f:param name="pic1" value="#{p.p_id}"/>
-							</p:graphicImage>
-						</h:panelGrid>
-					</h:column>
-				</h:dataTable>
-
-				<h:outputText value="----- 家電 -----"/>
-				<h:dataTable value="#{pBean.proOfElectric}" var="p">
-					<h:column>
-						<h:panelGrid columns="2">
-							<h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
-							<h:outputText value="#{p.p_price}"/>
-						</h:panelGrid>
-					</h:column>
-					<h:column>
-						<h:panelGrid columns="1">
-							<p:graphicImage value="#{pBean.pic}">
-								<f:param name="pic1" value="#{p.p_id}"/>
-							</p:graphicImage>
-						</h:panelGrid>
-					</h:column>
-				</h:dataTable>
-
-			<!-- フッター -->
-            <footer class="footer">
-                <div class="foot-contents">
-                    <div class="footA">
-                        <h2 class="foot-title">HIROZON</h2>
-                        <p class="foot-info">
-                            〒733-0013 広島市西区横川新町7-12<br/> TEL：082-291-5050
-                            <br/>
-                            <a href="http://www.hsc.ac.jp/" class="foot-link">http://www.hsc.ac.jp/</a>
-                        </p>
-                    </div>
-                    <nav class="footB">
-                        <div class="foot-nav">
-                            <h3 class="foot-heading">ABOUT</h3>
-                            <ul class="list">
-                                <li><a href="#">HIROZONについて</a></li>
-                                <li><a href="#">地図</a></li>
-                            </ul>
-                        </div>
-                        <div class="foot-nav">
-                            <h3 class="foot-heading">SUPPORT</h3>
-                            <ul class="list">
-                                <li><a href="#">お問い合わせ</a></li>
-                                <li><a href="#">よくある質問</a></li>
-                            </ul>
-                        </div>
-                        <div class="foot-nav">
-                            <h3 class="foot-heading">CONTENTS</h3>
-                            <ul class="list">
-                                <li><a href="#">メンバー</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                    <div class="footC">
-                        <p class="copyright">© HIROZON 広島コンピュータ専門学校 2017</p>
+                <div class="header-cart">
+                    <a class="header-cart__link" href="#">
+                        <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="main">
+            <div class="main-contentsA">
+                <h2 class="main-contents__title">酒</h2>
+                <div class="main-contents__wrap">
+                    <!-- itemはひとまず最大5個表示することとする -->
+                    <div class="main-contents__wrap-item">
+                        <h:dataTable value="#{pBean.proOfLiquor}" var="p">
+                            <h:column >
+                                <div class="">
+                                    <p:graphicImage value="#{pBean.pic}" width="100" height="100">
+                                        <f:param name="pic1" value="#{p.p_id}"/>
+                                    </p:graphicImage>
+                                </div>
+                                    <div class="">
+                                        <h:form>
+                                            <h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
+                                        </h:form>
+                                        <h:outputText value="#{p.p_price}"/>
+                                    </div>
+                            </h:column>
+                            <!--                            <h:column>
+                                                        </h:column>-->
+                        </h:dataTable>
                     </div>
                 </div>
-            </footer>
-		</h:form>
+            </div>
+            <div class="main-contentsB">
+                <h2 class="main-contents__title">家電</h2>
+                <div class="main-contents__wrap">
+                    <!-- itemはひとまず最大5個表示することとする -->
+                    <div class="main-contents__wrap-item">
+                        <h:dataTable value="#{pBean.proOfElectric}" var="p">
+                            <h:column>
+                                <h:panelGrid columns="1">
+                                    <div class="">
+
+                                        <p:graphicImage value="#{pBean.pic}" width="100" height="100">
+                                            <f:param name="pic1" value="#{p.p_id}"/>
+                                        </p:graphicImage>
+                                    </div>
+                                </h:panelGrid>
+                            </h:column>
+                            <h:column>
+                                <h:panelGrid columns="1">
+                                    <div class="">
+                                        <h:form>
+                                            <h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
+                                        </h:form>
+                                        <h:outputText value="#{p.p_price}"/>
+                                    </div>
+                                </h:panelGrid>
+                            </h:column>
+                        </h:dataTable>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="foot-contents">
+                <div class="footA">
+                    <h2 class="foot-title">HIROZON</h2>
+                    <p class="foot-info">
+                        〒733-0013 広島市西区横川新町7-12<br> TEL：082-291-5050</br>
+                        <a href="http://www.hsc.ac.jp/" class="foot-link">http://www.hsc.ac.jp/</a>
+                    </p>
+                </div>
+                <nav class="footB">
+                    <div class="foot-nav">
+                        <h3 class="foot-heading">ABOUT</h3>
+                        <ul class="list">
+                            <li><a href="#">HIROZONについて</a></li>
+                            <li><a href="#">地図</a></li>
+                        </ul>
+                    </div>
+                    <div class="foot-nav">
+                        <h3 class="foot-heading">SUPPORT</h3>
+                        <ul class="list">
+                            <li><a href="#">お問い合わせ</a></li>
+                            <li><a href="#">よくある質問</a></li>
+                        </ul>
+                    </div>
+                    <div class="foot-nav">
+                        <h3 class="foot-heading">CONTENTS</h3>
+                        <ul class="list">
+                            <li><a href="#">メンバー</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="footC">
+                    <p class="copyright">© HIROZON 広島コンピュータ専門学校 3Bste 2017</p>
+                </div>
+            </div>
+        </footer>
+
 
     </h:body>
 </html>
