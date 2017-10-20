@@ -6,6 +6,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,15 +26,14 @@ public class BuyHistory implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private String u_id;
-    private String datetime;
+    private Date datetime;
     private int count;
     private int price;
     private String p_id;
 
     public BuyHistory() { }
 
-    public BuyHistory(String id, String u_id, String datetime, int count, int price, String p_id) {
-        this.id = id;
+    public BuyHistory(String u_id, Date datetime, int count, int price, String p_id) {
         this.u_id = u_id;
         this.datetime = datetime;
         this.count = count;
@@ -57,11 +57,11 @@ public class BuyHistory implements Serializable {
         this.u_id = u_id;
     }
 
-    public String getDatetime() {
+    public Date getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(String datetime) {
+    public void setDatetime(Date datetime) {
         this.datetime = datetime;
     }
 
