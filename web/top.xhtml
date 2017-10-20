@@ -67,10 +67,16 @@
                 <div class="main-contents__wrap">
                     <!-- itemはひとまず最大5個表示することとする -->
                     <div class="main-contents__wrap-item">
-                        <h:dataTable value="#{pBean.proOfLiquor}" var="p">
-                            <h:column >
+
+                        <h:dataTable value="#{pBean.proOfLiquor}" var="p"
+                                     columnClasses="item-table__td"
+                                     rowClasses="item-table__tr"
+                                     styleClass="item-table"
+
+                                     >
+                            <h:column class="item-table__tr" >
                                 <div class="">
-                                    <p:graphicImage value="#{pBean.pic}" width="100" height="100">
+                                    <p:graphicImage value="#{pBean.pic}" width="200" height="200">
                                         <f:param name="pic1" value="#{p.p_id}"/>
                                     </p:graphicImage>
                                 </div>
@@ -92,26 +98,23 @@
                 <div class="main-contents__wrap">
                     <!-- itemはひとまず最大5個表示することとする -->
                     <div class="main-contents__wrap-item">
-                        <h:dataTable value="#{pBean.proOfElectric}" var="p">
-                            <h:column>
-                                <h:panelGrid columns="1">
-                                    <div class="">
-
-                                        <p:graphicImage value="#{pBean.pic}" width="100" height="100">
-                                            <f:param name="pic1" value="#{p.p_id}"/>
-                                        </p:graphicImage>
-                                    </div>
-                                </h:panelGrid>
-                            </h:column>
-                            <h:column>
-                                <h:panelGrid columns="1">
-                                    <div class="">
-                                        <h:form>
-                                            <h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
-                                        </h:form>
-                                        <h:outputText value="#{p.p_price}"/>
-                                    </div>
-                                </h:panelGrid>
+                        <h:dataTable value="#{pBean.proOfElectric}" var="p"
+                                     columnClasses="item-table__td"
+                                     rowClasses="item-table__tr"
+                                     styleClass="item-table"
+                                     >
+                            <h:column class="item-table__tr">
+                                <div class="">
+                                    <p:graphicImage value="#{pBean.pic}" width="200" height="200">
+                                        <f:param name="pic1" value="#{p.p_id}"/>
+                                    </p:graphicImage>
+                                </div>
+                                <div class="">
+                                    <h:form>
+                                        <h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
+                                    </h:form>
+                                    <h:outputText value="#{p.p_price}"/>
+                                </div>
                             </h:column>
                         </h:dataTable>
                     </div>
