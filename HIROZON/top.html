@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <title>HIROZON</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-    <link rel="stylesheet" href="css\common.css">
-    <link rel="stylesheet" href="css\top.css">
-    <link rel="stylesheet" href="css\reset.css">
-    <link rel="stylesheet" href="css\font-awesome.min.css">
-    <script src="https://use.fontawesome.com/469d90b81f.js"></script>
-    <script src="HIROZON\js\jquery-3.2.1.min.js"></script>
-  </head>
-  <body>
-    <header class="header">
-      <div class="header-contents">
-        <div class="header-title">
-          <a class="header-title-text" href="top.html">HIROZON</a>
-        </div>
-        <div class="header-search">
-          <div class="header-search__list">
-            <div class="header-search__list__pull">
-              <select class="header-search__list__pull__box" name="category">
+
+<head>
+  <meta charset="utf-8">
+  <title>HIROZON</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="css\common.css">
+  <link rel="stylesheet" href="css\top.css">
+  <link rel="stylesheet" href="css\reset.css">
+  <link rel="stylesheet" href="css\font-awesome.min.css">
+  <script src="https://use.fontawesome.com/469d90b81f.js"></script>
+  <script src="HIROZON\js\jquery-3.2.1.min.js"></script>
+</head>
+
+<body>
+  <header class="header">
+    <div class="header-contents">
+      <div class="header-title">
+        <a class="header-title-text" href="top.html">HIROZON</a>
+      </div>
+      <div class="header-search">
+        <div class="header-search__list">
+          <div class="header-search__list__pull">
+            <select class="header-search__list__pull__box" name="category">
             <option class="pull-active" value="1">すべて</option>
             <option value="2">食品</option>
             <option value="3">衣料</option>
@@ -28,128 +30,44 @@
             <option value="5">本</option>
             <option value="6">アウトドア</option>
           </select>
-            </div>
-            <div class="header-search__list__text">
-              <input type="text" name="">
-            </div>
-            <div class="header-search__list__btn">
-              <input type="button" name="" value="&#xf002;">
-            </div>
+          </div>
+          <div class="header-search__list__text">
+            <input type="text" name="">
+          </div>
+          <div class="header-search__list__btn">
+            <input type="button" name="" value="&#xf002;">
           </div>
         </div>
-        <div class="header-account">
-          <ul class="header-account__menu">
-            <li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
-              <ul class="header-account__menu__block">
-                <li><a class="header-account__menu__link" href="#">注文履歴</a></li>
-                <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <div class="header-cart">
-          <a class="header-cart__link" href="#">
+      </div>
+      <div class="header-account">
+        <ul class="header-account__menu">
+          <li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
+            <ul class="header-account__menu__block">
+              <li><a class="header-account__menu__link" href="#">注文履歴</a></li>
+              <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="header-cart">
+        <a class="header-cart__link" href="#">
         <span class="fa fa-shopping-cart" aria-hidden="true"></span>
       </a>
-        </div>
       </div>
-    </header>
-    <div class="main">
-      <div class="main-contents">
-        <h2 class="main-contents__title">食品</h2>
-        <div class="main-contents__wrap top-wrap">
-          <!-- itemはひとまず最大5個表示することとする：DB必要 -->
-          <!-- カテゴリ３，４つ分出す予定：DB必要 -->
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
+    </div>
+  </header>
+  <div class="main">
+    <div class="main-contents">
+      <h2 class="main-contents__title">食品</h2>
+      <div class="main-contents__wrap top-wrap">
+        <!-- itemはひとまず最大5個表示することとする：DB必要 -->
+        <!-- カテゴリ３，４つ分出す予定：DB必要 -->
+        <div href="#" class="main-contents__wrap-item">
+
         </div>
       </div>
       <div class="main-contents">
         <h2 class="main-contents__title">衣料</h2>
-        <div class="main-contents__wrap top-wrap">
-          <!-- itemはひとまず最大5個表示することとする -->
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-          <a href="#" class="main-contents__wrap-item">
-            <img class="">
-              ここ画像
-            </img>
-            <div class="">
-              ここタイトルと単価
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="main-contents">
-        <h2 class="main-contents__title">アウトドア</h2>
         <div class="main-contents__wrap top-wrap">
           <!-- itemはひとまず最大5個表示することとする -->
           <div href="#" class="main-contents__wrap-item">
@@ -158,8 +76,8 @@
                 <tr class="item-table__tr">
                   <td class="item-table__td">
                     <a href="#" name="" class="">
-                      ここ画像
-                    </a>
+                    ここ画像
+                  </a>
                     <div class="">
                       ここ価格
                     </div>
@@ -168,8 +86,8 @@
                 <tr class="item-table__tr">
                   <td class="item-table__td">
                     <a href="#" name="" class="">
-                      ここ画像
-                    </a>
+                    ここ画像
+                  </a>
                     <div class="">
                       ここ価格
                     </div>
@@ -178,8 +96,8 @@
                 <tr class="item-table__tr">
                   <td class="item-table__td">
                     <a href="#" name="" class="">
-                      ここ画像
-                    </a>
+                    ここ画像
+                  </a>
                     <div class="">
                       ここ価格
                     </div>
@@ -188,8 +106,8 @@
                 <tr class="item-table__tr">
                   <td class="item-table__td">
                     <a href="#" name="" class="">
-                      ここ画像
-                    </a>
+                    ここ画像
+                  </a>
                     <div class="">
                       ここ価格
                     </div>
@@ -198,8 +116,8 @@
                 <tr class="item-table__tr">
                   <td class="item-table__td">
                     <a href="#" name="" class="">
-                      ここ画像
-                    </a>
+                    ここ画像
+                  </a>
                     <div class="">
                       ここ価格
                     </div>
@@ -207,14 +125,75 @@
                 </tr>
               </tbody>
             </table>
-            <!-- <img class="">
+          </div>
+        </div>
+        <div class="main-contents">
+          <h2 class="main-contents__title">アウトドア</h2>
+          <div class="main-contents__wrap top-wrap">
+            <!-- itemはひとまず最大5個表示することとする -->
+            <div href="#" class="main-contents__wrap-item">
+              <table class="item-table">
+                <tbody>
+                  <tr class="item-table__tr">
+                    <td class="item-table__td">
+                      <a href="#" name="" class="">
+                      ここ画像
+                    </a>
+                      <div class="">
+                        ここ価格
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="item-table__tr">
+                    <td class="item-table__td">
+                      <a href="#" name="" class="">
+                      ここ画像
+                    </a>
+                      <div class="">
+                        ここ価格
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="item-table__tr">
+                    <td class="item-table__td">
+                      <a href="#" name="" class="">
+                      ここ画像
+                    </a>
+                      <div class="">
+                        ここ価格
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="item-table__tr">
+                    <td class="item-table__td">
+                      <a href="#" name="" class="">
+                      ここ画像
+                    </a>
+                      <div class="">
+                        ここ価格
+                      </div>
+                    </td>
+                  </tr>
+                  <tr class="item-table__tr">
+                    <td class="item-table__td">
+                      <a href="#" name="" class="">
+                      ここ画像
+                    </a>
+                      <div class="">
+                        ここ価格
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- <img class="">
               ここ画像
             </img>
             <div class="">
               ここタイトルと単価
             </div> -->
-          </a>
-          <!-- <a href="#" class="main-contents__wrap-item">
+              <!-- </a> -->
+              <!-- <a href="#" class="main-contents__wrap-item">
             <img class="">
               ここ画像
             </img>
@@ -246,45 +225,46 @@
               ここタイトルと単価
             </div>
           </a> -->
-        </div>
-      </div>
-    </div>
-    <footer class="footer">
-      <div class="foot-contents">
-        <div class="footA">
-          <h2 class="foot-title">HIROZON</h2>
-          <p class="foot-info">
-            〒733-0013 広島市西区横川新町7-12<br> TEL：082-291-5050
-            <br>
-            <a href="http://www.hsc.ac.jp/" class="foot-link">http://www.hsc.ac.jp/</a>
-          </p>
-        </div>
-        <nav class="footB">
-          <div class="foot-nav">
-            <h3 class="foot-heading">ABOUT</h3>
-            <ul class="list">
-              <li><a href="#">HIROZONについて</a></li>
-              <li><a href="#">地図</a></li>
-            </ul>
+            </div>
           </div>
-          <div class="foot-nav">
-            <h3 class="foot-heading">SUPPORT</h3>
-            <ul class="list">
-              <li><a href="#">お問い合わせ</a></li>
-              <li><a href="#">よくある質問</a></li>
-            </ul>
-          </div>
-          <div class="foot-nav">
-            <h3 class="foot-heading">CONTENTS</h3>
-            <ul class="list">
-              <li><a href="#">メンバー</a></li>
-            </ul>
-          </div>
-        </nav>
-        <div class="footC">
-          <p class="copyright">© HIROZON 広島コンピュータ専門学校 3Bste 2017</p>
         </div>
-      </div>
-    </footer>
-  </body>
+        <footer class="footer">
+          <div class="foot-contents">
+            <div class="footA">
+              <h2 class="foot-title">HIROZON</h2>
+              <p class="foot-info">
+                〒733-0013 広島市西区横川新町7-12<br> TEL：082-291-5050
+                <br>
+                <a href="http://www.hsc.ac.jp/" class="foot-link">http://www.hsc.ac.jp/</a>
+              </p>
+            </div>
+            <nav class="footB">
+              <div class="foot-nav">
+                <h3 class="foot-heading">ABOUT</h3>
+                <ul class="list">
+                  <li><a href="#">HIROZONについて</a></li>
+                  <li><a href="#">地図</a></li>
+                </ul>
+              </div>
+              <div class="foot-nav">
+                <h3 class="foot-heading">SUPPORT</h3>
+                <ul class="list">
+                  <li><a href="#">お問い合わせ</a></li>
+                  <li><a href="#">よくある質問</a></li>
+                </ul>
+              </div>
+              <div class="foot-nav">
+                <h3 class="foot-heading">CONTENTS</h3>
+                <ul class="list">
+                  <li><a href="#">メンバー</a></li>
+                </ul>
+              </div>
+            </nav>
+            <div class="footC">
+              <p class="copyright">© HIROZON 広島コンピュータ専門学校 3Bste 2017</p>
+            </div>
+          </div>
+        </footer>
+</body>
+
 </html>
