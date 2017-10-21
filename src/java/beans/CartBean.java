@@ -9,6 +9,7 @@ import ejb.CartDb;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
@@ -91,6 +92,9 @@ public class CartBean implements Serializable {
 		String wkDateTime = Util.parseCalToStr(Calendar.getInstance());
 
 		System.out.println(String.format("uId : %s pId :%s", user.getId(), product.getId()));
+		//***  ***//
+		this.u_id = user.getId();
+		
 		//*** modelカートのインスタンスを生成 ***//
 		Cart c = new Cart(
 //				cnt++, //*** カートのidの最大値を取得 ***//
@@ -106,5 +110,17 @@ public class CartBean implements Serializable {
 		db.persist(c);
 
 		return "user_cart?faces-redirect=true";
+	}
+	
+	public List<Cart> getCart(){
+		System.out.println("call CartBean->getCart()");
+		
+		List<Cart> carts = db.returnCart(u_id);	//*** DB検索した結果をリストで取得 ***//
+//		for (Cart c : carts)
+//		{
+//			this.dateTime = Util.parseCalToStr(c.getDateTime());
+//		}
+//		
+		return carts;	//***  ***//
 	}
 }

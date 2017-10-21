@@ -9,6 +9,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -45,6 +46,16 @@ public class Util {
 	}
 	//*** 引数のカレンダーインスタンスを指定パターン文字列にして返すメソッド ***//
 	public static String parseCalToStr(Calendar c){
+		String  str;
+		if(c == null) {
+			str = null;
+		} else {
+			str = new SimpleDateFormat(DATE_PATTERN).format(c.getTime());
+		}
+		return str;
+	}
+	
+	public static String parseCalToStr(Date c){
 		String  str;
 		if(c == null) {
 			str = null;

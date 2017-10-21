@@ -9,14 +9,55 @@
     <h:body>
         <h1>カート</h1>
         <h:form>
-            <h:outputText value="商品名" />
-            <h:outputText value="有効期限 yyyy/mm/dd" />
-			<!--このセレクトボックスエラーでレンダリングできてないので、コメアウト-->
-            <!--<h:selectOneMenu><f:selectItems value="1"/></h:selectOneMenu>-->
-            <h:outputText value="\100" />
-            <h:outputText value="2点" />
-            <h:outputText value="小計\ " />
-            <h:outputText value="1300" />
+			<h:dataTable value="#{cartBean.cart}" 
+						 var="item" 
+						 border="0"
+						 cellpadding="10"
+						 columnClasses=""
+						 rowClasses=""
+						 styleClass=""
+						 >
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="ショッピングカートの商品-今すぐご注文いただけます"/>
+					</f:facet>
+					<h:panelGrid columns="1">
+						<h:form>
+							<h:outputText value="#{item.dateTime}に追加された商品" /><br/>
+							<h:commandButton value="今は買わない" action="#"/><br/>
+							<h:commandButton value="削除" action="#"/><br/>
+						</h:form>
+					</h:panelGrid> 
+				</h:column>
+				<h:column>
+					<h:panelGrid columns="1">
+						<h:outputText value="#{item.p_id}" />
+					</h:panelGrid> 
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="価格"/>
+					</f:facet>
+					<h:outputText value="#{item.price}"/>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="数量"/>
+					</f:facet>
+					<h:inputText value="#{item.count}"/>
+				</h:column>
+
+
+			</h:dataTable>
+			<!--            <h:outputText value="商品名" />
+						<h:outputText value="有効期限 yyyy/mm/dd" />
+						このセレクトボックスエラーでレンダリングできてないので、コメアウト
+						<h:selectOneMenu><f:selectItems value="1"/></h:selectOneMenu>
+						<h:outputText value="\100" />
+						<h:outputText value="2点" />
+						<h:outputText value="小計\ " />
+						<h:outputText value="1300" />-->
             <h:commandButton value="購入" action="#{bhBean.buy()}" />
         </h:form>
     </h:body>

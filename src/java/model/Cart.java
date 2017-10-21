@@ -72,8 +72,9 @@ public class Cart implements Serializable {
     public void setPrice(int price) {
             this.price = price;
     }
-    public Date getDateTime() {
-            return dateTime;
+    public String getDateTime() {
+		//*** カート画面で使用するため 書式指定で、変換した文字列を返す ***//
+        return util.Util.parseCalToStr(dateTime);	
     }
     public void setDateTime(Date dateTime) {
             this.dateTime = dateTime;
