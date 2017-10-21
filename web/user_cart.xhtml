@@ -10,7 +10,7 @@
         <h1>カート</h1>
         <h:form>
 			<h:dataTable value="#{cartBean.cart}" 
-						 var="item" 
+						 var="item"					
 						 border="0"
 						 cellpadding="10"
 						 columnClasses=""
@@ -33,6 +33,8 @@
 				<h:column>
 					<h:panelGrid columns="1">
 						<h:outputText value="#{item.p_id}" />
+						<h:outputText value="商品名（リンク付きで）"/>
+						<h:outputText value=""/>
 					</h:panelGrid> 
 				</h:column>
 				<h:column>

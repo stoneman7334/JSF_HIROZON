@@ -92,7 +92,7 @@ public class CartBean implements Serializable {
 		String wkDateTime = Util.parseCalToStr(Calendar.getInstance());
 
 		System.out.println(String.format("uId : %s pId :%s", user.getId(), product.getId()));
-		//***  ***//
+		//*** ユーザIDを設定する ***//
 		this.u_id = user.getId();
 		
 		//*** modelカートのインスタンスを生成 ***//
@@ -111,7 +111,7 @@ public class CartBean implements Serializable {
 
 		return "user_cart?faces-redirect=true";
 	}
-	
+	//***  ***//
 	public List<Cart> getCart(){
 		System.out.println("call CartBean->getCart()");
 		
@@ -122,5 +122,11 @@ public class CartBean implements Serializable {
 //		}
 //		
 		return carts;	//***  ***//
+	}
+	
+	//***  ***//
+	public String pageUserCart(){
+		this.u_id = user.getId();				//*** ユーザIDを設定する ***//
+		return "user_cart?faces-redirect=true";	//*** リダイレクト ***//
 	}
 }

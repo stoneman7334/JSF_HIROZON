@@ -56,11 +56,12 @@
                     </ul>
                 </div>
                 <div class="header-cart">
-                    <a class="header-cart__link" href="#">
-                        <h:form>
+					<h:form>
+						<a class="header-cart__link" href="cart.xhtml">
+							<h:commandLink value="aaa" action="#{cartBean.pageUserCart()}"/>
                             <span class="fa fa-shopping-cart" aria-hidden="true"></span>
-                        </h:form>
-                    </a>
+						</a>
+					</h:form>
                 </div>
             </div>
         </header>
