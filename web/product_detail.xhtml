@@ -14,7 +14,6 @@
 	<link rel="stylesheet" href="css\font-awesome.min.css"/>
 	<script src="https://use.fontawesome.com/469d90b81f.js"></script>
     <h:body>
-        <h:form enctype="multipart/form-data">
 			<header class="header">
 				<div class="header-contents">
 					<div class="header-title">
@@ -104,7 +103,9 @@
                     </td>
                 </tr>
             </table>
-            <h:commandButton value="カートに入れる" action="#{cartBean.persist()}" />
+			<h:form>
+				<h:commandButton value="カートに入れる" action="#{cartBean.persist()}" />
+			</h:form>
             <!-- フッター -->
             <footer class="footer">
                 <div class="foot-contents">
@@ -143,7 +144,6 @@
                     </div>
                 </div>
             </footer>
-        </h:form>
     </h:body>
 </html>
 

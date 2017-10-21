@@ -25,19 +25,22 @@ public class Cart implements Serializable {
     
     private static final long serialVersionUID = 1L;
 	//***  ***//
-    @Id
-    private String id;
+//    @Id
+//    private String id;
+	@Id
     private String u_id;
+	@Id
     private String p_id;
     private int count;
     private int price;
+	@Id
     private Date dateTime;
     private Date expiration;
     
     public Cart() {
     }
-    public Cart(int cnt, String id, int count, Date wkDateTime, Date expiration, String p_id, int price) {
-        this.id = String.valueOf(cnt);  //***  ***//
+    public Cart(String id, int count, Date wkDateTime, Date expiration, String p_id, int price) {
+//        this.id = String.valueOf(cnt);  //***  ***//
         this.u_id = id;                 //***  ***//
         this.count = count;             //***  ***//
         this.dateTime = wkDateTime;     //***  ***//
@@ -48,18 +51,18 @@ public class Cart implements Serializable {
     
 
     //***  ***//
-//    public String getU_id() {
-//            return u_id;
-//    }
-//    public void setU_id(String u_id) {
-//            this.u_id = u_id;
-//    }
-//    public String getP_id() {
-//            return p_id;
-//    }
-//    public void setP_id(String p_id) {
-//            this.p_id = p_id;
-//    }
+    public String getU_id() {
+            return u_id;
+    }
+    public void setU_id(String u_id) {
+            this.u_id = u_id;
+    }
+    public String getP_id() {
+            return p_id;
+    }
+    public void setP_id(String p_id) {
+            this.p_id = p_id;
+    }
     public int getCount() {
         return count;
     }
