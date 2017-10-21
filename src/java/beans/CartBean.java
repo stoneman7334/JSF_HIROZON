@@ -26,67 +26,54 @@ import util.Util;
 public class CartBean implements Serializable {
 
 	@EJB
-	private CartDb db;
+	private CartDb db;				//*** カートDB操作用 ***//
 
-	private String u_id;
-	private String p_id;
-	private int count;
-	private int price;
-	private String dateTime;
-	private String expiration;
-
-	private static int cnt = 30;
+	private String u_id;			//*** ユーザID ***//
+	private String p_id;			//*** 商品ID ***//
+	private int count;				//*** 個数 ***//
+	private int price;				//*** 価格 ***//
+	private String dateTime;		//*** カートに入れた時刻 ***//
+	private String expiration;		//*** 有効期限 ***//
 
 	@Inject
-	private ProductBean product;
+	private ProductBean product;	//*** 商品 ***//
 	@Inject
-	private UserBean user;
+	private UserBean user;			//*** ユーザ ***//
 
 	//***  ***//
 	public String getU_id() {
 		return u_id;
 	}
-
 	public void setU_id(String u_id) {
 		this.u_id = u_id;
 	}
-
 	public String getP_id() {
 		return p_id;
 	}
-
 	public void setP_id(String p_id) {
 		this.p_id = p_id;
 	}
-
 	public int getCount() {
 		return count;
 	}
-
 	public void setCount(int count) {
 		this.count = count;
 	}
-
 	public int getPrice() {
 		return price;
 	}
-
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
 	public String getDateTime() {
 		return dateTime;
 	}
-
 	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
-
 	public String getExpiration() {
 		return expiration;
 	}
-
 	public void setExpiration(String expiration) {
 		this.expiration = expiration;
 	}
@@ -118,6 +105,6 @@ public class CartBean implements Serializable {
 		//*** new regist ***//
 		db.persist(c);
 
-		return "user_cart";
+		return "user_cart?faces-redirect=true";
 	}
 }

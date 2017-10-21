@@ -24,9 +24,7 @@ import javax.persistence.Table;
 public class Cart implements Serializable {
     
     private static final long serialVersionUID = 1L;
-	//***  ***//
-//    @Id
-//    private String id;
+	//*** データベースの複合キーを設定すること！ ***//
 	@Id
     private String u_id;
 	@Id
@@ -48,9 +46,8 @@ public class Cart implements Serializable {
         this.p_id = p_id;               //***  ***//
         this.price = price;             //***  ***//
     }
-    
 
-    //***  ***//
+    //*** GetterSetter ***//
     public String getU_id() {
             return u_id;
     }
@@ -87,6 +84,4 @@ public class Cart implements Serializable {
     public void setExpiration(Date expiration) {
             this.expiration = expiration;
     }
-
-    
 }

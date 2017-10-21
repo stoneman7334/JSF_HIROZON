@@ -64,71 +64,54 @@ public class ProductBean implements Serializable {
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getCount() {
         return count;
     }
-
     public void setCount(int count) {
         this.count = count;
     }
-
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
-
     public Part getPicture() {
         return picture;
     }
-
     public void setPicture(Part picture) {
         this.picture = picture;
     }
-
     public Part getPicture2() {
         return picture2;
     }
-
     public void setPicture2(Part picture2) {
         this.picture2 = picture2;
     }
-
     public Part getPicture3() {
         return picture3;
     }
-
     public void setPicture3(Part picture3) {
         this.picture3 = picture3;
     }
-
     public String getC_id() {
         return c_id;
     }
-
     public void setC_id(String c_id) {
         this.c_id = c_id;
     }
-
     public boolean isEditable() {
         return editable;
     }
-
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
@@ -293,7 +276,7 @@ public class ProductBean implements Serializable {
         this.count = p.getP_count();
         this.price = p.getP_price();
 
-        return "product_detail";
+        return "product_detail?faces-redirect=true";
     }
 
 }
