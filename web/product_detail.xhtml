@@ -7,67 +7,77 @@
     <h:head>
         <title>商品詳細</title>
     </h:head>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <link rel="stylesheet" type="text/css" href="css/mypage.css"/>
-    <link rel="stylesheet" type="text/css" href="css/reset.css"/>
-    <script src="https://use.fontawesome.com/469d90b81f.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
+	<link rel="stylesheet" href="css\common.css"/>
+	<link rel="stylesheet" href="css\top.css"/>
+	<link rel="stylesheet" href="css\reset.css"/>
+	<link rel="stylesheet" href="css\font-awesome.min.css"/>
+	<script src="https://use.fontawesome.com/469d90b81f.js"></script>
     <h:body>
         <h:form enctype="multipart/form-data">
-            <header class="header">
-                <div class="header-title">
-                    <!--<a class="top" href="top.html">HIROZON</a>-->
-                    <h:commandLink styleClass="" value="HIROZON" action="top"/>
-
-                </div>
-                <div class="header-search">
-                    <div class="header-search__list">
-                        <div class="header-search__list__pull">
-                            <select class="header-search__list__pull__box" name="category">
-                                <option class="pull-active" value="1">すべて</option>
-                                <option value="2">食品</option>
-                                <option value="3">衣料</option>
-                                <option value="4">ゲーム</option>
-                                <option value="5">本</option>
-                                <option value="6">アウトドア</option>
-                            </select>
-                        </div>
-                        <div class="header-search__list__text">
-                            <input type="text" name=""/>
-                        </div>
-                        <div class="header-search__list__btn">
-                            <input type="button" name="" value="&#xf002;"/>
-                        </div>
-                    </div>
-                </div>
-                <div class="header-account">
-                    <ul class="header-account__menu">
-                        <li class="header-account__menu__box"><a href="#">アカウント</a>
-                            <ul class="header-account__menu__block">
-                                <!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
-                                <li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
-
-                                <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </header>
+			<header class="header">
+				<div class="header-contents">
+					<div class="header-title">
+						<a class="header-title-text" href="top.xhtml">HIROZON</a>
+					</div>
+					<div class="header-search">
+						<div class="header-search__list">
+							<div class="header-search__list__pull">
+								<select class="header-search__list__pull__box" name="category">
+									<option class="pull-active" value="1">すべて</option>
+									<option value="2">食品</option>
+									<option value="3">衣料</option>
+									<option value="4">ゲーム</option>
+									<option value="5">本</option>
+									<option value="6">アウトドア</option>
+								</select>
+							</div>
+							<div class="header-search__list__text">
+								<input type="text" name=""/>
+							</div>
+							<div class="header-search__list__btn">
+								<input type="button" name="" value="&#xf002;"/>
+							</div>
+						</div>
+					</div>
+					<div class="header-account">
+						<ul class="header-account__menu">
+							<li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
+								<ul class="header-account__menu__block">
+									<h:form>
+										<!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
+										<li><h:commandLink styleClass="" value="アカウント管理" action="account_menu"/></li>
+										<li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
+										<li><h:commandLink styleClass="header-account__menu__link" value="ログアウト" action="user_history"/></li>
+									</h:form>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="header-cart">
+						<a class="header-cart__link" href="#">
+							<h:form>
+								<span class="fa fa-shopping-cart" aria-hidden="true"></span>
+							</h:form>
+						</a>
+					</div>
+				</div>
+			</header>
             <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
                 <tr>
                     <h:panelGrid columns="3">
                         <td bgcolor="#99CC00" align="right">
-                            <p:graphicImage value="#{pBean.pic}" width="100" height="100">
+                            <p:graphicImage value="#{pBean.pic}" width="200" height="200">
                                 <f:param name="pic1" value="#{pBean.id}"/>
                             </p:graphicImage>
                         </td>
                         <td bgcolor="#99CC00" align="right">
-                            <p:graphicImage value="#{pBean.pic2}" width="100" height="100">
+                            <p:graphicImage value="#{pBean.pic2}" width="200" height="200">
                                 <f:param name="pic2" value="#{pBean.id}"/>
                             </p:graphicImage>
                         </td>
                         <td bgcolor="#99CC00" align="right">
-                            <p:graphicImage value="#{pBean.pic3}" width="100" height="100">
+                            <p:graphicImage value="#{pBean.pic3}" width="200" height="200">
                                 <f:param name="pic3" value="#{pBean.id}"/>
                             </p:graphicImage>
                         </td>

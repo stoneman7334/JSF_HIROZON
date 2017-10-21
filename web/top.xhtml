@@ -19,7 +19,7 @@
         <header class="header">
             <div class="header-contents">
                 <div class="header-title">
-                    <a class="header-title-text" href="top.html">HIROZON</a>
+                    <a class="header-title-text" href="top.xhtml">HIROZON</a>
                 </div>
                 <div class="header-search">
                     <div class="header-search__list">
@@ -45,15 +45,12 @@
                     <ul class="header-account__menu">
                         <li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
                             <ul class="header-account__menu__block">
-<<<<<<< HEAD
-                                <li><a class="header-account__menu__link" href="#">注文履歴</a></li>
-=======
-                                <!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
-                                <li><h:commandLink styleClass="" value="アカウント管理" action="account_menu"/></li>
-                                <li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
-
->>>>>>> origin/master
-                                <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
+								<h:form>
+									<!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
+									<li><h:commandLink styleClass="" value="アカウント管理" action="account_menu"/></li>
+									<li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
+									<li><h:commandLink styleClass="header-account__menu__link" value="ログアウト" action="user_history"/></li>
+								</h:form>
                             </ul>
                         </li>
                     </ul>
@@ -61,7 +58,6 @@
                 <div class="header-cart">
                     <a class="header-cart__link" href="#">
                         <h:form>
-                            <h:commandLink action="user_cart" >a</h:commandLink>
                             <span class="fa fa-shopping-cart" aria-hidden="true"></span>
                         </h:form>
                     </a>
