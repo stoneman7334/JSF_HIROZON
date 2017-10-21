@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -26,22 +27,30 @@
                 <h:inputSecret id="u_pass" value="#{uBean.pass}" p:placeholder="4文字以上"/>
                 <h:message for="u_pass" id="passerror" style=""/>
                 パスワード（再）
-                <h:inputSecret id="u_repass" value="#{uBean.id}" p:placeholder="再度入力してください"/>
+                <h:inputSecret id="u_repass" value="#{uBean.rePass}" p:placeholder="再度入力してください"/>
                 <h:message for="u_repass" id="repasserror" style=""/>
                 郵便番号        
                 <h:inputText id="u_post" value="#{uBean.u_post}" p:placeholder="XXX-XXXX"/>
                 <h:message for="u_post" id="posterror" style=""/>
-                住所            
+                都道府県<h:selectOneMenu value="#{uBean.u_pre}"><f:selectItems value="#{prefList.items}" /></h:selectOneMenu>
+                <h:message for="u_pre" id="preerror" style=""/>
+                住所
                 <h:inputText id="u_addr" value="#{uBean.u_address}" p:placeholder=""/>
                 <h:message for="u_addr" id="addrerror" style=""/>
+                マンション・部屋番号等
+                <h:inputText value="#{uBean.u_mansion}" p:placeholder=""/>
+                <h:message for="u_mansion" id="mansionerror" style=""/>
                 生年月日        
                 <h:inputText id="u_birth" value="#{uBean.u_birth_day}" p:placeholder="XXXX-XX-XX"/>
                 <h:message for="u_birth" id="birtherror" style=""/>
                 電話番号        
                 <h:inputText id="u_tel" value="#{uBean.u_tel}" p:placeholder="0823-74-1234"/>
                 <h:message for="u_tel" id="telerror" style=""/>
-                性別            
-                <h:inputText id="u_sex" value="#{uBean.u_sex}" p:placeholder="男 または 女"/>
+                性別
+                <h:selectOneRadio value="#{uBean.u_sex}">
+                    <f:selectItems value="#{manWomanRadio.items}" />
+                </h:selectOneRadio>
+                <!--<h:inputText id="u_sex" value="#{uBean.u_sex}" p:placeholder="男 または 女"/>-->
                 <h:message for="u_sex" id="sexerror" style=""/>
 
             </h:panelGrid>
