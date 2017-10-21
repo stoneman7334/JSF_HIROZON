@@ -46,7 +46,7 @@ public class ProductBean implements Serializable {
     private Part picture2;   //*** 画像 ***//
     private Part picture3;   //*** 画像 ***//
 
-    private String c_id;	//***  ***//
+    private String c_id;	//*** カテゴリID ***//
 
     private boolean editable;
 
@@ -134,11 +134,30 @@ public class ProductBean implements Serializable {
         //***  ***//
         db.persist(p);
 
-        return "";  //***  ***//
+        return "admin_menu?faces-redirect=true";  //***  ***//
     }
 
     //*** --- SELF MADE METHOD --- AJAX 指定した商品IDのインスタンスを取得するメソッド ***//
     public void ajaxFindProduct() {
+        System.out.println("call ProductBean->ajxFindProduct()");
+        System.out.println(String.format("商品ID : %s", id));
+
+        //*** 商品IDに、何も入力がない または、検索結果がnull ***//
+        if (id.isEmpty() || db.find(id) == null) {
+            return;		//*** 処理を抜ける ***//
+        }
+        //*** 商品IDで、検索してインスタンスを取得 ***//
+        Product p = db.find(id);
+        //*** Beanに検索結果を代入する ***//
+        this.id = p.getP_id();
+        this.name = p.getP_name();
+        this.count = p.getP_count();
+        this.price = p.getP_price();
+
+        System.out.println(String.format("商品インスタンス : %s", p.toString()));
+    }
+	
+	public void ajaxFindProduct(String id) {
         System.out.println("call ProductBean->ajxFindProduct()");
         System.out.println(String.format("商品ID : %s", id));
 
