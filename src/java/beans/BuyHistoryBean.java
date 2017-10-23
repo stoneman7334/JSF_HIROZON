@@ -9,11 +9,16 @@ import ejb.BuyHistoryDb;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Inject;
+import javax.persistence.TypedQuery;
 import model.BuyHistory;
+import model.Cart;
+import model.User;
 import util.Util;
 
 /**
@@ -35,10 +40,7 @@ public class BuyHistoryBean implements Serializable {
     private int    count;
     private int    price;
     private String p_id;
-    
-    @Inject
-    CartBean cart;
-    
+
     @EJB
     BuyHistoryDb db;
     
@@ -97,8 +99,16 @@ public class BuyHistoryBean implements Serializable {
         //*** インスタンス生成 ***//
 //        BuyHistory buy = new BuyHistory(cart.getU_id(), new Date(), cart.getCount(), cart.getPrice(), cart.getP_id());
 //        System.out.println(cart.getU_id());
-//        db.persist(buy);
+
+
+
+        BuyHistory buy = new BuyHistory();
+        db.persist(buy);
         
         return "user_history";
+    }
+    
+    public List<BuyHistory> getItems() {
+        return db.userFind(u_id);
     }
 }
