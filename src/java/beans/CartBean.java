@@ -129,4 +129,13 @@ public class CartBean implements Serializable {
 		this.u_id = user.getId();				//*** ユーザIDを設定する ***//
 		return "user_cart?faces-redirect=true";	//*** リダイレクト ***//
 	}
+        
+        public String delProduct(Cart data){
+            System.out.println("call CartBean->delProduct()");
+            
+            Cart c = data;
+            db.delCartCursor(c);
+            
+            return "";
+        }
 }
