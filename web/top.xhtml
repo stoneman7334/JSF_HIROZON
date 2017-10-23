@@ -45,23 +45,23 @@
                     <ul class="header-account__menu">
                         <li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
                             <ul class="header-account__menu__block">
-								<h:form>
-									<!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
-									<li><h:commandLink styleClass="" value="アカウント管理" action="account_menu"/></li>
-									<li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
-									<li><h:commandLink styleClass="header-account__menu__link" value="ログアウト" action="user_history"/></li>
-								</h:form>
+                                <h:form>
+                                    <!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
+                                    <li><h:commandLink styleClass="" value="アカウント管理" action="account_menu"/></li>
+                                    <li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
+                                    <li><h:commandLink styleClass="header-account__menu__link" value="ログアウト" action="user_history"/></li>
+                                </h:form>
                             </ul>
                         </li>
                     </ul>
                 </div>
                 <div class="header-cart">
-					<h:form>
-						<a class="header-cart__link" href="cart.xhtml">
-							<h:commandLink value="aaa" action="#{cartBean.pageUserCart()}"/>
+                    <h:form>
+                        <a class="header-cart__link" href="cart.xhtml">
+                            <h:commandLink value="aaa" action="#{cartBean.pageUserCart()}"/>
                             <span class="fa fa-shopping-cart" aria-hidden="true"></span>
-						</a>
-					</h:form>
+                        </a>
+                    </h:form>
                 </div>
             </div>
         </header>

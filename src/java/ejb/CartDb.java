@@ -5,6 +5,9 @@
  */
 package ejb;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -41,7 +44,9 @@ public class CartDb extends SubDb {
 //    public Cart find(String u_id, String p_id){
 //    }
 
-    public int delCartCursor(Cart c) {
+    public int delCartCursor(Cart c) throws ParseException {
+        String dateTime = c.getDateTime();
+        Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTime);
         int deleteted = em.createQuery(
                 "Delete from Cart c where c.u_id = ?1 and c.p_id = ?2 and c.dateTime = ?3")
                 .setParameter(1, c.getU_id())       //*** ユーザID ***//

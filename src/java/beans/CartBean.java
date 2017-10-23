@@ -7,6 +7,8 @@ package beans;
 
 import ejb.CartDb;
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -86,7 +88,7 @@ public class CartBean implements Serializable {
 	}
 
 	//*** new regist ***//
-	public String persist() {
+	public String persist() throws ParseException {
 		System.out.println("call CartBean->persist()");
 		//*** カートに入れる押下時の日付を取得(パターン文字列化済み yyyy/MM/dd) ***//
 		String wkDateTime = Util.parseCalToStr(Calendar.getInstance());
@@ -100,8 +102,8 @@ public class CartBean implements Serializable {
 //				cnt++, //*** カートのidの最大値を取得 ***//
 				user.getId(), //*** ユーザID ***//
 				this.count, //*** 個数 ***//
-				new Date(), //*** カートに入れた日付 ***//
-				new Date(), //*** カートの有効期限（暫定） ***//
+				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(String.valueOf(new Date())), //*** カートに入れた日付 ***//
+				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(String.valueOf(new Date())), //*** カートの有効期限（暫定） ***//
 				product.getId(), //*** 商品ID ***//
 				product.getPrice() //*** 単価 ***//
 		);
@@ -130,7 +132,7 @@ public class CartBean implements Serializable {
 		return "user_cart?faces-redirect=true";	//*** リダイレクト ***//
 	}
         
-        public String delProduct(Cart data){
+        public String delProduct(Cart data) throws ParseException{
             System.out.println("call CartBean->delProduct()");
             
             Cart c = data;
