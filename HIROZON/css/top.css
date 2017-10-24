@@ -8,6 +8,9 @@
 
 .main-contents {
   margin-bottom: 20px;
+}
+
+.main-contents:not(:last-child) {
   border-bottom: solid 1px #ccc;
 }
 
@@ -16,14 +19,6 @@
   margin-top: 20px;
   margin-bottom: 10px;
 }
-
-/*.main-contents__wrap-item {
-  background-color: #3366ff;
-  padding: 10px;
-  margin: 10px;
-  width: 120px;
-  height: 170px;
-}*/
 
 .main-contents__wrap-item {
   /*display: flex;*/
@@ -82,10 +77,6 @@
   -o-transform: rotate(15deg);
   -ms-transform: rotate(15deg);
 }
-
-/*.top-wrap {
-  justify-content: space-around;
-}*/
 
 .search-wrap {
   flex-wrap: wrap;

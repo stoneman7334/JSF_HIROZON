@@ -1,0 +1,183 @@
+﻿
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"><head><link type="text/css" rel="stylesheet" href="/JSF_HIROZON/faces/javax.faces.resource/theme.css?ln=primefaces-aristo" />
+        <title>カートの商品</title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" />
+        <link rel="stylesheet" href="css\common.css" />
+        <link rel="stylesheet" href="css\top.css" />
+        <link rel="stylesheet" href="css\reset.css" />
+        <link rel="stylesheet" href="css\font-awesome.min.css" />
+        <script src="https://use.fontawesome.com/469d90b81f.js"></script>
+        <script src="HIROZON\js\jquery-3.2.1.min.js"></script></head><body>
+        <header class="header">
+            <div class="header-contents">
+                <div class="header-title">
+                    <a class="header-title-text" href="top.xhtml">HIROZON</a>
+                </div>
+                <div class="header-search">
+                    <div class="header-search__list">
+                        <div class="header-search__list__pull">
+                            <select class="header-search__list__pull__box" name="category">
+                                <option class="pull-active" value="1">すべて</option>
+                                <option value="2">食品</option>
+                                <option value="3">衣料</option>
+                                <option value="4">ゲーム</option>
+                                <option value="5">本</option>
+                                <option value="6">アウトドア</option>
+                            </select>
+                        </div>
+                        <div class="header-search__list__text">
+                            <input type="text" name="" />
+                        </div>
+                        <div class="header-search__list__btn">
+                            <input type="button" name="" value="" />
+                        </div>
+                    </div>
+                </div>
+                <div class="header-account">
+                    <ul class="header-account__menu">
+                        <li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
+                            <ul class="header-account__menu__block">
+<form id="j_idt6" name="j_idt6" method="post" action="/JSF_HIROZON/faces/user_cart.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt6" value="j_idt6" />
+
+                                    <!--&lt;li&gt;&lt;a class="header-account__menu__link" href="#"&gt;&#27880;&#25991;&#23653;&#27508;&lt;/a&gt;&lt;/li&gt;-->
+                                    <li>
+<script type="text/javascript" src="/JSF_HIROZON/faces/javax.faces.resource/jsf.js?ln=javax.faces&amp;stage=Development"></script>
+<a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt6'),{'j_idt6:j_idt8':'j_idt6:j_idt8'},'');return false" class="">アカウント管理</a></li>
+                                    <li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt6'),{'j_idt6:j_idt10':'j_idt6:j_idt10'},'');return false" class="">注文履歴</a></li>
+                                    <li><a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt6'),{'j_idt6:j_idt12':'j_idt6:j_idt12'},'');return false" class="header-account__menu__link">ログアウト</a></li><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:0" value="7827969638659585517:6445169903384768929" autocomplete="off" />
+</form>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="header-cart">
+<form id="j_idt15" name="j_idt15" method="post" action="/JSF_HIROZON/faces/user_cart.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt15" value="j_idt15" />
+
+                        <a class="header-cart__link" href="cart.xhtml"><a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt15'),{'j_idt15:j_idt17':'j_idt15:j_idt17'},'');return false">aaa</a>
+                            <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+                        </a><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:1" value="7827969638659585517:6445169903384768929" autocomplete="off" />
+</form>
+                </div>
+            </div>
+        </header>
+<form id="j_idt20" name="j_idt20" method="post" action="/JSF_HIROZON/faces/user_cart.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt20" value="j_idt20" />
+<table class="" border="2" cellpadding="10">
+<thead>
+<tr>
+<th scope="col">ショッピングカートの商品-今すぐご注文いただけます</th>
+<th scope="col"></th>
+<th scope="col">価格</th>
+<th scope="col">数量</th>
+</tr>
+</thead>
+<tbody>
+<tr class="">
+<td><table>
+<tbody>
+<tr>
+<td>
+<form id="j_idt20:j_idt21:0:j_idt25" name="j_idt20:j_idt21:0:j_idt25" method="post" action="/JSF_HIROZON/faces/user_cart.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt20:j_idt21:0:j_idt25" value="j_idt20:j_idt21:0:j_idt25" />
+2017/10/23<br />
+                            に追加された商品 <br /><input type="submit" name="j_idt20:j_idt21:0:j_idt25:j_idt28" value="今は買わない" /><br /><input type="submit" name="j_idt20:j_idt21:0:j_idt25:j_idt30" value="削除" /><br /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:2" value="7827969638659585517:6445169903384768929" autocomplete="off" />
+</form></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td><table>
+<tbody>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td><a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt20'),{'j_idt20:j_idt21:0:j_idt35':'j_idt20:j_idt21:0:j_idt35'},'');return false">オーストラリア産牛もも（1kg）</a></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>2000</td>
+<td><input type="text" name="j_idt20:j_idt21:0:j_idt41" value="0" /></td>
+</tr>
+<tr class="">
+<td><table>
+<tbody>
+<tr>
+<td>
+<form id="j_idt20:j_idt21:1:j_idt25" name="j_idt20:j_idt21:1:j_idt25" method="post" action="/JSF_HIROZON/faces/user_cart.xhtml" enctype="application/x-www-form-urlencoded">
+<input type="hidden" name="j_idt20:j_idt21:1:j_idt25" value="j_idt20:j_idt21:1:j_idt25" />
+2017/10/23<br />
+                            に追加された商品 <br /><input type="submit" name="j_idt20:j_idt21:1:j_idt25:j_idt28" value="今は買わない" /><br /><input type="submit" name="j_idt20:j_idt21:1:j_idt25:j_idt30" value="削除" /><br /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:3" value="7827969638659585517:6445169903384768929" autocomplete="off" />
+</form></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td><table>
+<tbody>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td><a href="#" onclick="mojarra.jsfcljs(document.getElementById('j_idt20'),{'j_idt20:j_idt21:1:j_idt35':'j_idt20:j_idt21:1:j_idt35'},'');return false">レッドチェダー約1kg</a></td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>4500</td>
+<td><input type="text" name="j_idt20:j_idt21:1:j_idt41" value="0" /></td>
+</tr>
+</tbody>
+</table>
+
+            <!--            &lt;h:outputText value="&#21830;&#21697;&#21517;" /&gt;
+                                    &lt;h:outputText value="&#26377;&#21177;&#26399;&#38480; yyyy/mm/dd" /&gt;
+                                    &#12371;&#12398;&#12475;&#12524;&#12463;&#12488;&#12508;&#12483;&#12463;&#12473;&#12456;&#12521;&#12540;&#12391;&#12524;&#12531;&#12480;&#12522;&#12531;&#12464;&#12391;&#12365;&#12390;&#12394;&#12356;&#12398;&#12391;&#12289;&#12467;&#12513;&#12450;&#12454;&#12488;
+                                    &lt;h:selectOneMenu&gt;&lt;f:selectItems value="1"/&gt;&lt;/h:selectOneMenu&gt;
+                                    &lt;h:outputText value="\100" /&gt;
+                                    &lt;h:outputText value="2&#28857;" /&gt;
+                                    &lt;h:outputText value="&#23567;&#35336;\ " /&gt;
+                                    &lt;h:outputText value="1300" /&gt;--><input type="submit" name="j_idt20:j_idt43" value="購入" /><input type="hidden" name="javax.faces.ViewState" id="j_id1:javax.faces.ViewState:4" value="7827969638659585517:6445169903384768929" autocomplete="off" />
+</form>
+        <footer class="footer">
+            <div class="foot-contents">
+                <div class="footA">
+                    <h2 class="foot-title">HIROZON</h2>
+                    <p class="foot-info">
+                        〒733-0013 広島市西区横川新町7-12<br> TEL：082-291-5050</br>
+                        <a href="http://www.hsc.ac.jp/" class="foot-link">http://www.hsc.ac.jp/</a>
+                    </p>
+                </div>
+                <nav class="footB">
+                    <div class="foot-nav">
+                        <h3 class="foot-heading">ABOUT</h3>
+                        <ul class="list">
+                            <li><a href="#">HIROZONについて</a></li>
+                            <li><a href="#">地図</a></li>
+                        </ul>
+                    </div>
+                    <div class="foot-nav">
+                        <h3 class="foot-heading">SUPPORT</h3>
+                        <ul class="list">
+                            <li><a href="#">お問い合わせ</a></li>
+                            <li><a href="#">よくある質問</a></li>
+                        </ul>
+                    </div>
+                    <div class="foot-nav">
+                        <h3 class="foot-heading">CONTENTS</h3>
+                        <ul class="list">
+                            <li><a href="#">メンバー</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="footC">
+                    <p class="copyright">© HIROZON 広島コンピュータ専門学校 3Bste 2017</p>
+                </div>
+            </div>
+        </footer></body>
+</html>
