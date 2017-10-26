@@ -57,6 +57,7 @@ public class CartDb extends SubDb {
 		Util.easyLog(String.valueOf(deleteted));
         return deleteted;   //*** 削除した行数を返す　1: OK  0: NG ***//
     }
+	//*** カートの中身の件数を返すメソッド ***//
 	public int cursorCount(){
 		TypedQuery<Cart> query = em.createQuery("select count(p) from Product p", Cart.class);
 		

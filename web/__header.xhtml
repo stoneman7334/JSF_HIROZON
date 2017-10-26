@@ -18,7 +18,7 @@
             <div class="header-contents">
                 <div class="header-title">
 					<h:form>
-						<h:commandLink styleClass="header-title-text" value="HIROZON" action="top.xhtml"/>
+						<h:commandLink styleClass="header-title-text" value="HIROZON" action="top.xhtml?faces-redirect=true"/>
 					</h:form>
                 </div>
                 <div class="header-search">
@@ -45,10 +45,10 @@
                 <div class="header-account">
 					<h:form>
 						<ul class="header-account__menu">
-							<li class="header-account__menu__box"><h:commandLink value="アカウント" action="mypage.xhtml"/>
+							<li class="header-account__menu__box"><h:commandLink value="アカウント" action="mypage.xhtml?faces-redirect=true"/>
 								<ul class="header-account__menu__block">
-									<li><h:commandLink styleClass="" value="アカウント管理" action="account_menu"/></li>
-									<li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
+									<li><h:commandLink styleClass="" value="アカウント管理" action="account_menu?faces-redirect=true"/></li>
+									<li><h:commandLink styleClass="" value="注文履歴" action="user_history?faces-redirect=true"/></li>
 									<li><h:commandLink value="ログアウト" action="#{uBean.logOut}" /></li>
 								</ul>
 							</li>

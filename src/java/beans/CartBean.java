@@ -26,7 +26,7 @@ import util.Util;
  * @author Yuichi-Oba
  */
 @Named(value = "cartBean")
-@RequestScoped
+@SessionScoped
 public class CartBean implements Serializable {
 
 	//*** Field ***//
