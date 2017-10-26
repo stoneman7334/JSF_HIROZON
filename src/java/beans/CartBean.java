@@ -103,8 +103,8 @@ public class CartBean implements Serializable {
 //				cnt++, //*** カートのidの最大値を取得 ***//
 				user.getId(), //*** ユーザID ***//
 				this.count, //*** 個数 ***//
-				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(String.valueOf(new Date())), //*** カートに入れた日付 ***//
-				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(String.valueOf(new Date())), //*** カートの有効期限（暫定） ***//
+				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(wkDateTime), //*** カートに入れた日付 ***//
+				new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(wkDateTime), //*** カートの有効期限（暫定） ***//
 				product.getId(), //*** 商品ID ***//
 				product.getPrice() //*** 単価 ***//
 		);
