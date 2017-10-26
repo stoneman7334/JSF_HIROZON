@@ -92,8 +92,12 @@ public class BuyHistoryBean implements Serializable {
 	//*** 購入処理を行うメソッド ***//
 	public String buy() {
 		Util.easyLog("call bhBean.buy()");
-		db.persist(cBean.getCart());			//***  ***//
-
-		return "top.xhtml?faces-redirect=true";	//***  ***//
+		//*** カートの中身を取得して、購入履歴へ挿入する ***//
+		db.persist(cBean.getCart());			
+		
+		//*** カートの中身をすべて削除する ***//
+		cBean.delAllProduct();
+		
+		return "top.xhtml?faces-redirect=true";	//*** トップ画面へリダイレクトする ***//
     }
 }

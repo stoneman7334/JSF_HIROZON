@@ -140,6 +140,16 @@ public class CartBean implements Serializable {
 
 		return "user_cart.xhtml?faces-redirect=true";
 	}
+	//*** カートの商品を全削除するメソッド ***//
+	public String delAllProduct(){
+		System.out.println("call CartBean->delAllProduct()");
+		
+		int rs = db.delAllProduct(user.getId());				//***  ***//
+		System.out.println(String.format("削除件数 : %d", rs));	//***  ***//
+		return "";	//***  ***//
+	}
+	
+	
 	
 	
 }

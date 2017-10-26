@@ -26,6 +26,7 @@ public class CartDb extends SubDb {
 
     public static final String Q_CART_USER			= "select c from Cart c WHERE c.u_id = ?1";
 	public static final String Q_DELETE_CART_CURSOR = "Delete from Cart c where c.u_id = ?1 and c.p_id = ?2 and c.dateTime = ?3";
+	public static final String Q_DELETE_CART_ALL	= "delete from Cart c where c.u_id = ?1";
     public static final String DATE_PATTERN			= "yyyy-MM-dd HH:mm:ss.S";
 	
 	@PersistenceContext(unitName = "HirozonPU")
@@ -57,15 +58,18 @@ public class CartDb extends SubDb {
 		Util.easyLog(String.valueOf(deleteted));
         return deleteted;   //*** 削除した行数を返す　1: OK  0: NG ***//
     }
+	//***  ***//
+	public int delAllProduct(String u_id){
+		//***  ***//
+		return em.createQuery(Q_DELETE_CART_ALL, Cart.class)
+				.setParameter(1, u_id)	//***  ***//
+				.executeUpdate();		//***  ***//
+	}
 	//*** カートの中身の件数を返すメソッド ***//
 	public int cursorCount(){
 		TypedQuery<Cart> query = em.createQuery("select count(p) from Product p", Cart.class);
 		
 		return query.getResultList().size();
 	}
-	
-	
-	
-	
 
 }
