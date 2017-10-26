@@ -25,7 +25,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-import util.Util.*;
+import util.Util;
 
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
@@ -267,11 +267,18 @@ public class ProductBean implements Serializable {
         System.out.println("call pBean->getProOfElectric");
         return db.getProOfBook("0002");	//*** 家電 ***//
     }
-    //***  ***//
+    //*** ”酒”の一覧を取得するメソッド ***//
     public List<Product> getProOfLiquor() {
         System.out.println("call pBean->getProOfElectric");
         return db.getProOfBook("0003");	//*** 家電 ***//
     }
+	//*** 検索ボックスに入力したもの(this.name)で、DB検索し、結果をリストで返すメソッド ***//
+	public List<Product> getProOfSearch(){
+		Util.easyLog("call pBean.getProOfSearch()");
+		
+		//*** DB検索した結果のリストを返す ***//
+		return db.getSearchCharacter(this.name);
+	}
 	//***  ***//
     public String edit(Product p) {
         this.id = p.getP_id();

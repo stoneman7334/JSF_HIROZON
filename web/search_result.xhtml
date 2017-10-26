@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
@@ -15,10 +17,30 @@
 			<ui:define name="footer">
 				<ui:include src="__footer.xhtml" />
 			</ui:define>
-			
-			
+
+
 			<!-- ここからメインコンテンツ -->
 			<ui:define name="content">
+				<h:dataTable value="#{pBean.proOfSearch}" var="p"
+							 columnClasses="item-table__td"
+							 rowClasses="item-table__tr"
+							 styleClass="item-table"
+
+							 >
+					<h:column class="item-table__tr" >
+						<div class="">
+							<p:graphicImage value="#{pBean.pic}" width="200" height="200">
+								<f:param name="pic1" value="#{p.p_id}"/>
+							</p:graphicImage>
+						</div>
+						<div class="">
+							<h:form>
+								<h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
+							</h:form>
+							<h:outputText value="#{p.p_price}"/>
+						</div>
+					</h:column>
+				</h:dataTable>
 				<h:form>
 					<h:commandButton value="商品詳細" action="product_detail"/>
 				</h:form>

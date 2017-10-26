@@ -16,7 +16,9 @@
 		<header class="header">
             <div class="header-contents">
                 <div class="header-title">
-                    <a class="header-title-text" href="top.html">HIROZON</a>
+					<h:form>
+						<h:commandLink styleClass="header-title-text" value="HIROZON" action="top.xhtml"/>
+					</h:form>
                 </div>
                 <div class="header-search">
                     <div class="header-search__list">
@@ -30,14 +32,14 @@
                                 <option value="6">アウトドア</option>
                             </select>
                         </div>
+						<div class="header-search__list__text">
+							<!--<input type="text" name=""/>-->
+							<h:inputText value="#{pBean.name}"/>
+						</div>
 						<h:form>
-							<div class="header-search__list__text">
-								<!--<input type="text" name=""/>-->
-								<h:inputText value="#{pBean.name}"/>
-							</div>
 							<div class="header-search__list__btn">
 								<!--<input type="button" name="" value="&#xf002;"/>-->
-								<h:commandButton value="&#xf002;" type="button" action="#{pBean.searchProduct()}"/>
+								<h:commandButton value="&#xf002;" action="#{pBean.searchProduct()}"/>
 							</div>
 						</h:form>
                     </div>
