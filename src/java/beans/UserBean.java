@@ -28,6 +28,7 @@ import util.Util;
 @SessionScoped
 public class UserBean implements Serializable {
 
+	//*** Field ***//
     @EJB
     private UserDb userDb;
 
@@ -40,25 +41,16 @@ public class UserBean implements Serializable {
     private String u_tel;			//*** 電話番号 ***//
     private String u_birth_day;		//*** 生年月日 ***//
     private String u_sex;			//*** 性別 ***//
-
-    //*** 変更予定のパスワード ***//
-    private String newPass;
-    //*** 再入力パスワード ***//
-    private String rePass;
-
+    private String newPass;			//*** 変更予定のパスワード ***//
+    private String rePass;			//*** 再入力パスワード ***//
     User user;
-
-    //*** 選択した県 ***//
-    private String u_pre;
-    //*** マンション等の追加住所 ***//
-    private String u_mansion;
-
-    //*** ログイン時に扱ったidを静的保持 ***//
-    public static String loginId;
-
+    private String u_pre;			//*** 選択した県 ***//
+    private String u_mansion;		//*** マンション等の追加住所 ***//
+    public static String loginId;	//*** ログイン時に扱ったidを静的保持 ***//
+	//*** Constractor ***//
     public UserBean() {
     }
-
+	//*** GetterSetter ***//
     public String getU_mansion() {
         return u_mansion;
     }
@@ -150,9 +142,9 @@ public class UserBean implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-	
-	
-
+	//*** ---------------------------- ***//
+	//*** ----- SELF MADE METHOD ----- ***//
+	//*** ---------------------------- ***//
     //*** ログインチェックを行うメソッド ***//
     public String loginCheck() throws NoSuchAlgorithmException {
         System.out.println("call loginCheck()");

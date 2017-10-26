@@ -29,6 +29,7 @@ import util.Util;
 @RequestScoped
 public class CartBean implements Serializable {
 
+	//*** Field ***//
 	@EJB
 	private CartDb db;				//*** カートDB操作用 ***//
 
@@ -38,13 +39,15 @@ public class CartBean implements Serializable {
 	private int price;				//*** 価格 ***//
 	private String dateTime;		//*** カートに入れた時刻 ***//
 	private String expiration;		//*** 有効期限 ***//
-
 	@Inject
 	private ProductBean product;	//*** 商品 ***//
 	@Inject
 	private UserBean user;			//*** ユーザ ***//
-
-	//***  ***//
+	
+	//*** Constractor ***//
+	public CartBean() {
+	}
+	//*** GetterSetter ***//
 	public String getU_id() {
 		return u_id;
 	}
@@ -81,13 +84,9 @@ public class CartBean implements Serializable {
 	public void setExpiration(String expiration) {
 		this.expiration = expiration;
 	}
-
-	/**
-	 * Creates a new instance of CartBean
-	 */
-	public CartBean() {
-	}
-
+	//*** ---------------------------- ***//
+	//*** ----- SELF MADE METHOD ----- ***//
+	//*** ---------------------------- ***//
 	//*** new regist ***//
 	public String persist() throws ParseException {
 		System.out.println("call CartBean->persist()");
@@ -114,20 +113,24 @@ public class CartBean implements Serializable {
 
 		return "user_cart?faces-redirect=true";
 	}
-	//***  ***//
+	//*** dataTable用 カートの中身をリストで取得するメソッド ***//
 	public List<Cart> getCart(){
 		System.out.println("call CartBean->getCart()");
 		
 		List<Cart> carts = db.returnCart(user.getId());	//*** DB検索した結果をリストで取得 ***//
 		return carts;	//***  ***//
 	}
-	
-	//***  ***//
+	//*** カートの中身の数をチェックし、遷移先を変えるメソッド ***//
 	public String pageUserCart(){
 		this.u_id = user.getId();				//*** ユーザIDを設定する ***//
-		return "user_cart?faces-redirect=true";	//*** リダイレクト ***//
+		//*** カートの中身の数をチェックする ***//
+		if (db.cursorCount() > 0){
+			return "user_cart?faces-redirect=true";	//*** カートの中身が１以上ならリダイレクト ***//
+		} else {
+			return "";
+		}
 	}
-        
+	//*** カートの商品を削除するメソッド ***//
     public String delProduct(Cart data) throws ParseException{
 		System.out.println("call CartBean->delProduct()");
 
@@ -137,4 +140,6 @@ public class CartBean implements Serializable {
 
 		return "user_cart.xhtml?faces-redirect=true";
 	}
+	
+	
 }

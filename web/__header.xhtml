@@ -2,7 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-	  xmlns:p="http://primefaces.org/ui">
+	  >
     <h:head>
         <title>Facelet Title</title>
 		<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"/>
@@ -58,7 +58,7 @@
                 <div class="header-cart">
                     <a class="header-cart__link" href="#">
                         <h:form>
-                            <h:commandLink action="user_cart" >a</h:commandLink>
+                            <h:commandLink action="#{cartBean.pageUserCart()}" >a</h:commandLink>
                             <span class="fa fa-shopping-cart" aria-hidden="true"></span>
                         </h:form>
                     </a>

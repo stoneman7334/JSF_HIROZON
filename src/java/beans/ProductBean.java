@@ -50,15 +50,13 @@ public class ProductBean implements Serializable {
     private boolean editable;
 
     @Inject
-
-//      private byte [] picture;   //*** 画像（暫定ひとつ） ***//
+	
     @EJB
     ProductDb db;			//*** 商品テーブル用 ***//
 
     //*** Constractor ***//
     public ProductBean() {
     }
-
     //*** GetterSetter ***//
     public String getId() {
         return id;
@@ -174,8 +172,9 @@ public class ProductBean implements Serializable {
             return ds;
         }
     }
-
-	
+	//*** ---------------------------- ***//
+	//*** ----- SELF MADE METHOD ----- ***//
+	//*** ---------------------------- ***//
     //*** --- SELF MADE METHOD --- 商品の新規登録メソッド ***//
     public String newRegist() throws IOException {
         System.out.println("call ProductBean->newRegist()");
