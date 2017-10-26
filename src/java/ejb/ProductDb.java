@@ -31,7 +31,7 @@ import util.V_ProCate;
 public class ProductDb extends SubDb {
 	
 	public static final String Q_SELECT_PRODUCT_CATEGORY = "select p from Product p where p.c_id = ?1";
-	public static final String Q_SELECT_SEARCH_CHARACTER = "select p from Product p where p.p_name like ?1";
+	public static final String Q_SELECT_SEARCH_CHARACTER = "select p from Product p where p.p_name like :keyword";
 
     @PersistenceContext(unitName = "HirozonPU")
     private EntityManager em;
@@ -64,7 +64,7 @@ public class ProductDb extends SubDb {
 	//***  ***//
 	public List<Product> getSearchCharacter(String args){
 		TypedQuery<Product> query = em.createQuery(Q_SELECT_SEARCH_CHARACTER, Product.class);
-		query.setParameter(1, args);		//*** 検索ボックスに入力した文字列 ***//
+		query.setParameter("keyword", "%" + args + "%");		//*** 検索ボックスに入力した文字列 ***//
 		query.setMaxResults(10);			//*** 結果の最大件数 ： １０件 ***//
 		
 		return query.getResultList();

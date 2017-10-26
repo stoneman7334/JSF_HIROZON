@@ -32,11 +32,11 @@
                                 <option value="6">アウトドア</option>
                             </select>
                         </div>
-						<div class="header-search__list__text">
-							<!--<input type="text" name=""/>-->
-							<h:inputText value="#{pBean.name}"/>
-						</div>
 						<h:form>
+							<div class="header-search__list__text">
+								<!--<input type="text" name=""/>-->
+								<h:inputText value="#{pBean.name}"/>
+							</div>
 							<div class="header-search__list__btn">
 								<!--<input type="button" name="" value="&#xf002;"/>-->
 								<h:commandButton value="&#xf002;" action="#{pBean.searchProduct()}"/>

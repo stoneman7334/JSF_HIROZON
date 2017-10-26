@@ -275,8 +275,11 @@ public class ProductBean implements Serializable {
 	//*** 検索ボックスに入力したもの(this.name)で、DB検索し、結果をリストで返すメソッド ***//
 	public List<Product> getProOfSearch(){
 		Util.easyLog("call pBean.getProOfSearch()");
+		System.out.println(this.name);
 		
 		//*** DB検索した結果のリストを返す ***//
+		List<Product> list = db.getSearchCharacter(this.name);
+		System.out.println(String.format("list size : %d", list.size()));
 		return db.getSearchCharacter(this.name);
 	}
 	//***  ***//
@@ -300,6 +303,7 @@ public class ProductBean implements Serializable {
 	//*** 検索ボックスボタン押下時の処理 ***//
 	public String searchProduct(){
 		Util.easyLog("call ProductBean.searchProduct()");
+		System.out.println(this.name);
 		
 		return "search_result.xhtml?faces-redirect=true";	//*** 検索結果画面にリダイレクトする ***//
 	}
