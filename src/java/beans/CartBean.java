@@ -15,6 +15,7 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import model.Cart;
@@ -25,7 +26,7 @@ import util.Util;
  * @author Yuichi-Oba
  */
 @Named(value = "cartBean")
-@SessionScoped
+@RequestScoped
 public class CartBean implements Serializable {
 
 	@EJB
@@ -117,12 +118,7 @@ public class CartBean implements Serializable {
 	public List<Cart> getCart(){
 		System.out.println("call CartBean->getCart()");
 		
-		List<Cart> carts = db.returnCart(u_id);	//*** DB検索した結果をリストで取得 ***//
-//		for (Cart c : carts)
-//		{
-//			this.dateTime = Util.parseCalToStr(c.getDateTime());
-//		}
-//		
+		List<Cart> carts = db.returnCart(user.getId());	//*** DB検索した結果をリストで取得 ***//
 		return carts;	//***  ***//
 	}
 	
@@ -132,12 +128,13 @@ public class CartBean implements Serializable {
 		return "user_cart?faces-redirect=true";	//*** リダイレクト ***//
 	}
         
-        public String delProduct(Cart data) throws ParseException{
-            System.out.println("call CartBean->delProduct()");
-            
-            Cart c = data;
-            db.delCartCursor(c);
-            
-            return "";
-        }
+    public String delProduct(Cart data) throws ParseException{
+		System.out.println("call CartBean->delProduct()");
+
+		Cart c = data;
+		db.delCartCursor(c);
+		System.out.println(c.getDateTime());
+
+		return "user_cart.xhtml?faces-redirect=true";
+	}
 }

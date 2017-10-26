@@ -46,14 +46,14 @@ public class CartDb extends SubDb {
 
     public int delCartCursor(Cart c) throws ParseException {
         String dateTime = c.getDateTime();
-        Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(dateTime);
+        Date date = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S").parse(dateTime);
         int deleteted = em.createQuery(
                 "Delete from Cart c where c.u_id = ?1 and c.p_id = ?2 and c.dateTime = ?3")
                 .setParameter(1, c.getU_id())       //*** ユーザID ***//
                 .setParameter(2, c.getP_id())       //*** 商品ID ***//
-                .setParameter(3, c.getDateTime())   //*** カートに追加した日時 ***//
+                .setParameter(3, date)   //*** カートに追加した日時 ***//
                 .executeUpdate();
-
+		util.Util.easyLog(String.valueOf(deleteted));
         return deleteted;   //***  ***//
     }
 
