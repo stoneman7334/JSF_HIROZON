@@ -87,7 +87,7 @@ public class BuyHistoryBean implements Serializable {
 	//*** ---------------------------- ***//
 	//***  ***//
     public List<BuyHistory> getItems() {
-        return db.userFind(u_id);	//***  ***//
+        return db.userFind(uBean.getId());	//***  ***//
     }
 	//*** 購入処理を行うメソッド ***//
 	public String buy() {
@@ -100,4 +100,6 @@ public class BuyHistoryBean implements Serializable {
 		
 		return "top.xhtml?faces-redirect=true";	//*** トップ画面へリダイレクトする ***//
     }
+	//***  ***//
+	
 }

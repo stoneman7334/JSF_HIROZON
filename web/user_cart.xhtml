@@ -28,6 +28,9 @@
 
 			<!-- ここからメインコンテンツ -->
 			<ui:define name="content">
+				<h:form>
+					<h:commandButton value="カートの中身を空にする" action="#{cartBean.delAllProduct()}"/>
+				</h:form>
 				<h:dataTable value="#{cartBean.cart}" 
 							 var="item"					
 							 border="2"

@@ -146,7 +146,7 @@ public class CartBean implements Serializable {
 		
 		int rs = db.delAllProduct(user.getId());				//***  ***//
 		System.out.println(String.format("削除件数 : %d", rs));	//***  ***//
-		return "";	//***  ***//
+		return "top.xhtml?faces-redirect=true";	//***  ***//
 	}
 	
 	

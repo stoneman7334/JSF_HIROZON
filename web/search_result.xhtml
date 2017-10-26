@@ -21,6 +21,7 @@
 
 			<!-- ここからメインコンテンツ -->
 			<ui:define name="content">
+				<h:outputText value="[#{pBean.name}]の検索結果"/>
 				<h:dataTable value="#{pBean.proOfSearch}" var="p"
 							 columnClasses="item-table__td"
 							 rowClasses="item-table__tr"
@@ -41,9 +42,12 @@
 						</div>
 					</h:column>
 				</h:dataTable>
-				<h:form>
+<!--				<h:form>
 					<h:commandButton value="商品詳細" action="product_detail"/>
-				</h:form>
+				</h:form>-->
+				
+				
+				
 			</ui:define>
 
 		</ui:composition>

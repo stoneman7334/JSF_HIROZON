@@ -71,6 +71,28 @@
 				<h:form>
 					<h:commandButton value="カートに入れる" action="#{cartBean.persist()}" />
 				</h:form>
+				<h:outputText value="関連商品"/>
+				<h:dataTable value="#{pBean.proOfSearchRelation}" var="p"
+							 columnClasses="item-table__td"
+							 rowClasses="item-table__tr"
+							 styleClass="item-table"
+
+							 >
+					<h:column class="item-table__tr" >
+						<div class="">
+							<p:graphicImage value="#{pBean.pic}" width="200" height="200">
+								<f:param name="pic1" value="#{p.p_id}"/>
+							</p:graphicImage>
+						</div>
+						<div class="">
+							<h:form>
+								<h:commandLink action="#{pBean.addToCart(p)}" >#{p.p_name}</h:commandLink>
+							</h:form>
+							<h:outputText value="#{p.p_price}"/>
+						</div>
+					</h:column>
+				</h:dataTable>
+				
 			</ui:define>
 		</ui:composition>
     </h:body>

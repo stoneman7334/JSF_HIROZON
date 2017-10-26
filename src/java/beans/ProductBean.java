@@ -281,6 +281,15 @@ public class ProductBean implements Serializable {
 		System.out.println(String.format("list size : %d", list.size()));
 		return db.getSearchCharacter(this.name);
 	}
+	//*** 関連商品のリストを返すメソッド ***//
+	public List<Product> getProOfSearchRelation(){
+		Util.easyLog("call pBean.getProOfSearchRelaion()");
+		System.out.println(c_id);
+		
+		//*** カテゴリIDを取得して、一覧を取得するメソッド ***//
+		return db.getProOfBook(this.c_id);
+		
+	}
 	//***  ***//
     public String edit(Product p) {
         this.id = p.getP_id();
@@ -292,10 +301,12 @@ public class ProductBean implements Serializable {
     //*** 選択した商品の情報を、このインスタンスに記録して、商品詳細ページに遷移するメソッド ***//
     public String addToCart(Product p) {
         System.out.println("call uBean->addToCart()");
+		//***  ***//
         this.id = p.getP_id();
         this.name = p.getP_name();
         this.count = p.getP_count();
         this.price = p.getP_price();
+		this.c_id = p.getC_id();
 
         return "product_detail?faces-redirect=true";
     }
