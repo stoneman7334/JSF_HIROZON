@@ -45,17 +45,17 @@
                     </div>
                 </div>
                 <div class="header-account">
-                    <ul class="header-account__menu">
-                        <li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
-                            <ul class="header-account__menu__block">
-                                <!--<li><a class="header-account__menu__link" href="#">注文履歴</a></li>-->
-                                <li><h:commandLink styleClass="" value="アカウント管理" action="account_menu"/></li>
-                                <li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
-
-                                <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
-                            </ul>
-                        </li>
-                    </ul>
+					<h:form>
+						<ul class="header-account__menu">
+							<li class="header-account__menu__box"><h:commandLink value="アカウント" action="mypage.xhtml"/>
+								<ul class="header-account__menu__block">
+									<li><h:commandLink styleClass="" value="アカウント管理" action="account_menu"/></li>
+									<li><h:commandLink styleClass="" value="注文履歴" action="user_history"/></li>
+									<li><h:commandLink value="ログアウト" action="#{uBean.logOut}" /></li>
+								</ul>
+							</li>
+						</ul>
+					</h:form>
                 </div>
                 <div class="header-cart">
                     <a class="header-cart__link" href="#">
