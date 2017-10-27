@@ -39,8 +39,8 @@ public class CartDb extends SubDb {
         em.persist(c);
     }
 	//*** カートの中身の重複チェックを行う ***//
-	public int checkDuplicateCart(Cart c){
-		System.out.println("call CartDb->checkDuplicateCart()");
+	public Cart checkDuplicateCart(Cart c){
+		Util.easyLog("call CartDb->checkDuplicateCart()");
 		
 		TypedQuery<Cart> query = em.createQuery(Q_SELECT_CHECK_DUPLICATE, Cart.class);
 		query.setParameter(1, c.getU_id());	//*** ユーザID ***//
@@ -49,13 +49,18 @@ public class CartDb extends SubDb {
 		Cart cc = null;
 		try {
 			cc = query.getSingleResult();	//*** SQL Excute ***//
+			System.out.println(cc.toString());
 		} catch(NoResultException e){
 			//*** 検索結果がないとき、catchされる ***//
 			System.out.println("カートの中身に重複なし");
-			return 0;	//*** 重複あり ***//
+			return null;	//*** 重複あり ***//
 		}
 		System.out.println("カートの中身に重複あり");
-		return 1;	//*** 重複なし ***//
+		return cc;	//*** 重複なし ***//
+	}
+	//***  ***//
+	public void upDateCart(Cart c){
+		em.merge(c);
 	}
 	
 	//*** DB検索した結果のカートインスタンスのリストを返す ***//
