@@ -96,7 +96,6 @@ public class CartBean implements Serializable {
 		System.out.println(String.format("uId : %s pId :%s", user.getId(), product.getId()));
 		//*** ユーザIDを設定する ***//
 		this.u_id = user.getId();
-		System.out.println(this.count);
 		
 		//*** modelカートのインスタンスを生成 ***//
 		Cart c = new Cart(
@@ -113,8 +112,8 @@ public class CartBean implements Serializable {
 		if (cc != null){
 			//*** 重複があれば、Updateする ***//
 			cc.setCount(getCount() + this.count);	//*** 個数を足しこむ ***//
-			System.out.println(cc.getCount());
 			db.upDateCart(cc);
+			this.count = 1;
 		} else {
 			//*** 重複がなければ、新規登録する ***//
 			db.persist(c);

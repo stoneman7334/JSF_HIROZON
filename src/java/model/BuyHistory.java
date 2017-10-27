@@ -53,8 +53,8 @@ public class BuyHistory implements Serializable {
     public void setU_id(String u_id) {
         this.u_id = u_id;
     }
-    public Date getDatetime() {
-        return datetime;
+    public String getDatetime() {
+        return util.Util.parseCalToStr(datetime);
     }
     public void setDatetime(Date datetime) {
         this.datetime = datetime;
@@ -66,7 +66,7 @@ public class BuyHistory implements Serializable {
         this.count = count;
     }
     public int getPrice() {
-        return price;
+        return this.price * this.count;
     }
     public void setPrice(int price) {
         this.price = price;
