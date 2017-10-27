@@ -107,9 +107,16 @@ public class CartBean implements Serializable {
 				product.getId(), //*** 商品ID ***//
 				product.getPrice() //*** 単価 ***//
 		);
-		// todo 主キーが複合キーになっていない
-		//*** new regist ***//
-		db.persist(c);
+		//*** カートの中身の重複をチェックする ***//
+		if (db.checkDuplicateCart(c) > 0){
+			//*** 重複があれば、Updateする ***//
+			
+			
+		} else {
+			//*** 重複がなければ、新規登録する ***//
+			db.persist(c);
+		}
+		
 
 		return "user_cart?faces-redirect=true";
 	}
