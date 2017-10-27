@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import util.Util;
 
 /**
  *
@@ -54,7 +55,8 @@ public class BuyHistory implements Serializable {
         this.u_id = u_id;
     }
     public String getDatetime() {
-        return util.Util.parseCalToStr(datetime);
+		//*** 2017-10-27 13:52:08.700 の、"2017-10-27"だけほしいので ***//
+        return Util.parseCalToStr(datetime).split(" ")[0];
     }
     public void setDatetime(Date datetime) {
         this.datetime = datetime;

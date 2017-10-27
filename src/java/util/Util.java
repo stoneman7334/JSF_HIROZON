@@ -18,6 +18,7 @@ import java.util.Random;
  */
 public class Util {
 	
+	//*** このパターンは、勝手に変えるな！ ***//
 	public static String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss.S";
 
 	//*** 引数の文字列を、SHA256にハッシュ化した結果の文字列を返すメソッド ***//
