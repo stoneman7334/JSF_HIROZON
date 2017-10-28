@@ -272,7 +272,7 @@ ul#tabs-list li label.panel-label:hover::after {
 }
 
 main {
-    width: 70%;
+    width: 95%;
     margin: 0 auto;
 }
 .panel-radios {
@@ -287,7 +287,7 @@ body {
 }
 
 main p {
-    line-height: 1.8;
+    line-height: 1.0;
 }
 
 .border_radius {
