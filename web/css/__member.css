@@ -27,7 +27,7 @@ label.panel-label:hover {
 }
 
 #panels {
-    background-color: white;
+    background-color: #f4f4f4;
 }
 #panels .container {
     margin: 0 auto;
@@ -282,7 +282,7 @@ main {
 body {
     background: #3366ff;
     color: #111;
-    font-size: 20px;
+    font-size: 30px;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, sans-serif;
 }
 
@@ -291,15 +291,17 @@ main p {
 }
 
 .border_radius {
-    border-radius: 100px;
-    -webkit-border-radius: 100px;
-    -moz-border-radius: 100px;
+    border-radius: 150px;
+    -webkit-border-radius: 150px;
+    -moz-border-radius: 150px;
 }
 
 .member_h1 {
     font-size: 40px;
-    color: #fff;
-    border: #000 solid; 
     text-align: center; 
-    border-radius: 10px;
+    padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+    color: #494949;/*文字色*/
+    background: #f4f4f4;/*背景色*/
+    border-left: solid 10px #7db4e6;/*左線*/
+    border-bottom: solid 6px #d7d7d7;/*下線*/
 }
