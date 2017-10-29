@@ -341,11 +341,18 @@ public class UserBean implements Serializable {
     //*** ----------------------------     ***//
     //*** ----- SELF MADE METHOD AJAX----- ***//
     //*** ----------------------------     ***//
+    
+    //***  ***//
     public void ajaxCheckDuplicateId(){
         Util.easyLog("call ajaxCheckDuplicateId()");
     }
+    //***  ***//
     public void ajaxCheckPass(){
         Util.easyLog("call ajaxCheckPass");
+    }
+    //*** 郵便番号入力欄から、フォーカス外したとき、住所を自動入力させるメソッド ***//
+    public void ajaxAutoAddressInput(){
+        Util.easyLog("call ajaxAutoAddressInput()");
     }
 
 }

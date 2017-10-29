@@ -33,8 +33,10 @@
                     <f:ajax event="blur" execute="@this" listener="#{uBean.ajaxCheckPass()}"/>
                 </h:inputSecret>
                 郵便番号        
-                <h:inputText id="u_post" value="#{uBean.u_post}" p:placeholder="XXX-XXXX"/>
+                <h:inputText id="u_post" value="#{uBean.u_post}" p:placeholder="XXX-XXXX">
                 <h:message for="u_post" id="posterror" style=""/>
+                <f:ajax event="blur" execute="@this" listener="#{uBean.ajaxAutoAddressInput()}"/>
+                </h:inputText>
                 都道府県<h:selectOneMenu value="#{uBean.u_pre}"><f:selectItems value="#{prefList.items}" /></h:selectOneMenu>
                 <h:message for="u_pre" id="preerror" style=""/>
                 住所
@@ -51,7 +53,9 @@
                 <h:message for="u_tel" id="telerror" style=""/>
                 性別
                 <h:selectOneRadio value="#{uBean.u_sex}">
-                    <f:selectItems value="#{manWomanRadio.items}" />
+                    <!--<f:selectItems value="#{manWomanRadio.items}" />-->
+                    <f:selectItem itemValue="1" itemLabel="男" />
+                    <f:selectItem itemValue="0" itemLabel="女"/>
                 </h:selectOneRadio>
                 <!--<h:inputText id="u_sex" value="#{uBean.u_sex}" p:placeholder="男 または 女"/>-->
                 <h:message for="u_sex" id="sexerror" style=""/>
