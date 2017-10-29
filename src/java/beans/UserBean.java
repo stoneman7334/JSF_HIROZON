@@ -353,6 +353,10 @@ public class UserBean implements Serializable {
     //*** 郵便番号入力欄から、フォーカス外したとき、住所を自動入力させるメソッド ***//
     public void ajaxAutoAddressInput(){
         Util.easyLog("call ajaxAutoAddressInput()");
+        
+        //*** 郵便番号APIを使って、this.fieldに突っ込む（インターネット使用不可欠） ***//
+        
+        //*** ken_all.csvをインポートして、DB構築して、それを参照する の、２択かな ***//
     }
 
 }
