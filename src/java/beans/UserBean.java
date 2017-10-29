@@ -28,6 +28,7 @@ import util.Util;
 @SessionScoped
 public class UserBean implements Serializable {
 
+	//*** Field ***//
     @EJB
     private UserDb userDb;
 
@@ -40,146 +41,110 @@ public class UserBean implements Serializable {
     private String u_tel;			//*** 電話番号 ***//
     private String u_birth_day;		//*** 生年月日 ***//
     private String u_sex;			//*** 性別 ***//
-
-    //*** 変更予定のパスワード ***//
-    private String newPass;
-    //*** 再入力パスワード ***//
-    private String rePass;
-
+    private String newPass;			//*** 変更予定のパスワード ***//
+    private String rePass;			//*** 再入力パスワード ***//
     User user;
-
-    //*** 選択した県 ***//
-    private String u_pre;
-    //*** マンション等の追加住所 ***//
-    private String u_mansion;
-
-    //*** ログイン時に扱ったidを静的保持 ***//
-    public static String loginId;
-
+    private String u_pre;			//*** 選択した県 ***//
+    private String u_mansion;		//*** マンション等の追加住所 ***//
+    public static String loginId;	//*** ログイン時に扱ったidを静的保持 ***//
+	//*** Constractor ***//
     public UserBean() {
     }
-
+	//*** GetterSetter ***//
     public String getU_mansion() {
         return u_mansion;
     }
-
     public void setU_mansion(String u_mansion) {
         this.u_mansion = u_mansion;
     }
-
     public String getU_pre() {
         return u_pre;
     }
-
     public void setU_pre(String u_pre) {
         this.u_pre = u_pre;
     }
-
     public String getNewPass() {
         return newPass;
     }
-
     //*** ログイン時に扱ったidを静的保持 ***//
     public void setNewPass(String newPass) {
         this.newPass = newPass;
     }
-
     public String getRePass() {
         return rePass;
     }
-
     public void setRePass(String rePass) {
         this.rePass = rePass;
     }
-
     public UserDb getUserDb() {
         return userDb;
     }
-
     public void setUserDb(UserDb userDb) {
         this.userDb = userDb;
     }
-
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getPass() {
         return pass;
     }
-
     public void setPass(String pass) {
         this.pass = pass;
     }
-
     public String getU_name() {
         return u_name;
     }
-
     public void setU_name(String u_name) {
         this.u_name = u_name;
     }
-
     public String getU_mailaddr() {
         return u_mailaddr;
     }
-
     public void setU_mailaddr(String u_mailaddr) {
         this.u_mailaddr = u_mailaddr;
     }
-
     public String getU_post() {
         return u_post;
     }
-
     public void setU_post(String u_post) {
         this.u_post = u_post;
     }
-
     public String getU_address() {
         return u_address;
     }
-
     public void setU_address(String u_address) {
         this.u_address = u_address;
     }
-
     public String getU_tel() {
         return u_tel;
     }
-
     public void setU_tel(String u_tel) {
         this.u_tel = u_tel;
     }
-
     public String getU_birth_day() {
         return u_birth_day;
     }
-
     public void setU_birth_day(String u_birth_day) {
         this.u_birth_day = u_birth_day;
     }
-
     public String getU_sex() {
         return u_sex;
     }
-
     public void setU_sex(String u_sex) {
         this.u_sex = u_sex;
     }
-
     public User getUser() {
         return user;
     }
-
     public void setUser(User user) {
         this.user = user;
     }
-
+	//*** ---------------------------- ***//
+	//*** ----- SELF MADE METHOD ----- ***//
+	//*** ---------------------------- ***//
     //*** ログインチェックを行うメソッド ***//
     public String loginCheck() throws NoSuchAlgorithmException {
         System.out.println("call loginCheck()");
@@ -193,7 +158,6 @@ public class UserBean implements Serializable {
         //*** ここで、DB検索してユーザのチェックを行う ***//
         return "top.xhtml?faces-redirect=true\""; //*** 暫定 ***//
     }
-
     //*** 新規会員登録を行うメソッド ***//
     public String addUser() throws NoSuchAlgorithmException {
         System.out.println("call UserBean->addUser()");
@@ -219,7 +183,6 @@ public class UserBean implements Serializable {
         //*** その結果に応じた画面遷移先を設定する ***//
         return "login";  //*** 暫定 ***//
     }
-
     //***  ***//
     public String userConfirm() {
         System.out.println("call UserBean->userConfirm()");
@@ -236,7 +199,6 @@ public class UserBean implements Serializable {
 
         return "";
     }
-
     //*** 指定IDのユーザのパスワードをリセットして、仮パスワードを指定するメソッド ***//
     public String passForget() throws NoSuchAlgorithmException {
         System.out.println("call UserBean->passForget()");
@@ -257,7 +219,6 @@ public class UserBean implements Serializable {
         //*** 何秒間かまって、ログインページに遷移させる ***//
         return "";  //*** ページ遷移はなしで、画面に、仮パスワードを出力する ***//
     }
-
     //*** メールアドレス変更メソッド ***//
     public String changeMail() throws NoSuchAlgorithmException {
         String res = null;
@@ -275,12 +236,10 @@ public class UserBean implements Serializable {
         return res;
     }
     //*** 現在のアドレス取得 ***//
-
     public String beMail() {
         return userDb.find(loginId).getU_mailaddr();
     }
     //*** ユーザー名を変更するメソッド ***//
-
     public String changeName() {
         //*** ログインで用いたIDを利用してユーザーインスタンスを取得 ***//
         user = userDb.find(loginId);
@@ -291,12 +250,10 @@ public class UserBean implements Serializable {
         return "mypage";
     }
     //*** 現在のユーザー名を取得 ***//
-
     public String beName() {
         return userDb.find(loginId).getU_name();
     }
     //*** 電話番号を変更するメソッド ***//
-
     public String changeTel() {
         String res = null;
         //*** 入力値が電話番号であるか正規表現でチェック ***//
@@ -312,11 +269,9 @@ public class UserBean implements Serializable {
         return res;
     }
     //*** 現在の電話番号を取得 ***//
-
     public String beTel() {
         return userDb.find(loginId).getU_tel();
     }
-
     //*** パスワードを変更するメソッド ***//
     public String changePass() throws NoSuchAlgorithmException {
         String res = null;
@@ -333,9 +288,6 @@ public class UserBean implements Serializable {
         return res;
     }
     //*** 退会処理を行うメソッド ***//
-    //*** 現在のアドレス取得 ***//
-    //*** 退会処理を行うメソッド ***//
-
     public String unsubscribe() throws NoSuchAlgorithmException {
         String res = null;
         //*** 入力されたIDとパスワードでユーザーインスタンスを取得 ***//
@@ -348,7 +300,6 @@ public class UserBean implements Serializable {
         return res;
     }
     //*** 住所変更を行うメソッド ***//
-
     public String changeAddress() {
         String res = null;
         //*** 郵便番号が正しい形式かチェック（ハイフンは不要） ***//
@@ -365,7 +316,6 @@ public class UserBean implements Serializable {
         }
         return res;
     }
-
     //*** 管理者ユーザのログインを行うメソッド ***//
     public String addminLoginCheck() throws NoSuchAlgorithmException {
         System.out.println("call adminLoginCheck()");
@@ -377,5 +327,13 @@ public class UserBean implements Serializable {
         }
         return "";                  //*** ログイン失敗 ***//
     }
+	//*** ログアウトメソッド ***//
+	public String logOut(){
+		Util.easyLog("call uBean.logOut()");
+		this.id = null;		//*** ID ***//
+		this.pass = null;	//*** PASS ***//
+		
+		return "login.xhtml?faces-redirect=true";	//*** ログイン画面にリダイレクトする ***//
+	}
 
 }

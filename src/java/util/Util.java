@@ -18,7 +18,8 @@ import java.util.Random;
  */
 public class Util {
 	
-	public static String DATE_PATTERN = "yyyy/MM/dd";
+	//*** このパターンは、勝手に変えるな！ ***//
+	public static String DATE_PATTERN = "yyyy-MM-dd HH:mm:ss.S";
 
 	//*** 引数の文字列を、SHA256にハッシュ化した結果の文字列を返すメソッド ***//
 	public static String returnSHA256(String args) throws NoSuchAlgorithmException {
@@ -54,7 +55,7 @@ public class Util {
 		}
 		return str;
 	}
-	
+	//***  ***//
 	public static String parseCalToStr(Date c){
 		String  str;
 		if(c == null) {
@@ -63,6 +64,12 @@ public class Util {
 			str = new SimpleDateFormat(DATE_PATTERN).format(c.getTime());
 		}
 		return str;
+	}
+	//***  ***//
+	public static void easyLog(String args){
+		System.out.println("==========================");
+		System.out.println(String.format("     %s        ", args));
+		System.out.println("==========================");
 	}
         
 }

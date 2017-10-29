@@ -5,6 +5,8 @@ html, body {
   height: 100%;
 }
 
+
+
 .wrap {
   width: 100%;
   position: relative;
@@ -111,7 +113,7 @@ select::-ms-expand {
   border: solid 1px #ccc;
   height: 38px;
   padding: 0 0 0 5px;
-  width: 350px;
+  width: 500px;
 }
 
 .header-search__list__btn>input {
