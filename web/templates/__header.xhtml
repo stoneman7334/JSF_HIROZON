@@ -36,8 +36,9 @@
                         <h:form>
                             <div class="header-search__list__text header-search__list__btn">
                                 <!--<input type="text" name=""/>-->
-                                <h:inputText value="#{pBean.name}" required="true"/>
-                                <h:commandButton value="&#xf002;" action="#{pBean.searchProduct()}"/>
+                                <h:inputText id="search" value="#{sBean.pName}" />
+                                <h:commandButton value="&#xf002;" action="#{sBean.searchProduct()}"/>
+                                <h:message for="search" style="color: tomato" />
                             </div>
                         </h:form>
                     </div>
