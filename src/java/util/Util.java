@@ -7,6 +7,9 @@ package util;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 /**
@@ -14,6 +17,8 @@ import java.util.Random;
  * @author Yuichi-Oba
  */
 public class Util {
+	
+	public static String DATE_PATTERN = "yyyy/MM/dd";
 
 	//*** 引数の文字列を、SHA256にハッシュ化した結果の文字列を返すメソッド ***//
 	public static String returnSHA256(String args) throws NoSuchAlgorithmException {
@@ -39,4 +44,25 @@ public class Util {
 		}
 		return buf.toString();
 	}
+	//*** 引数のカレンダーインスタンスを指定パターン文字列にして返すメソッド ***//
+	public static String parseCalToStr(Calendar c){
+		String  str;
+		if(c == null) {
+			str = null;
+		} else {
+			str = new SimpleDateFormat(DATE_PATTERN).format(c.getTime());
+		}
+		return str;
+	}
+	
+	public static String parseCalToStr(Date c){
+		String  str;
+		if(c == null) {
+			str = null;
+		} else {
+			str = new SimpleDateFormat(DATE_PATTERN).format(c.getTime());
+		}
+		return str;
+	}
+        
 }

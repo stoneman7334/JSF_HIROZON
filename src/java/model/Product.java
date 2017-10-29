@@ -45,20 +45,23 @@ public class Product implements Serializable {
 	@Lob
 	@Basic(fetch = FetchType.LAZY)
 	private byte[] p_img3;  //*** 画像3 ***//
-	//*** Constractor ***//
 
+	private String c_id;
+	//*** Constractor ***//
 	public Product() {
 	}
-	public Product(String id, String name, int count, int price, Part p, Part p2, Part p3) throws IOException {
+	public Product(String id, String name, int count, int price, Part p, Part p2, Part p3, String c_id) throws IOException {
 		this.p_id = id;						//*** 商品ID ***//
 		this.p_name = name;					//*** 商品名 ***//
 		this.p_count = count;				//*** 個数 ***//
 		this.p_price = price;				//*** 価格 ***//
-		
+
 		//*** 受け取ったPart型のインスタンスを、バイト配列に変換する ***//
 		this.p_img = convertByteArray(p);	//*** 変換したバイト配列をセットする ***//
 		this.p_img2 = convertByteArray(p2);	//*** 変換したバイト配列をセットする ***//
 		this.p_img3 = convertByteArray(p3);	//*** 変換したバイト配列をセットする ***//
+		
+		this.c_id = c_id;					//*** カテゴリID ***//
 	}
 
 	//*** GetterSetter ***//
@@ -104,14 +107,20 @@ public class Product implements Serializable {
 	public void setP_img3(byte[] p_img3) {
 		this.p_img3 = p_img3;
 	}
-	
+	public String getC_id() {
+		return c_id;
+	}
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
+	}
+
 	//*** --- SELF MADE METHOD --- 引数のPart型のインスタンスを、バイト配列に変換して返すメソッド ***//
 	private static byte[] convertByteArray(Part p) {
 		//*** 引数がnull→つまり、画像が選択されていない ***//
-		if (p == null){
+		if (p == null) {
 			return new byte[0];	//*** 長さ0のバイト配列を返す(ヌルポ対策) ***//
 		}
-		
+
 		byte[] data = new byte[(int) p.getSize()];
 		try {
 			InputStream is = p.getInputStream();
@@ -122,10 +131,10 @@ public class Product implements Serializable {
 
 		return data;	//*** 変換したバイト配列を返す ***//
 	}
+
 	@Override
 	public String toString() {
 		return String.format("商品ID : %s 個数 : %s", p_id, p_count);
 	}
-	
 
 }

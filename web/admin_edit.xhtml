@@ -11,71 +11,47 @@
         <h1>HIROZON 管理者</h1>
 
         <h2>商品編集</h2>
-        <h:form>
-<!--            <h:dataTable value="#{pBean.all}" var="p">
-                <h:column>#{p.p_id}</h:column>
-                <h:column>#{p.p_name}</h:column>
-                <h:column>#{p.p_count}</h:column>
-                <h:column>#{p.p_price}</h:column>
+        <h:form enctype="multipart/form-data">
+            <h:dataTable value="#{pBean.all}" var="p">
                 <h:column>
-                    <p:graphicImage value="#{pBean.pic}">
+					<f:facet name="header">商品ID</f:facet>
+					<h:commandLink action="#{pBean.edit(p)}" >#{p.p_id}</h:commandLink>
+				</h:column>
+                <h:column>
+					<f:facet name="header">商品名</f:facet>
+					<h:outputText value="#{p.p_name}" rendered="#{!pBean.editable}"/> 
+					<h:inputText value="#{p.p_name}" rendered="#{pBean.editable}"/>
+				</h:column>
+                <h:column>
+					<f:facet name="header">個数</f:facet>
+					<h:outputText value="#{p.p_count}" rendered="#{!pBean.editable}"/> 
+					<h:inputText value="#{p.p_count}" rendered="#{pBean.editable}"/>
+				</h:column>
+                <h:column>
+					<f:facet name="header">単価</f:facet>
+					<h:outputText value="#{p.p_price}" rendered="#{!pBean.editable}"/> 
+					<h:inputText value="#{p.p_price}" rendered="#{pBean.editable}"/>
+				</h:column>
+                <h:column>
+					<f:facet name="header">画像</f:facet>
+                    <p:graphicImage value="#{pBean.pic}" width="100" height="100">
                         <f:param name="pic1" value="#{p.p_id}"/>
                     </p:graphicImage>
                 </h:column>
                 <h:column>
-                    <p:graphicImage value="#{pBean.pic2}">
+					<f:facet name="header">画像</f:facet>
+                    <p:graphicImage value="#{pBean.pic2}" width="100" height="100">
                         <f:param name="pic2" value="#{p.p_id}"/>
                     </p:graphicImage>
                 </h:column>
                 <h:column>
-                    <p:graphicImage value="#{pBean.pic3}">
+					<f:facet name="header">画像</f:facet>
+                    <p:graphicImage value="#{pBean.pic3}" width="100" height="100">
                         <f:param name="pic3" value="#{p.p_id}"/>
                     </p:graphicImage>
                 </h:column>
-            </h:dataTable>-->
+            </h:dataTable>
 
-            ID    <h:inputText value="#{pBean.id}"/>
-            <p>
-                <h:commandButton value="PUSH" action="#{pBean.ajaxFindProduct()}"/>
-            </p>
-            <table border="1" width="500" cellspacing="0" cellpadding="5" bordercolor="#333333">
-                <tr>
-                    <th bgcolor="#EE0000"><font color="#FFFFFF">商品名</font></th>
-                    <th bgcolor="#EE0000" width="150"><font color="#FFFFFF">個数</font></th>
-                    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">原価</font></th>
-                    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">画像</font></th>
-                    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">画像</font></th>
-                    <th bgcolor="#EE0000" width="200"><font color="#FFFFFF">画像</font></th>
-
-                </tr>
-                <tr>
-                    <td bgcolor="#99CC00" align="right">
-                        <h:inputText value="#{pBean.name}"/>
-                    </td>
-                    <td bgcolor="#99CC00" align="right">
-                        <h:inputText value="#{pBean.count}"/>
-                    </td>
-                    <td bgcolor="#99CC00" align="right">
-                        <h:inputText value="#{pBean.price}"/>
-                    </td>
-                    <td bgcolor="#99CC00" align="right">
-                        <p:graphicImage value="#{pBean.pic}">
-                            <f:param name="pic1" value="#{pBean.id}"/>
-                        </p:graphicImage>
-                    </td>
-                    <td bgcolor="#99CC00" align="right">
-                        <p:graphicImage value="#{pBean.pic2}">
-                            <f:param name="pic2" value="#{pBean.id}"/>
-                        </p:graphicImage>
-                    </td>
-                    <td bgcolor="#99CC00" align="right">
-                        <p:graphicImage value="#{pBean.pic3}">
-                            <f:param name="pic3" value="#{pBean.id}"/>
-                        </p:graphicImage>
-                    </td>
-                </tr>
-            </table>
-            <h:commandButton value="登録" action="#{pBean.productMerge()}"/>
         </h:form>
 
         <h:form>

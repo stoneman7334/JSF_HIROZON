@@ -22,40 +22,24 @@ public class Category implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
+    private String c_id;
+	private String c_name;
 
-    public String getId() {
-        return id;
-    }
+	public String getC_id() {
+		return c_id;
+	}
 
-    public void setId(String id) {
-        this.id = id;
-    }
+	public void setC_id(String c_id) {
+		this.c_id = c_id;
+	}
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
+	public String getC_name() {
+		return c_name;
+	}
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Category)) {
-            return false;
-        }
-        Category other = (Category) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
+	public void setC_name(String c_name) {
+		this.c_name = c_name;
+	}
 
-    @Override
-    public String toString() {
-        return "model.Category[ id=" + id + " ]";
-    }
     
 }

@@ -8,18 +8,21 @@
   <link rel="stylesheet" href="css\common.css">
   <link rel="stylesheet" href="css\mypage.css">
   <link rel="stylesheet" href="css\reset.css">
+  <link rel="stylesheet" href="css\font-awesome.min.css">
   <script src="https://use.fontawesome.com/469d90b81f.js"></script>
 </head>
 
 <body>
-  <header class="header">
-    <div class="header-title">
-      <a class="header-title-text" href="top.html">HIROZON</a>
-    </div>
-    <div class="header-search">
-      <div class="header-search__list">
-        <div class="header-search__list__pull">
-          <select class="header-search__list__pull__box" name="category">
+  <div class="wrap">
+    <header class="header">
+      <div class="header-contents">
+        <div class="header-title">
+          <a class="header-title-text" href="top.html">HIROZON</a>
+        </div>
+        <div class="header-search">
+          <div class="header-search__list">
+            <div class="header-search__list__pull">
+              <select class="header-search__list__pull__box" name="category">
             <option class="pull-active" value="1">すべて</option>
             <option value="2">食品</option>
             <option value="3">衣料</option>
@@ -27,100 +30,106 @@
             <option value="5">本</option>
             <option value="6">アウトドア</option>
           </select>
+            </div>
+            <div class="header-search__list__text">
+              <input type="text" name="">
+            </div>
+            <div class="header-search__list__btn">
+              <input type="button" name="" value="&#xf002;">
+            </div>
+          </div>
         </div>
-        <div class="header-search__list__text">
-          <input type="text" name="">
-        </div>
-        <div class="header-search__list__btn">
-          <input type="button" name="" value="&#xf002;">
-        </div>
-      </div>
-    </div>
-    <div class="header-account">
-      <ul class="header-account__menu">
-        <li class="header-account__menu__box"><a href="#">アカウント</a>
-          <ul class="header-account__menu__block">
-            <li><a class="header-account__menu__link" href="#">注文履歴</a></li>
-            <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
+        <div class="header-account">
+          <ul class="header-account__menu">
+            <li class="header-account__menu__box"><a href="mypage.html">アカウント</a>
+              <ul class="header-account__menu__block">
+                <li><a class="header-account__menu__link" href="#">注文履歴</a></li>
+                <li><a class="header-account__menu__link" href="#">ログアウト</a></li>
+              </ul>
+            </li>
           </ul>
-        </li>
-      </ul>
+        </div>
+        <div class="header-cart">
+          <a class="header-cart__link" href="#">
+        <span class="fa fa-shopping-cart" aria-hidden="true"></span>
+      </a>
+        </div>
+      </div>
+    </header>
+    <h1 class="page-title">アカウントメニュー</h1>
+    <div class="main">
+      <div class="main-box">
+        <div class="main-box__head">
+          <span class="menu-icon fa fa-history fa-2x"></span>
+          <h2 class="main-box__head__title">注文履歴</h2>
+        </div>
+        <div class="main-box__text">
+          <ul class="main-box__text__list">
+            <li><a class="main-box__text__list__link" href="#">履歴を確認する</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="main-box">
+        <div class="main-box__head">
+          <span class="menu-icon fa fa-male fa-2x"></span>
+          <h2 class="main-box__head__title">アカウント管理</h2>
+        </div>
+        <div class="main-box__text">
+          <ul class="main-box__text__list">
+            <li><a class="main-box__text__list__link" href="#">登録情報変更</a></li>
+            <li><a class="main-box__text__list__link" href="#">退会する</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="main-box">
+        <div class="main-box__head">
+          <span class="menu-icon fa fa-map-o fa-2x"></span>
+          <h2 class="main-box__head__title">住所管理</h2>
+        </div>
+        <div class="main-box__text">
+          <ul class="main-box__text__list">
+            <li><a class="main-box__text__list__link" href="#">住所編集する</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </header>
-  <h1 class="page-title">アカウントメニュー</h1>
-  <div class="main">
-    <div class="main-box">
-      <div class="main-box__head">
-        <span></span>
-        <h2 class="main-box__head__title">注文履歴</h2>
+    <footer class="footer">
+      <div class="foot-contents">
+        <div class="footA">
+          <h2 class="foot-title">HIROZON</h2>
+          <p class="foot-info">
+            〒733-0013 広島市西区横川新町7-12<br> TEL：082-291-5050
+            <br>
+            <a href="http://www.hsc.ac.jp/" class="foot-link">http://www.hsc.ac.jp/</a>
+          </p>
+        </div>
+        <nav class="footB">
+          <div class="foot-nav">
+            <h3 class="foot-heading">ABOUT</h3>
+            <ul class="list">
+              <li><a href="#">HIROZONについて</a></li>
+              <li><a href="#">地図</a></li>
+            </ul>
+          </div>
+          <div class="foot-nav">
+            <h3 class="foot-heading">SUPPORT</h3>
+            <ul class="list">
+              <li><a href="#">お問い合わせ</a></li>
+              <li><a href="#">よくある質問</a></li>
+            </ul>
+          </div>
+          <div class="foot-nav">
+            <h3 class="foot-heading">CONTENTS</h3>
+            <ul class="list">
+              <li><a href="#">メンバー</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="footC">
+          <p class="copyright">© HIROZON 広島コンピュータ専門学校 3Bste 2017</p>
+        </div>
       </div>
-      <div class="main-box__text">
-        <ul class="main-box__text__list">
-          <li><a class="main-box__text__list__link" href="#">履歴を確認する</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="main-box">
-      <div class="main-box__head">
-        <span></span>
-        <h2 class="main-box__head__title">アカウント管理</h2>
-      </div>
-      <div class="main-box__text">
-        <ul class="main-box__text__list">
-          <li><a class="main-box__text__list__link" href="#">登録情報変更</a></li>
-          <li><a class="main-box__text__list__link" href="#">退会する</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="main-box">
-      <div class="main-box__head">
-        <span></span>
-        <h2 class="main-box__head__title">住所管理</h2>
-      </div>
-      <div class="main-box__text">
-        <ul class="main-box__text__list">
-          <li><a class="main-box__text__list__link" href="#">住所編集する</a></li>
-        </ul>
-      </div>
-    </div>
+    </footer>
   </div>
-  <footer class="footer">
-    <div class="foot-contents">
-      <div class="footA">
-        <h2 class="foot-title">HIROZON</h2>
-        <p class="foot-info">
-          〒733-0013 広島市西区横川新町7-12<br> TEL：082-291-5050
-          <br>
-          <a href="http://www.hsc.ac.jp/" class="foot-link">http://www.hsc.ac.jp/</a>
-        </p>
-      </div>
-      <nav class="footB">
-        <div class="foot-nav">
-          <h3 class="foot-heading">ABOUT</h3>
-          <ul class="list">
-            <li><a href="#">HIROZONについて</a></li>
-            <li><a href="#">地図</a></li>
-          </ul>
-        </div>
-        <div class="foot-nav">
-          <h3 class="foot-heading">SUPPORT</h3>
-          <ul class="list">
-            <li><a href="#">お問い合わせ</a></li>
-            <li><a href="#">よくある質問</a></li>
-          </ul>
-        </div>
-        <div class="foot-nav">
-          <h3 class="foot-heading">CONTENTS</h3>
-          <ul class="list">
-            <li><a href="#">メンバー</a></li>
-          </ul>
-        </div>
-      </nav>
-      <div class="footC">
-        <p class="copyright">© HIROZON 広島コンピュータ専門学校 2017</p>
-      </div>
-    </div>
-  </footer>
 </body>
-
 </html>

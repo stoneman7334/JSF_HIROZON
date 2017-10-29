@@ -27,13 +27,14 @@ import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 
 import java.util.List;
+import javax.enterprise.context.SessionScoped;
 
 /**
  *
  * @author 5151021
  */
 @Named(value = "pBean")
-@RequestScoped
+@SessionScoped
 public class ProductBean implements Serializable {
 
     //*** Field ***//
@@ -44,6 +45,12 @@ public class ProductBean implements Serializable {
     private Part picture;   //*** 画像 ***//
     private Part picture2;   //*** 画像 ***//
     private Part picture3;   //*** 画像 ***//
+
+    private String c_id;	//*** カテゴリID ***//
+
+    private boolean editable;
+
+    @Inject
 
 //      private byte [] picture;   //*** 画像（暫定ひとつ） ***//
     @EJB
@@ -57,57 +64,56 @@ public class ProductBean implements Serializable {
     public String getId() {
         return id;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public int getCount() {
         return count;
     }
-
     public void setCount(int count) {
         this.count = count;
     }
-
     public int getPrice() {
         return price;
     }
-
     public void setPrice(int price) {
         this.price = price;
     }
-
     public Part getPicture() {
         return picture;
     }
-
     public void setPicture(Part picture) {
         this.picture = picture;
     }
-
     public Part getPicture2() {
         return picture2;
     }
-
     public void setPicture2(Part picture2) {
         this.picture2 = picture2;
     }
-
     public Part getPicture3() {
         return picture3;
     }
-
     public void setPicture3(Part picture3) {
         this.picture3 = picture3;
+    }
+    public String getC_id() {
+        return c_id;
+    }
+    public void setC_id(String c_id) {
+        this.c_id = c_id;
+    }
+    public boolean isEditable() {
+        return editable;
+    }
+    public void setEditable(boolean editable) {
+        this.editable = editable;
     }
 
     //*** --- SELF MADE METHOD --- 商品の新規登録メソッド ***//
@@ -122,17 +128,37 @@ public class ProductBean implements Serializable {
                 price,
                 picture,
                 picture2,
-                picture3
+                picture3,
+                c_id
         );
         //***  ***//
         db.persist(p);
 
-        return "";  //***  ***//
+        return "admin_menu?faces-redirect=true";  //***  ***//
     }
 
     //*** --- SELF MADE METHOD --- AJAX 指定した商品IDのインスタンスを取得するメソッド ***//
     public void ajaxFindProduct() {
-        System.out.println("call ProductBean->findProduct()");
+        System.out.println("call ProductBean->ajxFindProduct()");
+        System.out.println(String.format("商品ID : %s", id));
+
+        //*** 商品IDに、何も入力がない または、検索結果がnull ***//
+        if (id.isEmpty() || db.find(id) == null) {
+            return;		//*** 処理を抜ける ***//
+        }
+        //*** 商品IDで、検索してインスタンスを取得 ***//
+        Product p = db.find(id);
+        //*** Beanに検索結果を代入する ***//
+        this.id = p.getP_id();
+        this.name = p.getP_name();
+        this.count = p.getP_count();
+        this.price = p.getP_price();
+
+        System.out.println(String.format("商品インスタンス : %s", p.toString()));
+    }
+	
+	public void ajaxFindProduct(String id) {
+        System.out.println("call ProductBean->ajxFindProduct()");
         System.out.println(String.format("商品ID : %s", id));
 
         //*** 商品IDに、何も入力がない または、検索結果がnull ***//
@@ -159,7 +185,7 @@ public class ProductBean implements Serializable {
             ExternalContext sv = context.getExternalContext();
             Map<String, String> map = sv.getRequestParameterMap();
             String key = map.get("pic1");	//*** ここの、指定方法を調べること ***//
-            System.out.println(key);
+            System.out.println(String.format("key : %s", key));
             DefaultStreamedContent ds = null;
 
             if (key != null) {
@@ -212,14 +238,64 @@ public class ProductBean implements Serializable {
     }
     //*** 編集した商品情報でUPDATEするメソッド ***//
 
-    public String productMerge() {
+    public String productMerge() throws IOException {
         System.out.println("call ProductBean->productMerge()");
+        //***  ***//
+        Product p = new Product(
+                id,
+                name,
+                count,
+                price,
+                picture,
+                picture2,
+                picture3,
+                c_id
+        );
+        db.update(p);
 
-        return "";
+        return "admin_edit";
     }
 
+    //*** 商品マスタの全データを検索して返すメソッド ***//
     public List<Product> getAll() {
+//		this.editable = false;
         return db.getAll();
+    }
+
+    //*** ”本”の一覧を取得するメソッド ***//
+    public List<Product> getProOfBook() {
+        System.out.println("call pBean->getProOfBook()");
+        return db.getProOfBook("0009");	//*** 本 ***//
+    }
+    //*** ”家電”の一覧を取得するメソッド ***//
+
+    public List<Product> getProOfElectric() {
+        System.out.println("call pBean->getProOfElectric");
+        return db.getProOfBook("0002");	//*** 家電 ***//
+    }
+    //***  ***//
+     public List<Product> getProOfLiquor() {
+        System.out.println("call pBean->getProOfElectric");
+        return db.getProOfBook("0003");	//*** 家電 ***//
+    }
+
+    public String edit(Product p) {
+        this.id = p.getP_id();
+        this.name = p.getP_name();
+        this.count = p.getP_count();
+        this.price = p.getP_price();
+        return "admin_edit_detail";
+    }
+
+    //***  ***//
+    public String addToCart(Product p) {
+        System.out.println("call uBean->addToCart()");
+        this.id = p.getP_id();
+        this.name = p.getP_name();
+        this.count = p.getP_count();
+        this.price = p.getP_price();
+
+        return "product_detail?faces-redirect=true";
     }
 
 }
