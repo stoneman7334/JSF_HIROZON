@@ -17,6 +17,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.validation.constraints.Size;
 import model.User;
 import util.Util;
 
@@ -32,7 +33,9 @@ public class UserBean implements Serializable {
     @EJB
     private UserDb userDb;
 
+    @Size(min = 4, max = 7, message = "[ユーザIDは4文字以上７文字以下で入力してください]")
     private String id;			//*** ユーザID ***//
+    @Size(min = 4, message = "[4文字以上で入力してください]")
     private String pass;			//*** パスワード ***//
     private String u_name;			//*** 氏名 ***//
     private String u_mailaddr;		//*** メールアドレス ***//
@@ -142,9 +145,9 @@ public class UserBean implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-	//*** ---------------------------- ***//
-	//*** ----- SELF MADE METHOD ----- ***//
-	//*** ---------------------------- ***//
+    //*** ---------------------------- ***//
+    //*** ----- SELF MADE METHOD ----- ***//
+    //*** ---------------------------- ***//
     //*** ログインチェックを行うメソッド ***//
     public String loginCheck() throws NoSuchAlgorithmException {
         System.out.println("call loginCheck()");
@@ -327,13 +330,22 @@ public class UserBean implements Serializable {
         }
         return "";                  //*** ログイン失敗 ***//
     }
-	//*** ログアウトメソッド ***//
-	public String logOut(){
-		Util.easyLog("call uBean.logOut()");
-		this.id = null;		//*** ID ***//
-		this.pass = null;	//*** PASS ***//
-		
-		return "login.xhtml?faces-redirect=true";	//*** ログイン画面にリダイレクトする ***//
-	}
+    //*** ログアウトメソッド ***//
+    public String logOut(){
+        Util.easyLog("call uBean.logOut()");
+        this.id = null;		//*** ID ***//
+        this.pass = null;	//*** PASS ***//
+
+        return "login.xhtml?faces-redirect=true";	//*** ログイン画面にリダイレクトする ***//
+    }
+    //*** ----------------------------     ***//
+    //*** ----- SELF MADE METHOD AJAX----- ***//
+    //*** ----------------------------     ***//
+    public void ajaxCheckDuplicateId(){
+        Util.easyLog("call ajaxCheckDuplicateId()");
+    }
+    public void ajaxCheckPass(){
+        Util.easyLog("call ajaxCheckPass");
+    }
 
 }
