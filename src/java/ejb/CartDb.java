@@ -26,12 +26,12 @@ import util.Util;
 public class CartDb extends SubDb {
 
     public static final String Q_CART_USER			= "select c from Cart c WHERE c.u_id = ?1";
-	public static final String Q_DELETE_CART_CURSOR = "Delete from Cart c where c.u_id = ?1 and c.p_id = ?2 and c.dateTime = ?3";
-	public static final String Q_DELETE_CART_ALL	= "delete from Cart c where c.u_id = ?1";
-	public static final String Q_SELECT_CHECK_DUPLICATE = "select c from Cart c where c.u_id = ?1 and c.p_id = ?2";
+    public static final String Q_DELETE_CART_CURSOR = "Delete from Cart c where c.u_id = ?1 and c.p_id = ?2 and c.dateTime = ?3";
+    public static final String Q_DELETE_CART_ALL	= "delete from Cart c where c.u_id = ?1";
+    public static final String Q_SELECT_CHECK_DUPLICATE = "select c from Cart c where c.u_id = ?1 and c.p_id = ?2";
     public static final String DATE_PATTERN			= "yyyy-MM-dd HH:mm:ss.S";
 	
-	@PersistenceContext(unitName = "HirozonPU")
+    @PersistenceContext(unitName = "HirozonPU")
     private EntityManager em;
 
     //*** カートインスタンスを新規登録する ***//

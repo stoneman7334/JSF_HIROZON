@@ -3,34 +3,7 @@
 # Generator: MySQL-Front 6.0  (Build 1.124)
 
 
-#
-# Structure for table "buyhistory"
-#
 
-DROP TABLE IF EXISTS `buyhistory`;
-CREATE TABLE `buyhistory` (
-  `ID` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-#
-# Data for table "buyhistory"
-#
-
-
-#
-# Structure for table "cart"
-#
-
-DROP TABLE IF EXISTS `cart`;
-CREATE TABLE `cart` (
-  `ID` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-#
-# Data for table "cart"
-#
 
 
 #
@@ -116,55 +89,6 @@ CREATE TABLE `m_user` (
 
 INSERT INTO `m_user` VALUES ('','aaa','aaa','tNGXL','737-7879','aaa','11111111','1990-08-14','m'),('0002','吉本直人','xxxxyyyy@gmail.co.jp','bcd8ff12690141d4de68ad439cfb7955d0b49fde0dfca8ae5daaec10105a844a','7330001','広島県','12345678','1990/8/14','1'),('0003','国貞正樹','xxxxyyyy@gmail.co.jp','123131213','7330001','広島県','12345678','1990/8/14','1'),('0004','森口有機','xxxxyyyy@gmail.co.jp','123131213','7330001','広島県','12345678','1990/8/14','1'),('0005','石山大樹','xxxxyyyy@gmail.co.jp','d74ff0ee8da3b9806b18c877dbf29bbde50b5bd8e4dad7a3a725000feb82e8f1','7330001','広島県','12345678','1990/8/14','1'),('0006','西川あんこ','xxxxyyyy@gmail.co.jp','123131213','7330001','広島県','12345678','1990/8/14','1'),('9999',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
 
-#
-# Structure for table "oc_user"
-#
-
-DROP TABLE IF EXISTS `oc_user`;
-CREATE TABLE `oc_user` (
-  `USER_ID` varchar(255) NOT NULL,
-  `ADMIN_FLG` tinyint(1) DEFAULT '0',
-  `CARD_FLG` tinyint(1) DEFAULT '0',
-  `USER_NAME` varchar(255) DEFAULT NULL,
-  `USER_PASS` varchar(255) DEFAULT NULL,
-  `USER_PHOTO` longblob,
-  `USER_SUB_NAME` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`USER_ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-#
-# Data for table "oc_user"
-#
-
-
-#
-# Structure for table "procate"
-#
-
-DROP TABLE IF EXISTS `procate`;
-CREATE TABLE `procate` (
-  `ID` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-#
-# Data for table "procate"
-#
-
-
-#
-# Structure for table "product"
-#
-
-DROP TABLE IF EXISTS `product`;
-CREATE TABLE `product` (
-  `ID` varchar(255) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-#
-# Data for table "product"
-#
 
 
 #
