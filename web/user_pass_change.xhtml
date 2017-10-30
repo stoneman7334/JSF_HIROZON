@@ -1,16 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>パスワード変更</title>
     </h:head>
     <h:body>
         <h1>パスワード変更</h1>
         <h:form>
-            現在のパスワード<h:inputSecret value="#{uBean.pass}"/>
-            新しいパスワード<h:inputSecret value="#{uBean.newPass}" />
-            新しいパスワード再入力<h:inputSecret value="#{uBean.rePass}" />
+            現在のパスワード<h:inputSecret id="bepass" value="#{uBean.pass}"/>
+            新しいパスワード<h:inputSecret id="newpass" value="#{uBean.newPass}" />
+            新しいパスワード再入力<h:inputSecret id="newpasscmp" value="#{uBean.rePass}" >
+                <h:message for="newpasscmp" id="newpasserror" style="" />
+                <f:ajax event="blur" execute="@this" listener="#{uBean.ajaxCheckPass()}"/>
+            </h:inputSecret>
             <h:commandButton value="変更" action="#{uBean.changePass()}"/>
         </h:form>
         <h:form>

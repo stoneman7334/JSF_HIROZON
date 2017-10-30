@@ -349,6 +349,12 @@ public class UserBean implements Serializable {
     //***  ***//
     public void ajaxCheckPass(){
         Util.easyLog("call ajaxCheckPass");
+//        try {
+//            if (user.getU_pass().equals(Util.returnSHA256(pass)) && newPass.equals(rePass)) {
+//            }
+//        } catch (NoSuchAlgorithmException ex) {
+//            Logger.getLogger(UserBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
     //*** 郵便番号入力欄から、フォーカス外したとき、住所を自動入力させるメソッド ***//
     public void ajaxAutoAddressInput(){
@@ -358,5 +364,25 @@ public class UserBean implements Serializable {
         
         //*** ken_all.csvをインポートして、DB構築して、それを参照する の、２択かな ***//
     }
+    
+    //*** メールアドレスの形式をチェックする ***//
+    public void ajaxMailCheck() {
+        Util.easyLog("call ajaxMailCheck()");
+//        if (u_mailaddr.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")) {
+//            
+//        }
+    }
 
+    //*** 電話番号の形式をチェックする ***//
+    public void ajaxTelCheck() {
+        Util.easyLog("call ajaxTelCheck()");
+//        if (u_tel.matches("^(070|080|090)\\d{4}\\d{4}$|^0\\\\d{3}\\\\d{2}\\\\d{4}$")) {
+//
+//        }
+    }
+    
+    //*** 空文字が入力されていないかのチェック ***//
+    public void ajaxEmptyCheck() {
+        Util.easyLog("call ajaxEmptyCheck()");
+    }
 }
