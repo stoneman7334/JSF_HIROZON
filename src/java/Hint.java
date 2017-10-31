@@ -73,4 +73,8 @@ public class Hint {
 //              このパターンは、070 080 090からスタートする携帯番号と市外局番から始まる固定電話番号を許可します
 //              ハイフンは含まない前提です
 //              ex) 08055557777(携帯番号) 　0898777777（市外局番からの固定電話）などを許可する
+
+html input type=number になるやつ
+<p:spinner id=" numAdults"  min=" 1"  max=" 15" 
+          value=" #{...numAdults}" />
 }
