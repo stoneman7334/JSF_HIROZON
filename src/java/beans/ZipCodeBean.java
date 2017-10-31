@@ -139,15 +139,15 @@ public class ZipCodeBean {
         System.out.println(String.format("検索結果 :  %d", list.size()));
         list.forEach(c -> {
             System.out.println(c.getPref());
-            this.pref = c.getPref();                //*** 県名 ***//
-            this.pref_kana = c.getPref_kana();      //*** 県名のかな ***//
-            this.city = c.getCity();                 //*** 市 ***//
-            this.city_kana = c.getCity_kana();      //*** 市のかな ***//
-            this.street = c.getStreet();            //*** 町 ***//
+            this.pref = c.getPref();                              //*** 県名 ***//
+            this.pref_kana = c.getPref_kana();          //*** 県名のかな ***//
+            this.city = c.getCity();                              //*** 市 ***//
+            this.city_kana = c.getCity_kana();          //*** 市のかな ***//
+            this.street = c.getStreet();                      //*** 町 ***//
             this.street_kana = c.getStreet_kana();  //*** 町のかな ***//
         });
 
-        //*** 県名 ＋ 市 ＋ 町名 ***//u
+        //*** 県名 ＋ 市 ＋ 町名 ***//
         uBean.setU_pre(this.pref);
         uBean.setU_address(String.format("%s%s", this.city, this.street));
         

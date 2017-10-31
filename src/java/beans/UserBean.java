@@ -49,6 +49,7 @@ public class UserBean implements Serializable {
     User user;
     private String u_pre;			//*** 選択した県 ***//
     private String u_mansion;		//*** マンション等の追加住所 ***//
+    private String err_pass_msg;
     public static String loginId;	//*** ログイン時に扱ったidを静的保持 ***//
 	//*** Constractor ***//
     public UserBean() {
@@ -141,6 +142,12 @@ public class UserBean implements Serializable {
     }
     public User getUser() {
         return user;
+    }
+    public String getErr_pass_msg() {
+        return err_pass_msg;
+    }
+    public void setErr_pass_msg(String err_pass_msg) {
+        this.err_pass_msg = err_pass_msg;
     }
     public void setUser(User user) {
         this.user = user;
@@ -349,14 +356,20 @@ public class UserBean implements Serializable {
     //***  ***//
     public void ajaxCheckPass(){
         Util.easyLog("call ajaxCheckPass");
-    }
-    //*** 郵便番号入力欄から、フォーカス外したとき、住所を自動入力させるメソッド ***//
-    public void ajaxAutoAddressInput(){
-        Util.easyLog("call ajaxAutoAddressInput()");
         
-        //*** 郵便番号APIを使って、this.fieldに突っ込む（インターネット使用不可欠） ***//
+        System.out.println(this.pass);
+        System.out.println(this.rePass);
         
-        //*** ken_all.csvをインポートして、DB構築して、それを参照する の、２択かな ***//
+        if (!this.pass.contains(this.rePass)){
+            System.out.println("not equal!");
+        } else {
+            this.err_pass_msg = "";
+        }
+        //*** パスワード、リパスワードを空白にする ***//
+        this.pass = ""; 
+        this.rePass = "";
+        //*** エラーメッセージを出力させる ***//
+        this.err_pass_msg = "パスワードが異なります、もう一度入力してください";
     }
-
+   
 }

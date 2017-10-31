@@ -14,56 +14,78 @@
         <h2>会員登録</h2>
 
         <h:form>
-            <h:panelGrid columns="3">
-                ID              
-                <h:inputText id="u_id" value="#{uBean.id}" p:placeholder="7文字"/>
-                <h:message for="u_id" style="color: tomato"/>
-                名前            
-                <h:inputText id="u_name" value="#{uBean.u_name}" p:placeholder="" />
-                <h:message for="u_name" id="nameerror" style=""/>
-                アドレス        
-                <h:inputText id="u_mail" value="#{uBean.u_mailaddr}" p:placeholder="example@example.com"/>
-                <h:message for="u_mail" id="mailerror" style=""/>
-                パスワード      
-                <h:inputSecret id="u_pass" value="#{uBean.pass}" p:placeholder="4文字以上"/>
-                <h:message for="u_pass" style="color: tomato"/>
-                パスワード（再）
-                <h:inputSecret id="u_repass" value="#{uBean.rePass}" p:placeholder="再度入力してください">
-                    <h:message for="u_repass" id="repasserror" style=""/>
-                    <f:ajax event="blur" execute="@this" listener="#{uBean.ajaxCheckPass()}"/>
-                </h:inputSecret>
-                郵便番号        
-                <h:inputText id="u_post" value="#{zipBean.zipcode}" p:placeholder="ハイフンなし、7桁">
-                    <h:message for="u_post" id="posterror" style=""/>
-                    <f:ajax event="blur" render="u_pre u_addr" execute="@this" listener="#{zipBean.searchZipCode()}"/>
-                </h:inputText>
-                都道府県
-                <h:inputText id="u_pre" value="#{uBean.u_pre}" p:placeholder="自動で入力">
-                <!--<h:selectOneMenu value="#{uBean.u_pre}"><f:selectItems value="#{prefList.items}" /></h:selectOneMenu>-->
-                    <h:message for="u_pre" id="preerror" style=""/>
-                </h:inputText>
-                住所
-                <h:inputText id="u_addr" value="#{uBean.u_address}" p:placeholder=""/>
-                <h:message for="u_addr" id="addrerror" style=""/>
-                マンション・部屋番号等
-                <h:inputText value="#{uBean.u_mansion}" p:placeholder=""/>
-                <h:message for="u_mansion" id="mansionerror" style=""/>
-                生年月日        
-                <h:inputText id="u_birth" value="#{uBean.u_birth_day}" p:placeholder="XXXX-XX-XX"/>
-                <h:message for="u_birth" id="birtherror" style=""/>
-                電話番号        
-                <h:inputText id="u_tel" value="#{uBean.u_tel}" p:placeholder="0823-74-1234"/>
-                <h:message for="u_tel" id="telerror" style=""/>
-                性別
-                <h:selectOneRadio value="#{uBean.u_sex}">
-                    <!--<f:selectItems value="#{manWomanRadio.items}" />-->
-                    <f:selectItem itemValue="1" itemLabel="男" />
-                    <f:selectItem itemValue="0" itemLabel="女"/>
-                </h:selectOneRadio>
-                <!--<h:inputText id="u_sex" value="#{uBean.u_sex}" p:placeholder="男 または 女"/>-->
-                <h:message for="u_sex" id="sexerror" style=""/>
-
-            </h:panelGrid>
+            <table class="table3">
+                <tr>
+                    <td>ID</td>
+                    <td><h:inputText id="u_id" value="#{uBean.id}" p:placeholder="7文字"/></td>
+                    <td><h:message for="u_id" style="color: tomato"/></td>
+                </tr>
+                <tr>
+                    <td>名前</td>
+                    <td><h:inputText id="u_name" value="#{uBean.u_name}" p:placeholder="" /></td>
+                    <td><h:message for="u_name" id="nameerror" style=""/></td>
+                </tr>
+                <tr>
+                    <td>アドレス</td>
+                    <td><h:inputText id="u_mail" value="#{uBean.u_mailaddr}" p:placeholder="example@example.com"/></td>
+                    <td><h:message for="u_mail" id="mailerror" style=""/></td>
+                </tr>
+                <tr>
+                    <td>パスワード</td>
+                    <td><h:inputSecret id="u_pass" value="#{uBean.pass}" p:placeholder="4文字以上"/></td>
+                    <td><h:message for="u_pass" style="color: tomato"/></td>
+                </tr>
+                <tr>
+                    <td>パスワード（再）</td>
+                    <td>
+                        <h:inputSecret id="u_repass" value="#{uBean.rePass}" p:placeholder="再度入力してください">
+                            <f:ajax event="blur" execute="u_pass u_repass" render="u_pass u_repass err_pass" listener="#{uBean.ajaxCheckPass()}"/>
+                        </h:inputSecret>
+                    </td>
+                    <td><h:outputText  id="err_pass" value="#{uBean.err_pass_msg}" style="color: tomato" rendered="true" /></td>
+                </tr>
+                <tr>
+                    <td>郵便番号</td>
+                    <td>
+                        <h:inputText id="u_post" value="#{zipBean.zipcode}" p:placeholder="ハイフンなし、7桁">
+                            <h:message for="u_post" id="posterror" style=""/>
+                            <f:ajax event="blur" render="u_pre u_addr" execute="@this" listener="#{zipBean.searchZipCode()}"/>
+                        </h:inputText>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>住所</td>
+                    <td><h:inputText id="u_pre" value="#{uBean.u_pre}" p:placeholder="都道府県"/></td>
+                    <td><h:inputText id="u_addr" value="#{uBean.u_address}" p:placeholder="町名"/></td>
+                    <td><h:inputText value="#{uBean.u_mansion}" p:placeholder="番地"/></td>
+                </tr>
+                <tr>
+                    <td>生年月日</td>
+                    <td><h:inputText id="u_birth" value="#{uBean.u_birth_day}" p:placeholder="XXXX-XX-XX"/></td>
+                    <td><h:message for="u_birth" id="birtherror" style=""/></td>
+                </tr>
+                <tr>
+                    <td>電話番号</td>
+                    <td><h:inputText id="u_tel" value="#{uBean.u_tel}" p:placeholder="0823-74-1234"/></td>
+                    <td><h:message for="u_tel" id="telerror" style=""/></td>
+                </tr>
+                <tr>
+                    <td>性別</td>
+                    <td>
+                        <h:selectOneRadio value="#{uBean.u_sex}">
+                            <f:selectItem itemValue="1" itemLabel="男" />
+                            <f:selectItem itemValue="0" itemLabel="女"/>
+                        </h:selectOneRadio>
+                    </td>
+                    <td><h:message for="u_sex" id="sexerror" style=""/></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
             <h:commandButton value="登録" action="#{uBean.addUser()}"/>
         </h:form> 
     </h:body>
