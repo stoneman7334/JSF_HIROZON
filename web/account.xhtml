@@ -2,10 +2,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
         <title>Facelet Title</title>
+        <link rel="stylesheet" href="css\__validation_message.css"/>
     </h:head>
     <h:body>
         <h1>HIROZON</h1>
@@ -15,8 +16,8 @@
         <h:form>
             <h:panelGrid columns="3">
                 ID              
-                <h:inputText id="u_id" value="#{uBean.id}" p:placeholder="7文字" required="true" />
-                <h:message for="u_id" id="iderror" style=""/>
+                <h:inputText id="u_id" value="#{uBean.id}" p:placeholder="7文字"/>
+                <h:message for="u_id" style="color: tomato"/>
                 名前            
                 <h:inputText id="u_name" value="#{uBean.u_name}" p:placeholder="" />
                 <h:message for="u_name" id="nameerror" style=""/>
@@ -25,13 +26,17 @@
                 <h:message for="u_mail" id="mailerror" style=""/>
                 パスワード      
                 <h:inputSecret id="u_pass" value="#{uBean.pass}" p:placeholder="4文字以上"/>
-                <h:message for="u_pass" id="passerror" style=""/>
+                <h:message for="u_pass" style="color: tomato"/>
                 パスワード（再）
-                <h:inputSecret id="u_repass" value="#{uBean.rePass}" p:placeholder="再度入力してください"/>
-                <h:message for="u_repass" id="repasserror" style=""/>
+                <h:inputSecret id="u_repass" value="#{uBean.rePass}" p:placeholder="再度入力してください">
+                    <h:message for="u_repass" id="repasserror" style=""/>
+                    <f:ajax event="blur" execute="@this" listener="#{uBean.ajaxCheckPass()}"/>
+                </h:inputSecret>
                 郵便番号        
-                <h:inputText id="u_post" value="#{uBean.u_post}" p:placeholder="XXX-XXXX"/>
+                <h:inputText id="u_post" value="#{uBean.u_post}" p:placeholder="XXX-XXXX">
                 <h:message for="u_post" id="posterror" style=""/>
+                <f:ajax event="blur" execute="@this" listener="#{uBean.ajaxAutoAddressInput()}"/>
+                </h:inputText>
                 都道府県<h:selectOneMenu value="#{uBean.u_pre}"><f:selectItems value="#{prefList.items}" /></h:selectOneMenu>
                 <h:message for="u_pre" id="preerror" style=""/>
                 住所
@@ -48,7 +53,9 @@
                 <h:message for="u_tel" id="telerror" style=""/>
                 性別
                 <h:selectOneRadio value="#{uBean.u_sex}">
-                    <f:selectItems value="#{manWomanRadio.items}" />
+                    <!--<f:selectItems value="#{manWomanRadio.items}" />-->
+                    <f:selectItem itemValue="1" itemLabel="男" />
+                    <f:selectItem itemValue="0" itemLabel="女"/>
                 </h:selectOneRadio>
                 <!--<h:inputText id="u_sex" value="#{uBean.u_sex}" p:placeholder="男 または 女"/>-->
                 <h:message for="u_sex" id="sexerror" style=""/>

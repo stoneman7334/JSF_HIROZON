@@ -8,9 +8,11 @@
     <h:body>
         <h1>名前変更</h1>
         <h:form>
-            現在の名前<h:outputText value="#{uBean.beName()}" />
-            新しい名前<h:inputText value="#{uBean.u_name}" />
-            <h:commandButton value="変更" action="#{uBean.changeName()}"/>
+            現在の名前<h:outputText id="bename" value="#{uBean.beName()}" />
+            新しい名前<h:inputText id="newname" value="#{uBean.u_name}" >
+                <h:message for="newname" id="newnameerror" style="" />
+                <h:commandButton value="変更" action="#{uBean.changeName()}"/>
+            </h:inputText>
         </h:form>
         <h:form>
             <h:commandButton value="戻る" action="mypage"/>

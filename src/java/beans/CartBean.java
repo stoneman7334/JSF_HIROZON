@@ -14,10 +14,9 @@ import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.Dependent;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.validation.constraints.Min;
 import model.Cart;
 import util.Util;
 
@@ -35,6 +34,7 @@ public class CartBean implements Serializable {
 
     private String u_id;			//*** ユーザID ***//
     private String p_id;			//*** 商品ID ***//
+    @Min(value = 1, message = "1以上の数値を指定してください")
     private int count;				//*** 個数 ***//
     private int price;				//*** 価格 ***//
     private String dateTime;		//*** カートに入れた時刻 ***//

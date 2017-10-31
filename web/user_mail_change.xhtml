@@ -1,16 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>メールアドレス変更</title>
     </h:head>
     <h:body>
         <h1>メールアドレス</h1>
         <h:form>
-            現在のメールアドレス<h:outputText value="#{uBean.beMail()}" />
-            新しいメールアドレス<h:inputText value="#{uBean.u_mailaddr}" />
-            パスワード<h:inputSecret value="#{uBean.pass}" />
+            現在のメールアドレス<h:outputText id="bemail" value="#{uBean.beMail()}" />
+            新しいメールアドレス<h:inputText  id="newmail" value="#{uBean.u_mailaddr}">
+                <h:message for="newmail" id="newmailerror" style=""/>
+                <f:ajax event="blur" execute="@this" listener="#{uBean.ajaxMailCheck()}"/>
+             </h:inputText>
+             パスワード<h:inputSecret value="#{uBean.pass}" />
             <h:commandButton value="変更" action="#{uBean.changeMail()}"/>
         </h:form>
         <h:form>

@@ -17,6 +17,7 @@ import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.validation.constraints.Size;
 import model.User;
 import util.Util;
 
@@ -32,7 +33,9 @@ public class UserBean implements Serializable {
     @EJB
     private UserDb userDb;
 
+    @Size(min = 4, max = 7, message = "[ユーザIDは4文字以上７文字以下で入力してください]")
     private String id;			//*** ユーザID ***//
+    @Size(min = 4, message = "[4文字以上で入力してください]")
     private String pass;			//*** パスワード ***//
     private String u_name;			//*** 氏名 ***//
     private String u_mailaddr;		//*** メールアドレス ***//
@@ -142,9 +145,9 @@ public class UserBean implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-	//*** ---------------------------- ***//
-	//*** ----- SELF MADE METHOD ----- ***//
-	//*** ---------------------------- ***//
+    //*** ---------------------------- ***//
+    //*** ----- SELF MADE METHOD ----- ***//
+    //*** ---------------------------- ***//
     //*** ログインチェックを行うメソッド ***//
     public String loginCheck() throws NoSuchAlgorithmException {
         System.out.println("call loginCheck()");
@@ -327,13 +330,59 @@ public class UserBean implements Serializable {
         }
         return "";                  //*** ログイン失敗 ***//
     }
-	//*** ログアウトメソッド ***//
-	public String logOut(){
-		Util.easyLog("call uBean.logOut()");
-		this.id = null;		//*** ID ***//
-		this.pass = null;	//*** PASS ***//
-		
-		return "login.xhtml?faces-redirect=true";	//*** ログイン画面にリダイレクトする ***//
-	}
+    //*** ログアウトメソッド ***//
+    public String logOut(){
+        Util.easyLog("call uBean.logOut()");
+        this.id = null;		//*** ID ***//
+        this.pass = null;	//*** PASS ***//
 
+        return "login.xhtml?faces-redirect=true";	//*** ログイン画面にリダイレクトする ***//
+    }
+    //*** ----------------------------     ***//
+    //*** ----- SELF MADE METHOD AJAX----- ***//
+    //*** ----------------------------     ***//
+    
+    //***  ***//
+    public void ajaxCheckDuplicateId(){
+        Util.easyLog("call ajaxCheckDuplicateId()");
+    }
+    //***  ***//
+    public void ajaxCheckPass(){
+        Util.easyLog("call ajaxCheckPass");
+//        try {
+//            if (user.getU_pass().equals(Util.returnSHA256(pass)) && newPass.equals(rePass)) {
+//            }
+//        } catch (NoSuchAlgorithmException ex) {
+//            Logger.getLogger(UserBean.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }
+    //*** 郵便番号入力欄から、フォーカス外したとき、住所を自動入力させるメソッド ***//
+    public void ajaxAutoAddressInput(){
+        Util.easyLog("call ajaxAutoAddressInput()");
+        
+        //*** 郵便番号APIを使って、this.fieldに突っ込む（インターネット使用不可欠） ***//
+        
+        //*** ken_all.csvをインポートして、DB構築して、それを参照する の、２択かな ***//
+    }
+    
+    //*** メールアドレスの形式をチェックする ***//
+    public void ajaxMailCheck() {
+        Util.easyLog("call ajaxMailCheck()");
+//        if (u_mailaddr.matches("^.*@.*\\..*$|^.*@.*\\..*\\..*$|^.*@.*\\..*\\..*\\..*$")) {
+//            
+//        }
+    }
+
+    //*** 電話番号の形式をチェックする ***//
+    public void ajaxTelCheck() {
+        Util.easyLog("call ajaxTelCheck()");
+//        if (u_tel.matches("^(070|080|090)\\d{4}\\d{4}$|^0\\\\d{3}\\\\d{2}\\\\d{4}$")) {
+//
+//        }
+    }
+    
+    //*** 空文字が入力されていないかのチェック ***//
+    public void ajaxEmptyCheck() {
+        Util.easyLog("call ajaxEmptyCheck()");
+    }
 }

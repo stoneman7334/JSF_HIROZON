@@ -50,69 +50,88 @@ public class ProductBean implements Serializable {
     private boolean editable;
 
     @Inject
-	
+    SearchBean sBean;
     @EJB
     ProductDb db;			//*** 商品テーブル用 ***//
 
     //*** Constractor ***//
     public ProductBean() {
     }
+
     //*** GetterSetter ***//
     public String getId() {
         return id;
     }
+
     public void setId(String id) {
         this.id = id;
     }
+
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public int getCount() {
         return count;
     }
+
     public void setCount(int count) {
         this.count = count;
     }
+
     public int getPrice() {
         return price;
     }
+
     public void setPrice(int price) {
         this.price = price;
     }
+
     public Part getPicture() {
         return picture;
     }
+
     public void setPicture(Part picture) {
         this.picture = picture;
     }
+
     public Part getPicture2() {
         return picture2;
     }
+
     public void setPicture2(Part picture2) {
         this.picture2 = picture2;
     }
+
     public Part getPicture3() {
         return picture3;
     }
+
     public void setPicture3(Part picture3) {
         this.picture3 = picture3;
     }
+
     public String getC_id() {
         return c_id;
     }
+
     public void setC_id(String c_id) {
         this.c_id = c_id;
     }
+
     public boolean isEditable() {
         return editable;
     }
+
     public void setEditable(boolean editable) {
         this.editable = editable;
     }
-	//*** 写真１表示メソッド ***//
+    //*** 写真１表示メソッド ***//
+
     public StreamedContent getPic() {
         FacesContext context = FacesContext.getCurrentInstance();
         if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
@@ -132,7 +151,8 @@ public class ProductBean implements Serializable {
             return ds;
         }
     }
-	//*** 写真２表示メソッド ***//
+    //*** 写真２表示メソッド ***//
+
     public StreamedContent getPic2() {
         FacesContext context = FacesContext.getCurrentInstance();
         if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
@@ -152,7 +172,8 @@ public class ProductBean implements Serializable {
             return ds;
         }
     }
-	//*** 写真３表示メソッド ***//
+    //*** 写真３表示メソッド ***//
+
     public StreamedContent getPic3() {
         FacesContext context = FacesContext.getCurrentInstance();
         if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
@@ -172,10 +193,11 @@ public class ProductBean implements Serializable {
             return ds;
         }
     }
-	//*** ---------------------------- ***//
-	//*** ----- SELF MADE METHOD ----- ***//
-	//*** ---------------------------- ***//
+    //*** ---------------------------- ***//
+    //*** ----- SELF MADE METHOD ----- ***//
+    //*** ---------------------------- ***//
     //*** --- SELF MADE METHOD --- 商品の新規登録メソッド ***//
+
     public String newRegist() throws IOException {
         System.out.println("call ProductBean->newRegist()");
 
@@ -195,6 +217,7 @@ public class ProductBean implements Serializable {
 
         return "admin_menu?faces-redirect=true";  //***  ***//
     }
+
     //*** --- SELF MADE METHOD --- AJAX 指定した商品IDのインスタンスを取得するメソッド ***//
     public void ajaxFindProduct() {
         System.out.println("call ProductBean->ajxFindProduct()");
@@ -214,8 +237,9 @@ public class ProductBean implements Serializable {
 
         System.out.println(String.format("商品インスタンス : %s", p.toString()));
     }
-	//***  ***//
-	public void ajaxFindProduct(String id) {
+    //***  ***//
+
+    public void ajaxFindProduct(String id) {
         System.out.println("call ProductBean->ajxFindProduct()");
         System.out.println(String.format("商品ID : %s", id));
 
@@ -233,6 +257,7 @@ public class ProductBean implements Serializable {
 
         System.out.println(String.format("商品インスタンス : %s", p.toString()));
     }
+
     //*** 編集した商品情報でUPDATEするメソッド ***//
     public String productMerge() throws IOException {
         System.out.println("call ProductBean->productMerge()");
@@ -251,46 +276,53 @@ public class ProductBean implements Serializable {
 
         return "admin_edit";
     }
+
     //*** 商品マスタの全データを検索して返すメソッド ***//
     public List<Product> getAll() {
 //		this.editable = false;
         return db.getAll();
     }
+
     //*** ”本”の一覧を取得するメソッド ***//
     public List<Product> getProOfBook() {
         System.out.println("call pBean->getProOfBook()");
         return db.getProOfBook("0009");	//*** 本 ***//
     }
+
     //*** ”家電”の一覧を取得するメソッド ***//
     public List<Product> getProOfElectric() {
         System.out.println("call pBean->getProOfElectric");
         return db.getProOfBook("0002");	//*** 家電 ***//
     }
+
     //*** ”酒”の一覧を取得するメソッド ***//
     public List<Product> getProOfLiquor() {
         System.out.println("call pBean->getProOfElectric");
         return db.getProOfBook("0003");	//*** 家電 ***//
     }
-	//*** 検索ボックスに入力したもの(this.name)で、DB検索し、結果をリストで返すメソッド ***//
-	public List<Product> getProOfSearch(){
-		Util.easyLog("call pBean.getProOfSearch()");
-		System.out.println(this.name);
-		
-		//*** DB検索した結果のリストを返す ***//
-		List<Product> list = db.getSearchCharacter(this.name);
-		System.out.println(String.format("list size : %d", list.size()));
-		return db.getSearchCharacter(this.name);
-	}
-	//*** 関連商品のリストを返すメソッド ***//
-	public List<Product> getProOfSearchRelation(){
-		Util.easyLog("call pBean.getProOfSearchRelaion()");
-		System.out.println(c_id);
-		
-		//*** カテゴリIDを取得して、一覧を取得するメソッド ***//
-		return db.getProOfBook(this.c_id);
-		
-	}
-	//***  ***//
+
+    //*** 検索ボックスに入力したもの(this.name)で、DB検索し、結果をリストで返すメソッド ***//
+    public List<Product> getProOfSearch() {
+        Util.easyLog("call pBean.getProOfSearch()");
+        System.out.println(sBean.getpName());
+
+        //*** DB検索した結果のリストを返す ***//
+        List<Product> list = db.getSearchCharacter(sBean.getpName());
+        System.out.println(String.format("list size : %d", list.size()));
+        return db.getSearchCharacter(this.name);
+    }
+
+    //*** 関連商品のリストを返すメソッド ***//
+    public List<Product> getProOfSearchRelation() {
+        Util.easyLog("call pBean.getProOfSearchRelaion()");
+        System.out.println(c_id);
+
+        //*** カテゴリIDを取得して、一覧を取得するメソッド ***//
+        return db.getProOfBook(this.c_id);
+
+    }
+
+    //***  ***//
     public String edit(Product p) {
         this.id = p.getP_id();
         this.name = p.getP_name();
@@ -298,24 +330,26 @@ public class ProductBean implements Serializable {
         this.price = p.getP_price();
         return "admin_edit_detail";
     }
+
     //*** 選択した商品の情報を、このインスタンスに記録して、商品詳細ページに遷移するメソッド ***//
     public String addToCart(Product p) {
         System.out.println("call uBean->addToCart()");
-		//***  ***//
+        //***  ***//
         this.id = p.getP_id();
         this.name = p.getP_name();
         this.count = p.getP_count();
         this.price = p.getP_price();
-		this.c_id = p.getC_id();
+        this.c_id = p.getC_id();
 
         return "product_detail?faces-redirect=true";
     }
-	//*** 検索ボックスボタン押下時の処理 ***//
-	public String searchProduct(){
-		Util.easyLog("call ProductBean.searchProduct()");
-		System.out.println(this.name);
-		
-		return "search_result.xhtml?faces-redirect=true";	//*** 検索結果画面にリダイレクトする ***//
-	}
+
+    //*** 検索ボックスボタン押下時の処理 ***//
+    public String searchProduct() {
+        Util.easyLog("call ProductBean.searchProduct()");
+        System.out.println(this.name);
+
+        return "search_result.xhtml?faces-redirect=true";	//*** 検索結果画面にリダイレクトする ***//
+    }
 
 }
