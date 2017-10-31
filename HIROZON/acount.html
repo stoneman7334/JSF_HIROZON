@@ -19,51 +19,56 @@
     <form class="form">
       <table class="table3">
         <tr>
-          <td>ID</td>
-          <td><input type="text" name="" value="" maxlength="7"></td>
+          <td class="table3-title">ID</td>
+          <td class="table3-item"><input type="text" name="" value="" maxlength="7"></td>
         </tr>
         <tr>
-          <td>名前</td>
-          <td><input type="text" name="" value=""></td>
+          <td class="table3-title">名前</td>
+          <td class="table3-item"><input type="text" name="" value=""></td>
         </tr>
         <tr>
-          <td>アドレス</td>
-          <td><input type="email" name="" value="" placeholder="example@example.com"></td>
+          <td class="table3-title">アドレス</td>
+          <td class="table3-item"><input type="email" name="" value="" placeholder="example@example.com"></td>
         </tr>
         <tr>
-          <td>パスワード</td>
-          <td><input type="password" name="" value="" placeholder="4文字以上"></td>
+          <td class="table3-title">パスワード</td>
+          <td class="table3-item"><input type="password" name="" value="" placeholder="4文字以上"></td>
         </tr>
         <tr>
-          <td>パスワード（再）</td>
-          <td>
+          <td class="table3-title">パスワード（再）</td>
+          <td class="table3-item">
             <input type="password" name="" value="" placeholder="もう一度入力してください">
           </td>
         </tr>
         <tr>
-          <td>郵便番号</td>
-          <td>
+          <td class="table3-title">郵便番号</td>
+          <td class="table3-item">
             <input type="text" name="" value="" placeholder="123-4567">
           </td>
-          <td></td>
         </tr>
         <tr>
-          <td>住所</td>
-          <td><input type="text" name="" value="" placeholder="都道府県"></td>
-          <td><input type="text" name="" value="" placeholder="町名"></td>
-          <td><input type="text" name="" value="" placeholder="番地"></td>
+          <td class="table3-title">住所</td>
+          <td class="table3-item"><input type="text" name="" value="" placeholder="都道府県"></td>
         </tr>
         <tr>
-          <td>生年月日</td>
-          <td><input type="text" name="" value="" placeholder="XXXX-XX-XX"></td>
+          <td class="table3-title"></td>
+          <td class="table3-item"><input type="text" name="" value="" placeholder="町名"></td>
         </tr>
         <tr>
-          <td>電話番号</td>
-          <td><input type="tel" name="" value="" placeholder="0823-74-1234"></td>
+          <td class="table3-title"></td>
+          <td class="table3-item"><input type="text" name="" value="" placeholder="番地"></td>
         </tr>
         <tr>
-          <td>性別</td>
-          <td>
+          <td class="table3-title">生年月日</td>
+          <td class="table3-item"><input type="text" name="" value="" placeholder="XXXX-XX-XX"></td>
+        </tr>
+        <tr>
+          <td class="table3-title">電話番号</td>
+          <td class="table3-item"><input type="tel" name="" value="" placeholder="0823-74-1234"></td>
+        </tr>
+        <tr>
+          <td class="table3-title">性別</td>
+          <td class="u-sex">
             <input type="radio" id="male" name="sex" value="1" checked="checked">
             <label for="male">男</label>
             <input type="radio" id="female" name="sex" value="0">
@@ -71,7 +76,9 @@
           </td>
         </tr>
       </table>
-      <input type="button" name="" value="登録">
+      <div class="add-wrap">
+        <input class="add-button" type="button" name="" value="登録">
+      </div>
     </form>
   </div>
 </body>
